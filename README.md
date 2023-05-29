@@ -9,7 +9,7 @@ Home Assistant is a powerful home automation platform that empowers you to seaml
 </p>
 
 <p align="center">
- <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/1_security_1.jpg" width="200"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/2_climate_1.jpg" width="200"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/3_lights_1_1.jpg" width="200"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/4_medias_1.jpg" width="200"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/5_devices_1.jpg" width="200">
+ <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/1_security_1.jpg" width="150"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/2_climate_1.jpg" width="150"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/3_lights_1_1.jpg" width="150"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/4_medias_1.jpg" width="150"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/5_devices_1.jpg" width="150">
 </p>
 
 
