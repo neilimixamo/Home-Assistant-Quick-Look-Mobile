@@ -1,12 +1,22 @@
 # home-assistant-mobile-dashboard
 
-Description : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quam rhoncus lacus ultrices interdum. Aliquam non elit a odio ornare rutrum. Quisque luctus congue quam quis tempor. Integer tristique imperdiet tristique. Curabitur ultrices mattis risus, id aliquam orci laoreet sit amet. Etiam ut neque vitae purus sagittis pulvinar vel a mauris. Nullam auctor auctor efficitur. In faucibus erat tellus, et pellentesque enim luctus vitae. Integer id elementum nunc, ac porttitor sem. Duis a bibendum dui, nec porta est. Etiam nec tempus est. Quisque tincidunt fermentum lacinia. Phasellus sagittis consectetur dolor, vel euismod neque ultrices vel. Nullam suscipit nunc nibh, quis suscipit diam efficitur eget. Phasellus dapibus tempor sapien in semper. Donec sed ipsum elit.
+## About
+
+Home Assistant is a powerful home automation platform that empowers you to seamlessly control and manage all your smart devices. However, accessing to specific controls can sometimes become a tedious process. That's where this project comes in. Its goal is to create a visually appealing and intuitively designed mobile dashboard that offers quick access to all major devices with a maximum of 3 clics, while still providing with complete control over their settings.
 
 <p align="center">
  <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/assets/43101688/86208b37-9c9b-4f61-8aaa-7fc4b2b95d15" width="200">
 </p>
 
- 
+## Layout
+
+Starting from the top, the layout is structured as follows:
+
+- Header : Offers six categories (Members, Security, Climate, Lighting, Media, and Devices), with an additional option called HOME when none of the categories is selected.
+- Subheader : Provides two submenus for each category, resulting in a total of 14 main sections.
+- Main Section : Offers a user-friendly interface with a vertical scrolling feature, allowing for effortless visualization and control of all the smart devices within the selected category
+- Footer : Provides a compact area for selecting scenes, also based on the chosen menu and submenu.
+- Menu : Located at the bottom of the screen, it grants a static access to maintenance tools and automations for Home Assistant.
 
 ## Structure
 
