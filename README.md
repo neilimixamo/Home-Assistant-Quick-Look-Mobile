@@ -5,8 +5,14 @@
 Home Assistant is a powerful home automation platform that empowers you to seamlessly control and manage all your smart devices. However, accessing to specific controls can sometimes become a tedious process. That's where this project comes in. Its goal is to create a visually appealing and intuitively designed mobile dashboard that offers quick access to all major devices with a maximum of 3 clics, while still providing with complete control over their settings.
 
 <p align="center">
- <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/assets/43101688/86208b37-9c9b-4f61-8aaa-7fc4b2b95d15" width="200">
+ <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/0_home_1.jpg" width="200">
 </p>
+
+<p align="center">
+ <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/1_security_1.jpg" width="200"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/2_climate_1.jpg" width="200"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/3_lights_1_1.jpg" width="200"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/4_medias_1.jpg" width="200"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/5_devices_1.jpg" width="200">
+</p>
+
+
 
 ## Layout
 
