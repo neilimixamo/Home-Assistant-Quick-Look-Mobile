@@ -2,12 +2,9 @@
 
 Description : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam scelerisque quam rhoncus lacus ultrices interdum. Aliquam non elit a odio ornare rutrum. Quisque luctus congue quam quis tempor. Integer tristique imperdiet tristique. Curabitur ultrices mattis risus, id aliquam orci laoreet sit amet. Etiam ut neque vitae purus sagittis pulvinar vel a mauris. Nullam auctor auctor efficitur. In faucibus erat tellus, et pellentesque enim luctus vitae. Integer id elementum nunc, ac porttitor sem. Duis a bibendum dui, nec porta est. Etiam nec tempus est. Quisque tincidunt fermentum lacinia. Phasellus sagittis consectetur dolor, vel euismod neque ultrices vel. Nullam suscipit nunc nibh, quis suscipit diam efficitur eget. Phasellus dapibus tempor sapien in semper. Donec sed ipsum elit.
 
-<img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/2b9df47f2c4812c5609766efd1713427ac17b0dc/screenshots/Screenshot_2023-05-29-17-59-59-132_io.homeassistant.companion.android.jpg" width="200"> 
+<img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/home_1.jpg" width="200"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/home_2.jpg" width="200"> 
 
-<img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_consumption.png" width="200"> 
-<img src="https://raw.githubusercontent.com/UI-Lovelace-Minimalist/UI/main/docs/assets/img/example_localisation.png" width="200">
-
-## Wiki for documentation
+## Structure
 
 We have setup an extensive Wiki for our documentation. It is more comfortable for you to read and for us to handle, than this file and gives our documentation the right framework to grow.
 Take a look here: [https://ui-lovelace-minimalist.github.io/UI/](https://ui-lovelace-minimalist.github.io/UI/)
