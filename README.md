@@ -20,7 +20,7 @@ Starting from the top, the layout is structured as follows:
 
 - Header : Offers six categories 'Members', 'Security', 'Climate', 'Lighting', 'Media', and 'Devices' with an additional option called 'Home' when none of the categories is selected.
 - Subheader : Provides two submenus for each category, resulting in a total of 14 main sections.
-- Main Section : Offers a user-friendly vertical scrolling feature, allowing for effortless visualization and control of all the smart devices within the selected category
+- Main Section : Offers a user-friendly vertical scrolling interface, allowing for effortless visualization and control of all the smart devices within the selected category
 - Footer : Provides a compact area for selecting scenes, also based on the chosen menu and submenu.
 - Menu : Located at the bottom of the screen, it grants a static access to maintenance tools and automations for Home Assistant.
 
