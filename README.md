@@ -12,6 +12,9 @@ Home Assistant is a powerful home automation platform that empowers you to seaml
  <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/1_security_1.jpg" width="150"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/2_climate_1.jpg" width="150"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/3_lights_1_1.jpg" width="150"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/4_medias_1.jpg" width="150"> <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/5_devices_1.jpg" width="150">
 </p>
 
+| <img src="https://github.com/neilimixamo/home-assistant-mobile-dashboard/blob/main/screenshots/0_home_1.jpg" width="200"> | Description texte correspondante à l'image. |
+|:---:|:---|
+
 
 
 ## Layout
