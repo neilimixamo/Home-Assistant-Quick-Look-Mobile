@@ -1,6 +1,6 @@
 quick-look-mobile-dashboard:
   mode: yaml
-  title: QLMD
+  title: QLM
   icon: mdi:cellphone
   show_in_sidebar: true
   filename: dashboards/quick_look_mobile/qlm.yaml
