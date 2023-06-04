@@ -1,4 +1,4 @@
-# home-assistant-mobile-dashboard
+# Home Assistant - Quick Look Mobile
 
 ## About
 
