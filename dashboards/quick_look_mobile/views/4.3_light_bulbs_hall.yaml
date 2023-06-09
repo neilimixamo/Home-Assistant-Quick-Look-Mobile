@@ -96,6 +96,27 @@ cards:
     view_layout:
       grid-area: footer
     template: scenes
+    variables:
+      scene1_entity: #optional scene.entity
+      scene1_name: #optional
+      scene1_background_color: #optional
+      scene1_icon_color: #optional
+      scene2_entity: #optional scene.entity
+      scene2_name: #optional
+      scene2_background_color: #optional
+      scene2_icon_color: #optional
+      scene3_entity: #optional scene.entity
+      scene3_name:  #optional
+      scene3_background_color: #optional
+      scene3_icon_color: #optional
+      scene4_entity: #optional scene.entity
+      scene4_name: #optional
+      scene4_background_color: #optional
+      scene4_icon_color: #optional
+      scene5_entity: #optional scene.entity
+      scene5_name: #optional
+      scene5_background_color: #optional
+      scene5_icon_color: #optional
   - type: custom:button-card # MENU
     view_layout:
       grid-area: menu
