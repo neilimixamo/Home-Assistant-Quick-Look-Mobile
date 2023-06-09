@@ -54,7 +54,7 @@ cards:
           - type: custom:button-card # ENTITY 01
             template: climate
             variables:
-              entity: #required, can be a climate or temperature sensor entity
+              entity: #required climate.entity or sensor.temperature_entity
               name: #optional
           - type: custom:button-card # ENTITY 02
             template: climate
