@@ -27,9 +27,9 @@ cards:
       grid-area: subheader
     template: subheader_1
     variables:
-      subheader_1_title: Members
+      subheader_1_title: Members #can be changed
       subheader_1_path: family_persons
-      subheader_2_title: Map
+      subheader_2_title: Map #can be changed
       subheader_2_path: family_map
   - type: custom:layout-card # MAIN
     view_layout:
@@ -45,61 +45,61 @@ cards:
           grid-area: main
         template: title_scrollable
         variables:
-          title: Persons
+          title: Persons #can be changed
       - type: grid
         columns: 2
         square: false
         cards:
-          - type: custom:button-card # ALI
+          - type: custom:button-card # PERSON 1
             template: person_expandable
             variables:
-              entity: person.alisson
-              name: 
+              entity: #requires person.entity
+              name: #optional
+              expandable_towards: #optional
+          - type: custom:button-card # PERSON 2
+            template: person_expandable
+            variables:
+              entity:
+              name:
               expandable_towards:
-          - type: custom:button-card # MAX
+          - type: custom:button-card # PERSON 3
             template: person_expandable
             variables:
-              entity: person.jarvis
-              name: Maximilien
+              entity:
+              name:
               expandable_towards:
-          - type: custom:button-card # ALE
-            template: person_expandable
-            variables:
-              entity: person.alessio
-              name: Alessio
-              expandable_towards: family_alessio
       - type: custom:button-card # TITLE
         view_layout:
           grid-area: main
         template: title_scrollable
         variables:
-          title: Pets
+          title: Pets #can be changed
       - type: grid
         columns: 2
         square: false
         cards:
-          - type: custom:button-card # TIGROU
+          - type: custom:button-card # PET 1
             template: person_expandable
             variables:
-              entity: person.tigrou
-              name: Tigrou
-              icon: mdi:cat
-              label: à la Maison
-              expandable_towards:
-          - type: custom:button-card # ZAZOU
+              entity: #requires person.entity
+              name: #optional
+              icon: #optional
+              label: #optional
+              expandable_towards: #optional
+          - type: custom:button-card # PET 2
             template: person_expandable
             variables:
-              entity: person.zazou
-              name: Zazou
-              icon: mdi:cat
-              label: à la Maison
+              entity:
+              name:
+              icon:
+              label:
               expandable_towards:
   - type: custom:button-card # FOOTER TITLE
     view_layout:
       grid-area: footer_title
     template: title_sticky
     variables:
-      title: Scenes
+      title: Scenes #can be changed
   - type: custom:button-card # FOOTER
     view_layout:
       grid-area: footer
