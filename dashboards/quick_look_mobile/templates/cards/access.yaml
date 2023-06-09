@@ -1,0 +1,138 @@
+access:
+  variables:
+    entity_contact:
+    entity_occupancy:
+    name:
+  show_icon: false
+  show_name: false
+  triggers_update: all
+  styles:
+    card:
+      - height: 10.8vh
+      - padding-top: -3vh
+      - border-radius: 27px
+      - cursor: none
+      - --mdc-ripple-press-opacity: 0
+      - box-shadow: none
+      - background-color:  |
+          [[[
+            if (variables.entity_contact && states[variables.entity_contact].state === 'on' ) {
+              return '#FFDBCD';
+            } else if (variables.entity_occupancy && states[variables.entity_occupancy].state === 'on' ) {
+                return '#FFDBCD';
+            } else {
+                return '#ECEFF6';
+            }
+          ]]]
+  custom_fields:
+    buttons:
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:button-card # ICON
+            show_name: false
+            icon:  |
+              [[[
+                  var entity_contact = variables.entity_contact && states[variables.entity_contact];
+                  var entity_occupancy = variables.entity_occupancy && states[variables.entity_occupancy];
+                  
+                  if (entity_contact && states[variables.entity_contact].state === 'on') {
+                      return 'mdi:door-open';
+                  } else if (entity_occupancy && states[variables.entity_occupancy].state === 'on') {
+                      return 'mdi:motion-sensor';
+                  } else if (entity_contact || entity_occupancy) {
+                      return 'mdi:motion-sensor-off';
+                  } else {
+                      return 'mdi:help';
+                  }
+              ]]] 
+            size: 50%
+            styles:
+              card:
+                - height: 6vh
+                - width: 6vh
+                - background-color:  |
+                    [[[
+                      if (variables.entity_contact && states[variables.entity_contact].state === 'on' ) {
+                        return '#EA8C67';
+                      } else if (variables.entity_occupancy && states[variables.entity_occupancy].state === 'on' ) {
+                          return '#EA8C67';
+                      } else {
+                          return '#D9D6D6';
+                      }
+                    ]]]
+                - border-radius: 50%
+                - box-shadow: none
+                - top: 1.6vh
+                - left: 3.2vw
+                - cursor: none 
+                - --mdc-ripple-press-opacity: 0 
+              icon:
+                - color: |
+                    [[[
+                      if (variables.entity_contact && states[variables.entity_contact].state === 'on' ) {
+                        return '#F4F5FF';
+                      } else if (variables.entity_occupancy && states[variables.entity_occupancy].state === 'on' ) {
+                          return '#F4F5FF';
+                      } else {
+                          return '#FAFBFF';
+                      }
+                    ]]]
+          - type: custom:button-card # NAME & LABEL
+            entity: |
+              [[[
+                if (variables.entity_contact && states[variables.entity_contact].state === 'on' ) {
+                  return variables.entity_contact;
+                } else {
+                  return variables.entity_occupancy;
+                }
+              ]]]
+            name: |
+              [[[
+                if (variables.name) {
+                  return variables.name;
+                } else {
+                  return 'Name';
+                }
+              ]]]
+            label:  |
+              [[[
+                  var entity_contact = variables.entity_contact && states[variables.entity_contact];
+                  var entity_occupancy = variables.entity_occupancy && states[variables.entity_occupancy];
+                  
+                  if (entity_contact && states[variables.entity_contact].state === 'on') {
+                      return "Open";
+                  } else if (entity_occupancy && states[variables.entity_occupancy].state === 'on') {
+                      return "Presence";
+                  } else if (entity_contact || entity_occupancy) {
+                      return "Absence";
+                  } else {
+                      return "empty";
+                  }
+              ]]]
+            show_icon: false
+            show_label: true
+            styles:
+              card:
+                - height: 10.8vh
+                - width: 29.2vw
+                - background-color: transparent
+                - border-radius: 0%
+                - box-shadow: none
+                - top: -0.85vh
+                - left: 1.0vw
+                - cursor: none 
+                - --mdc-ripple-press-opacity: 0 
+              name: 
+                - font-size: 14px
+                - font-weight: 500
+                - justify-self: start
+                - padding-left: 4vw
+              label: 
+                - font-size: 12px
+                - font-weight: 400
+                - justify-self: start
+                - padding-left: 4vw
+                - padding-top: 0.5vh
+            tap_action:
+              action: more-info

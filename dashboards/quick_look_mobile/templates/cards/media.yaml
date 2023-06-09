@@ -1,0 +1,152 @@
+media:
+  variables:
+    entity:
+    name:
+    on_state: 
+      - 'on'
+      - 'playing'
+      - 'buffering'
+    label_on: 
+    off_state: 
+      - 'off'
+      - 'idle'
+    label_off:
+    icon_tap_action:
+    icon_hold_action:
+    name_tap_action:
+  show_icon: false
+  show_name: false
+  triggers_update: all
+  styles:
+      card:
+        - height: 10.8vh
+        - padding-top: -3vh
+        - border-radius: 27px
+        - cursor: none
+        - --mdc-ripple-press-opacity: 0
+        - box-shadow: none
+        - background-color:  |
+            [[[
+              if (variables.entity && variables.on_state.includes(states[variables.entity].state)) {
+                return '#e0f5dd';
+              } else {
+                  return '#ECEFF6';
+              }
+            ]]]
+  custom_fields:
+    buttons:
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:button-card # ICON
+            entity:  |
+              [[[
+                if (variables.entity ) {
+                  return variables.entity;
+              } else {
+                  return 'null';
+              }
+              ]]]
+            show_name: false
+            icon: |
+              [[[
+                if (variables.entity) {if (variables.icon ) {
+                    return variables.icon;
+                  } else {
+                    return '';
+                  }
+                } else {
+                  return 'mdi:help';
+                }
+              ]]]
+            size: 50%
+            styles:
+              card:
+                - height: 6vh
+                - width: 6vh
+                - background-color: |
+                    [[[
+                      if (variables.entity && variables.on_state.includes(states[variables.entity].state)) {
+                          return '#A1C3A6';
+                      } else {
+                          return '#D9D6D6';
+                      }
+                    ]]]
+                - border-radius: 50%
+                - box-shadow: none
+                - top: 1.6vh
+                - left: 3.2vw
+                - cursor: none 
+                - --mdc-ripple-press-opacity: 0 
+              icon:
+                - color: |
+                    [[[
+                      if (variables.entity && variables.on_state.includes(states[variables.entity].state)) {
+                          return '#F7FFF5';
+                      } else {
+                          return '#FAFBFF';
+                      }
+                    ]]]
+            tap_action: |
+              [[[
+                if (variables.icon_tap_action) {
+                  return variables.icon_tap_action;
+                } else {
+                  return { action: 'toggle' };
+                }
+              ]]]
+            hold_action: 
+              action: none
+          - type: custom:button-card # NAME & LABEL
+            entity: '[[[ return variables.entity ]]]'
+            name:  |
+              [[[
+                if (variables.name) {
+                  return variables.name;
+                } else if (variables.entity) {
+                    return states[variables.entity].attributes.friendly_name;
+                } else {
+                    return 'Name';
+                }
+              ]]]
+            label:  |
+              [[[
+                if (variables.entity) {
+                  var state = states[variables.entity].state;
+                  if (variables.label_on && variables.on_state.includes(state)) {
+                    return variables.label_on;
+                  } else if (variables.label_off && variables.off_state.includes(state)) {
+                    return variables.label_off;
+                  } else {
+                    return states[variables.entity].state.charAt(0).toUpperCase() + state.slice(1);
+                  }
+                } else {
+                  return "Label"
+                }
+              ]]]
+            show_icon: false
+            show_label: true
+            styles:
+              card:
+                - height: 10.8vh
+                - width: 29.2vw
+                - background-color: transparent
+                - border-radius: 0%
+                - box-shadow: none
+                - top: -0.85vh
+                - left: 1.0vw
+                - cursor: none 
+                - --mdc-ripple-press-opacity: 0 
+              name: 
+                - font-size: 14px
+                - font-weight: 500
+                - justify-self: start
+                - padding-left: 4vw
+              label: 
+                - font-size: 12px
+                - font-weight: 400
+                - justify-self: start
+                - padding-left: 4vw
+                - padding-top: 0.5vh
+            tap_action:
+              action: more-info

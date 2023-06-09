@@ -1,0 +1,191 @@
+title: home
+path: home
+icon: mdi:home
+theme: Quick Look Mobile
+background: 'white'
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: 19.5vh 5.5vh 4.6vh 47.4vh 4vh 10vh 9vh
+  grid-template-areas: |
+    "header"
+    "subheader"
+    "main_title"
+    "main"
+    "footer_title"
+    "footer"
+    "menu"
+cards:
+  - type: custom:button-card # HEADER
+    view_layout:
+      grid-area: header
+    template: header
+    variables:
+      view: home
+  - type: custom:button-card # SUBHEADER
+    view_layout:
+      grid-area: subheader
+    template: subheader_1
+    variables:
+      subheader_1_title: Favorites
+      subheader_1_path: home
+      subheader_2_title: Energy
+      subheader_2_path: 
+  - type: custom:button-card # MAIN TITLE
+    view_layout:
+      grid-area: main_title
+    template: title_sticky
+    variables:
+      title: Devices
+  - type: custom:layout-card # MAIN
+    view_layout:
+      grid-area: main
+    layout_type: custom:vertical-layout
+    layout:
+      height: 47.4vh
+      margin: 0vh 0vh 0vh
+      padding: 0vh 0.4vh
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # COVER LOUNGE
+            template: cover
+            variables:
+              entity: cover.lounge
+              name: Volet
+              label: Salon
+          - type: custom:button-card # TV
+            template: media
+            variables:
+              entity: remote.tv
+              name: Television
+              icon: mdi:television
+              label_on: Allumée
+              label_off: Éteinte
+          - type: custom:button-card # LIGHT SOFA LOUNGE
+            template: light
+            variables:
+              entity: light.lounge_sofa
+              name: Fauteuil
+              label: Salon
+              navigation_path: lights_lounge
+          - type: custom:button-card # CLIMATE KITCHEN
+            template: climate
+            variables:
+              entity: climate.kitchen
+              name: Radiateur
+              label: Cuisine
+          - type: custom:button-card # COOKING PLATE
+            template: device
+            variables:
+              entity: switch.kitchen_cooking_plate
+              name: Plaque
+              icon: phu:rooms-kitchen
+              label: Cuisine
+          - type: custom:button-card # BABY MILK
+            template: device
+            variables:
+              entity: switch.shelly_plug_milk_warmer
+              name: Biberon
+              icon: mdi:baby-bottle
+              label: Cuisine
+          - type: custom:button-card # SPOTIFY
+            template: media
+            variables:
+              entity: media_player.spotify
+              name: 
+              icon: mdi:spotify
+              custom_state_1:
+                - paused
+              custom_label_1: 'en Pause'
+              icon_tap_action:
+                action: call-service
+                service: media_player.media_play_pause
+                service_data:
+                  entity_id: media_player.spotify
+          - type: custom:button-card # BEDROOM PRÉSENCE 
+            template: security_v4
+            variables:
+              contact_sensor: binary_sensor.bedroom_window_contact
+              occupancy_sensor: binary_sensor.group_bedroom_presence
+              name: Chambre
+          - type: custom:button-card # FAN BEDROOM
+            template: fan
+            variables:
+              entity: fan.bedroom
+              name: Ventilateur
+              label: Chambre
+          - type: custom:button-card # COVER BEDROOM
+            template: cover
+            variables:
+              entity: cover.bedroom
+              name: Volet
+              label: Chambre
+          - type: custom:button-card # VACUUM
+            template: device
+            variables:
+              entity: vacuum.dreame_d9_2
+              icon: phu:roborock
+              on_state:
+                - cleaning
+              on_label: Nettoyage
+              off_state:
+                - docked
+              off_label: En charge
+              custom_state_1:
+                - paused
+              custom_label_1: 'en Pause'
+              custom_state_2:
+                - returning
+              custom_label_2: 'Vers la base'
+              tap_action:
+                action: call-service
+                service: vacuum.start_pause
+                service_data:
+                  entity_id: vacuum.dreame_d9_2
+              tap_action_on_name:
+                action: navigate
+                navigation_path: vacuum
+              hold_action:
+                action: call-service
+                service: vacuum.return_to_base
+                service_data:
+                  entity_id: vacuum.dreame_d9_2
+  - type: custom:button-card # FOOTER TITLE
+    view_layout:
+      grid-area: footer_title
+    template: title_sticky
+    variables:
+      title: Scenes
+  - type: custom:button-card # FOOTER
+    view_layout:
+      grid-area: footer
+    template: scenes
+    variables:
+      scene1_entity: scene.four_et_rituals_on
+      scene1_name:
+      scene1_background_color:
+      scene1_icon_color:
+      scene2_entity: scene.nuit
+      scene2_name:
+      scene2_background_color:
+      scene2_icon_color:
+      scene3_entity: scene.absent
+      scene3_name: 
+      scene3_background_color:
+      scene3_icon_color:
+      scene4_entity: scene.cinema
+      scene4_name:
+      scene4_background_color:
+      scene4_icon_color:
+      scene5_entity: scene.covers_open
+      scene5_name:
+      scene5_background_color:
+      scene5_icon_color:
+  - type: custom:button-card # MENU
+    view_layout:
+      grid-area: menu
+    template: menu

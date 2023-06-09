@@ -1,0 +1,86 @@
+title: air_cooling
+path: air_cooling
+icon: mdi:fan
+theme: Quick Look Mobile
+background: 'white'
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: 19.5vh 5.5vh 4.6vh 47.4vh 4vh 10vh 9vh
+  grid-template-areas: |
+    "header"
+    "subheader"
+    "main_title"
+    "main"
+    "footer_title"
+    "footer"
+    "menu"
+cards:
+  - type: custom:button-card # HEADER
+    view_layout:
+      grid-area: header
+    template: header
+    variables:
+      view: air
+  - type: custom:button-card # SUBHEADER
+    view_layout:
+      grid-area: subheader
+    template: subheader_2
+    variables:
+      subheader_1_title: Heating
+      subheader_1_path: air_heating
+      subheader_2_title: Cooling
+      subheader_2_path: air_cooling
+  - type: custom:button-card # MAIN TITLE
+    view_layout:
+      grid-area: main_title
+    template: title_sticky
+    variables:
+      title: Rooms
+  - type: custom:layout-card # MAIN
+    view_layout:
+      grid-area: main
+    layout_type: custom:vertical-layout
+    layout:
+      height: 47.4vh
+      margin: 0vh 0vh 0vh
+      padding: 0vh 0.4vh
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # LOUNGE
+            template: fan
+            variables:
+              entity: fan.lounge
+              name: #Salon
+          - type: custom:button-card # OFFICE
+            template: fan
+            variables:
+              entity: fan.air_purifier
+              name: Bureau
+          - type: custom:button-card # BEDROOM
+            template: fan
+            variables:
+              entity: fan.bedroom
+              name: Chambre
+              label_on: 'Activée'
+              label_off: 'Désactivée'
+  - type: custom:button-card # TITLE
+    view_layout:
+      grid-area: footer_title
+    template: title_sticky
+    variables:
+      title: 'Weather'
+  - type: custom:button-card # FOOTER
+    view_layout:
+      grid-area: footer
+    template: weather
+    variables:
+      entity: weather.jarvis
+  - type: custom:button-card # MENU
+    view_layout:
+      grid-area: menu
+    template: menu

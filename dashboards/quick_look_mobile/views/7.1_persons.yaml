@@ -1,0 +1,155 @@
+title: persons
+path: family_persons
+icon: mdi:account
+theme: Quick Look Mobile
+background: 'white'
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: 19.5vh 5.5vh 52vh 4vh 10vh 9vh
+  grid-template-areas: |
+    "header"
+    "subheader"
+    "main"
+    "footer_title"
+    "footer"
+    "menu"
+cards:
+  - type: custom:button-card # HEADER
+    view_layout:
+      grid-area: header
+    template: header
+    variables:
+      view: family
+  - type: custom:button-card # SUBHEADER
+    view_layout:
+      grid-area: subheader
+    template: subheader_1
+    variables:
+      subheader_1_title: Members
+      subheader_1_path: family_persons
+      subheader_2_title: Map
+      subheader_2_path: family_map
+  - type: custom:layout-card # MAIN
+    view_layout:
+      grid-area: main
+    layout_type: custom:vertical-layout
+    layout:
+      height: 52vh
+      margin: 0vh 0vh 0vh
+      padding: 0vh 0.4vh
+    cards:
+      - type: custom:button-card # TITLE
+        view_layout:
+          grid-area: main
+        template: title_scrollable
+        variables:
+          title: Persons
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # ALI
+            template: person_expandable
+            variables:
+              entity: person.alisson
+              name: 
+              expandable_towards:
+          - type: custom:button-card # MAX
+            template: person_expandable
+            variables:
+              entity: person.jarvis
+              name: Maximilien
+              expandable_towards:
+          - type: custom:button-card # ALE
+            template: person_expandable
+            variables:
+              entity: person.alessio
+              name: Alessio
+              expandable_towards: family_alessio
+      - type: custom:button-card # TITLE
+        view_layout:
+          grid-area: main
+        template: title_scrollable
+        variables:
+          title: Pets
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # TIGROU
+            template: person_expandable
+            variables:
+              entity: person.tigrou
+              name: Tigrou
+              icon: mdi:cat
+              label: à la Maison
+              expandable_towards:
+          - type: custom:button-card # ZAZOU
+            template: person_expandable
+            variables:
+              entity: person.zazou
+              name: Zazou
+              icon: mdi:cat
+              label: à la Maison
+              expandable_towards:
+  - type: custom:button-card # FOOTER TITLE
+    view_layout:
+      grid-area: footer_title
+    template: title_sticky
+    variables:
+      title: Scenes
+  - type: custom:button-card # FOOTER
+    view_layout:
+      grid-area: footer
+    template: scenes
+    variables:
+      scene1_bg_color: '#ECEFF6'
+      scene1_icon: mdi:motion-sensor-off
+      scene1_icon_color: 'darkgrey'
+      scene1_icon_size: 50%   
+      scene2_bg_color: '#ECEFF6'
+      scene2_icon: mdi:human-baby-changing-table
+      scene2_icon_color: 'darkgrey'
+      scene2_icon_size: 50%
+      scene2_action:
+        action: call-service
+        service: spotcast.start
+        service_data:
+          uri: "spotify:album:6JjmWTtNvOuIXkgftSy9ad"
+          random_song: true
+          shuffle: true
+          start_volume: 15
+          device_name: "Nest Audio"
+      scene3_bg_color: '#ECEFF6'
+      scene3_icon: mdi:theme-light-dark 
+      scene3_icon_color: 'darkgrey'
+      scene3_icon_size: 50%
+      scene3_action: 
+      scene4_bg_color: '#ECEFF6'
+      scene4_icon: mdi:sleep
+      scene4_icon_color: 'darkgrey'
+      scene4_icon_size: 50%
+      scene4_action:
+        action: call-service
+        service: spotcast.start
+        service_data:
+          uri: "spotify:playlist:37i9dQZF1DWZd79rJ6a7lp"
+          random_song: true
+          shuffle: true
+          start_volume: 35
+          device_name: "Chambre" 
+      scene5_bg_color: '#ECEFF6'
+      scene5_icon: mdi:roller-shade
+      scene5_icon_color: 'darkgrey'
+      scene5_icon_size: 50%
+      scene5_action:
+        action: call-service
+        service: cover.open_cover
+        service_data:
+          entity_id: cover.group_all
+  - type: custom:button-card # MENU
+    view_layout:
+      grid-area: menu
+    template: menu

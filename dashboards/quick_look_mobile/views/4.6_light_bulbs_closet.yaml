@@ -1,0 +1,93 @@
+title: lights_closet
+path: light_bulbs_closet
+icon: mdi:lightbulb
+theme: Quick Look Mobile
+background: 'white'
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: 19.5vh 5.5vh 4.6vh 47.4vh 4vh 10vh 9vh
+  grid-template-areas: |
+    "header"
+    "subheader"
+    "main_title"
+    "main"
+    "footer_title"
+    "footer"
+    "menu"
+cards:
+  - type: custom:button-card # HEADER
+    view_layout:
+      grid-area: header
+    template: header
+    variables:
+      view: light  
+  - type: custom:button-card # SUBHEADER
+    view_layout:
+      grid-area: subheader
+    template: subheader_1
+    variables:
+      subheader_1_title: Bulbs
+      subheader_1_path: light_bulbs
+      subheader_2_title: Covers
+      subheader_2_path: light_covers
+  - type: custom:button-card # MAIN TITLE
+    view_layout:
+      grid-area: main_title
+    template: title_sticky
+    variables:
+      title: Dressing
+  - type: custom:button-card # CHEVRON-LEFT
+    view_layout:
+      grid-area: main_title
+    icon: mdi:chevron-left
+    color: darkgrey
+    size: 65%
+    styles:
+      card:
+        - background: transparent
+        - box-shadow: none
+        - border-radius: 50%
+        - height: 4.6vh
+        - width: 4.6vh
+        - left: 82vw
+        - bottom: 0.3vh
+    tap_action:
+      action: navigate
+      navigation_path: 'light_bulbs'
+  - type: custom:layout-card # MAIN
+    view_layout:
+      grid-area: main
+    layout_type: custom:vertical-layout
+    layout:
+      height: 47.4vh
+      margin: 0vh 0vh 0vh
+      padding: 0vh 0.4vh
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # PLAFOND
+            template: light
+            variables:
+              entity: light.group_closet_ceiling
+          - type: custom:button-card # NUAGE
+            template: light
+            variables:
+              entity: light.closet_ceiling_cloud
+  - type: custom:button-card # FOOTER TITLE
+    view_layout:
+      grid-area: footer_title
+    template: title_sticky
+    variables:
+      title: 'Scenes'
+  - type: custom:button-card # FOOTER ACTION
+    view_layout:
+      grid-area: footer
+    template: scenes
+  - type: custom:button-card # MENU
+    view_layout:
+      grid-area: menu
+    template: menu

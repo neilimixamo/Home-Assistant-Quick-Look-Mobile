@@ -1,0 +1,9 @@
+views: !include_dir_list ./views/
+button_card_templates: !include_dir_merge_named "./templates/"
+swipe_nav:
+  wrap: false
+  animate: none  #none, swipe, fade, flip
+  prevent_default: true
+  swipe_amount: 15
+  skip_hidden: false
+  #skip_tabs:

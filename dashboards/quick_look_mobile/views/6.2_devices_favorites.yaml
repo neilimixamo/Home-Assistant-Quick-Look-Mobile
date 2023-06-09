@@ -1,0 +1,44 @@
+title: devices
+path: devices_favorites
+icon: mdi:devices
+theme: Quick Look Mobile
+background: 'white'
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: 19.5vh 5.5vh 4.6vh 47.4vh 4vh 10vh 9vh
+  grid-template-areas: |
+    "header"
+    "subheader"
+    "main_title"
+    "main"
+    "footer_title"
+    "footer"
+    "menu"
+cards:
+  - type: custom:button-card # HEADER
+    view_layout:
+      grid-area: header
+    template: header
+    variables:
+      view: devices
+  - type: custom:button-card # SUBHEADER
+    view_layout:
+      grid-area: subheader
+    template: subheader_2
+    variables:
+      subheader_1_title: Rooms
+      subheader_1_path: devices
+      subheader_2_title: Favorites
+      subheader_2_path: devices_favorites
+  - type: custom:button-card # MAIN TITLE
+    view_layout:
+      grid-area: main_title
+    template: title_sticky
+    variables:
+      title: Favorites
+  - type: custom:button-card # MENU
+    view_layout:
+      grid-area: menu
+    template: menu

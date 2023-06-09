@@ -1,0 +1,198 @@
+light_expandable:
+  variables:
+    entity:
+    name:
+    label_off: 'Off'
+    expandable_towards:
+  show_icon: false
+  show_name: false
+  triggers_update: all
+  styles:
+      card:
+        - height: 10.8vh
+        - border-radius: 27px
+        - cursor: none
+        - --mdc-ripple-press-opacity: 0
+        - box-shadow: none
+        - background-color: |
+            [[[
+              if (variables.entity && states[variables.entity].state == 'on') {
+              return '#fff0c9';
+              } 
+              return '#ECEFF6';
+            ]]]
+  custom_fields:
+    slider_visible:
+      card:
+        type: custom:my-slider-v2
+        entity: |
+          [[[
+            if (variables.entity) {
+              return variables.entity;
+            } else {
+              return '';
+            }
+          ]]]
+        intermediate: false
+        styles:
+          card:
+            - height: 10.8vh
+            - width: 45vw
+            - background-color: transparent
+            - border-radius: 27px
+            - box-shadow: none
+            - top: -0.85vh
+            - left: 0vw
+          container:
+            - width: 100%
+            - height: 10.8vh
+            - position: absolute
+            - overflow: hidden
+            - border-radius: 5px
+          track:
+            - width: 100%
+            - height: 10.8vh
+            - position: absolute
+            - border-radius: 27px
+            - top: 0px
+            - background-color: |
+                [[[
+                  if (variables.entity && states[variables.entity].state == 'on') {
+                  return '#FFF6DF';
+                  } 
+                  return 'transparent';
+                ]]]
+          progress:
+            - height: 10.8vh
+            - background: '#FFF0C9'
+            - border-radius: 27px 0px 0px 27px
+            - position: relative
+            - top: 0px
+            - width: 0.00%
+          thumb:
+            - height: 10.8vh
+            - background: white
+            - position: relative
+            - right: 0px
+            - width: 0px
+    buttons:
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:button-card # ICON
+            entity: |
+              [[[
+                if (variables.entity ) {
+                  return variables.entity;
+                } else {
+                    return 'null';
+                }
+              ]]]
+            show_name: false
+            icon:
+            size: 50%
+            styles:
+              card:
+                - height: 6vh
+                - width: 6vh
+                - background-color: |
+                    [[[
+                      if (variables.entity && states[variables.entity].state == 'on') {
+                      return '#FFCE51';
+                      } 
+                      return '#D9D6D6';
+                    ]]]
+                - border-radius: 50%
+                - box-shadow: none
+                - top: 1.6vh
+                - left: 3.9vw
+                - cursor: none 
+                - --mdc-ripple-press-opacity: 0 
+              icon:
+                - color:  |
+                    [[[
+                      if (variables.entity && states[variables.entity].state == 'on') {
+                      return '#F3F6FD';
+                      } 
+                      return '#FAFBFF';
+                    ]]]
+          - type: custom:button-card # NAME
+            name: |
+              [[[
+                if (variables.name) {
+                  return variables.name;
+                } else if (variables.entity) {
+                    return states[variables.entity].attributes.friendly_name;
+                } else {
+                    return 'Name';
+                }
+              ]]] 
+            entity:  |
+              [[[
+                if (variables.entity ) {
+                  return variables.entity;
+                } else {
+                    return 'null';
+                }
+              ]]]
+            label: |
+              [[[
+                if (variables.entity) {
+                  var state = states[variables.entity].state;
+                  if (state === 'on') {
+                    var brightness = states[variables.entity].attributes.brightness;
+                    if (brightness !== undefined && brightness !== null) {
+                      return Math.round((brightness)/255*100) + '%';
+                    } else {
+                      return variables.label_off;
+                    }
+                  } else {
+                    return variables.label_off;
+                  }
+                } else {
+                  return "Label";
+                }
+              ]]]
+            show_icon: false
+            show_label: true
+            styles:
+              card:
+                - height: 10.8vh
+                - width: 
+                - background-color: transparent
+                - border-radius: 0%
+                - box-shadow: none
+                - top: -0.85vh
+                - left: 2vw
+                - cursor: none 
+                - --mdc-ripple-press-opacity: 0 
+              name: 
+                - font-size: 14px
+                - font-weight: 500
+                - justify-self: start
+                - padding-left: 3.7vw
+              label: 
+                - font-size: 12px
+                - font-weight: 400
+                - justify-self: start
+                - padding-left: 4vw
+                - padding-top: 0.5vh
+            tap_action:
+              action: more-info
+          - type: custom:button-card # CHEVRON
+            icon: mdi:chevron-right
+            color: darkgrey
+            size: 80%
+            styles:
+              card:
+                - background-color: transparent
+                - height: 10.8vh
+                - width: 7.5vw
+                - top: -1vh
+                - right: 0.5vw
+                - box-shadow: none
+                - cursor: none
+                - --mdc-ripple-press-opacity: 0
+            tap_action:
+              action: navigate
+              navigation_path: '[[[ return variables.expandable_towards ]]]'
