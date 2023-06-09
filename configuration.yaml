@@ -4,3 +4,5 @@ frontend:
 lovelace:
   mode: storage
   dashboards: !include ../dashboards/dashboards.yaml
+  
+sensor: !include_dir_list ../entities/sensors
