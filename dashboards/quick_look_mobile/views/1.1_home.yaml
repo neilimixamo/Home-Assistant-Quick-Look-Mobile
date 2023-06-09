@@ -54,7 +54,7 @@ cards:
           - type: custom:button-card # ENTITY 01
             template: #choose between climate|cover|device|fan|light|light_expandable|media|person_expandable
             variables:
-              entity: #required
+              entity: #required corresponding entity
               name: #optional, leave blank to keep its friendly_name
               label: #optional
           - type: custom:button-card # ENTITY 02
