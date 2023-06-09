@@ -28,16 +28,16 @@ cards:
       grid-area: subheader
     template: subheader_1
     variables:
-      subheader_1_title: Bulbs
+      subheader_1_title: Bulbs #can be changed
       subheader_1_path: light_bulbs
-      subheader_2_title: Covers
+      subheader_2_title: Covers #can be changed
       subheader_2_path: light_covers
   - type: custom:button-card # MAIN TITLE
     view_layout:
       grid-area: main_title
     template: title_sticky
     variables:
-      title: Rooms
+      title: Rooms #can be changed
   - type: custom:layout-card # MAIN
     view_layout:
       grid-area: main
@@ -51,62 +51,132 @@ cards:
         columns: 2
         square: false
         cards:
-          - type: custom:button-card # HALL
-            template: light_expandable
+          - type: custom:button-card # ENTITY 01
+            template: # choose 'light' for a single light control or choose 'light_expandable' for a light group control
             variables:
-              entity: light.group_hall
-              name: 
-              expandable_towards: light_bulbs_hall
-          - type: custom:button-card # LOUNGE
-            template: light_expandable
+              entity: #required light.entity
+              name: #optional
+              expandable_towards: #only for the "light_expandable" template, requires the navigation_path to the children eg: light_bulbs_hall
+          - type: custom:button-card # ENTITY 02
+            template:
             variables:
-              entity: light.group_lounge
-              name: 
-              expandable_towards: light_bulbs_lounge
-          - type: custom:button-card # BATH
-            template: light_expandable
-            variables:
-              entity: light.group_bathroom
-              name: 
-              expandable_towards: light_bulbs_bathroom
-          - type: custom:button-card # KITCHEN
-            template: light
-            variables:
-              entity: light.kitchen_ceiling
-              name: 
-              expandable_towards: light_bulbs_kitchen
-          - type: custom:button-card # TOILET
-            template: light
-            variables:
-              entity: light.toilet
+              entity:
               name:
-          - type: custom:button-card # OFFICE
-            template: light
+              expandable_towards:
+          - type: custom:button-card # ENTITY 03
+            template:
             variables:
-              entity: light.office_ceiling_1
-              name: 
-          - type: custom:button-card # CLOSET
-            template: light_expandable
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 04
+            template:
             variables:
-              entity: light.group_closet
-              name: Dressing
-              expandable_towards: light_bulbs_closet
-          - type: custom:button-card # BEDROOM
-            template: light_expandable
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 05
+            template:
             variables:
-              entity: light.group_bedroom
-              name: 
-              expandable_towards: light_bulbs_bedroom
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 06
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 07
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 08
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 09
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 10
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 11
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 12
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 13
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 14
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 15
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:
+          - type: custom:button-card # ENTITY 16
+            template:
+            variables:
+              entity:
+              name:
+              expandable_towards:          
   - type: custom:button-card # FOOTER TITLE
     view_layout:
       grid-area: footer_title
     template: title_sticky
     variables:
-      title: 'Scenes'
+      title: 'Scenes' #can be changed
   - type: custom:button-card # FOOTER
     view_layout:
       grid-area: footer
     template: scenes
+      scene1_entity: #optional scene.entity
+      scene1_name: #optional
+      scene1_background_color: #optional
+      scene1_icon_color: #optional
+      scene2_entity: #optional scene.entity
+      scene2_name: #optional
+      scene2_background_color: #optional
+      scene2_icon_color: #optional
+      scene3_entity: #optional scene.entity
+      scene3_name:  #optional
+      scene3_background_color: #optional
+      scene3_icon_color: #optional
+      scene4_entity: #optional scene.entity
+      scene4_name: #optional
+      scene4_background_color: #optional
+      scene4_icon_color: #optional
+      scene5_entity: #optional scene.entity
+      scene5_name: #optional
+      scene5_background_color: #optional
+      scene5_icon_color: #optional
   - type: custom:button-card # MENU
     view_layout:
       grid-area: menu
