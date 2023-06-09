@@ -50,7 +50,7 @@ cards:
       - type: custom:button-card # ENTITY 01
         template: camera
         variables:
-          entity: #required
+          entity: #required camera.entity
           name: #optional
       - type: custom:button-card # ENTITY 02
         template: camera
