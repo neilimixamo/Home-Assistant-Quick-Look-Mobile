@@ -28,16 +28,16 @@ cards:
       grid-area: subheader
     template: subheader_1
     variables:
-      subheader_1_title: Favorites
+      subheader_1_title: Favorites # Can be changed
       subheader_1_path: home
-      subheader_2_title: Energy
+      subheader_2_title: Energy # Can be changed
       subheader_2_path: 
   - type: custom:button-card # MAIN TITLE
     view_layout:
       grid-area: main_title
     template: title_sticky
     variables:
-      title: Devices
+      title: Devices # Can be changed
   - type: custom:layout-card # MAIN
     view_layout:
       grid-area: main
@@ -51,137 +51,130 @@ cards:
         columns: 2
         square: false
         cards:
-          - type: custom:button-card # COVER LOUNGE
-            template: cover
+          - type: custom:button-card # ENTITY 01
+            template: #choose between climate|cover|device|fan|light|light_expandable|media|person_expandable
             variables:
-              entity: cover.lounge
-              name: Volet
-              label: Salon
-          - type: custom:button-card # TV
-            template: media
+              entity: #required
+              name: #optional, leave blank to keep its friendly_name
+              label: #optional
+          - type: custom:button-card # ENTITY 02
+            template:
             variables:
-              entity: remote.tv
-              name: Television
-              icon: mdi:television
-              label_on: Allumée
-              label_off: Éteinte
-          - type: custom:button-card # LIGHT SOFA LOUNGE
-            template: light
-            variables:
-              entity: light.lounge_sofa
-              name: Fauteuil
-              label: Salon
-              navigation_path: lights_lounge
-          - type: custom:button-card # CLIMATE KITCHEN
-            template: climate
-            variables:
-              entity: climate.kitchen
-              name: Radiateur
-              label: Cuisine
-          - type: custom:button-card # COOKING PLATE
-            template: device
-            variables:
-              entity: switch.kitchen_cooking_plate
-              name: Plaque
-              icon: phu:rooms-kitchen
-              label: Cuisine
-          - type: custom:button-card # BABY MILK
-            template: device
-            variables:
-              entity: switch.shelly_plug_milk_warmer
-              name: Biberon
-              icon: mdi:baby-bottle
-              label: Cuisine
-          - type: custom:button-card # SPOTIFY
-            template: media
-            variables:
-              entity: media_player.spotify
+              entity:
               name: 
-              icon: mdi:spotify
-              custom_state_1:
-                - paused
-              custom_label_1: 'en Pause'
-              icon_tap_action:
-                action: call-service
-                service: media_player.media_play_pause
-                service_data:
-                  entity_id: media_player.spotify
-          - type: custom:button-card # BEDROOM PRÉSENCE 
-            template: security_v4
+              label:
+          - type: custom:button-card # ENTITY 03
+            template:
             variables:
-              contact_sensor: binary_sensor.bedroom_window_contact
-              occupancy_sensor: binary_sensor.group_bedroom_presence
-              name: Chambre
-          - type: custom:button-card # FAN BEDROOM
-            template: fan
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 04
+            template:
             variables:
-              entity: fan.bedroom
-              name: Ventilateur
-              label: Chambre
-          - type: custom:button-card # COVER BEDROOM
-            template: cover
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 05
+            template:
             variables:
-              entity: cover.bedroom
-              name: Volet
-              label: Chambre
-          - type: custom:button-card # VACUUM
-            template: device
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 06
+            template:
             variables:
-              entity: vacuum.dreame_d9_2
-              icon: phu:roborock
-              on_state:
-                - cleaning
-              on_label: Nettoyage
-              off_state:
-                - docked
-              off_label: En charge
-              custom_state_1:
-                - paused
-              custom_label_1: 'en Pause'
-              custom_state_2:
-                - returning
-              custom_label_2: 'Vers la base'
-              tap_action:
-                action: call-service
-                service: vacuum.start_pause
-                service_data:
-                  entity_id: vacuum.dreame_d9_2
-              tap_action_on_name:
-                action: navigate
-                navigation_path: vacuum
-              hold_action:
-                action: call-service
-                service: vacuum.return_to_base
-                service_data:
-                  entity_id: vacuum.dreame_d9_2
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 07
+            template:
+            variables:
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 08
+            template:
+            variables:
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 09
+            template:
+            variables:
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 10
+            template:
+            variables:
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 11
+            template:
+            variables:
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 12
+            template:
+            variables:
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 13
+            template:
+            variables:
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 14
+            template:
+            variables:
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 15
+            template:
+            variables:
+              entity:
+              name: 
+              label:
+          - type: custom:button-card # ENTITY 16
+            template:
+            variables:
+              entity:
+              name: 
+              label:
   - type: custom:button-card # FOOTER TITLE
     view_layout:
       grid-area: footer_title
     template: title_sticky
     variables:
-      title: Scenes
+      title: Scenes # Can be changed
   - type: custom:button-card # FOOTER
     view_layout:
       grid-area: footer
     template: scenes
     variables:
-      scene1_entity: scene.four_et_rituals_on
-      scene1_name:
-      scene1_background_color:
-      scene1_icon_color:
-      scene2_entity: scene.nuit
+      scene1_entity: #required
+      scene1_name: #optional
+      scene1_background_color: #optional
+      scene1_icon_color: #optional
+      scene2_entity:
       scene2_name:
       scene2_background_color:
       scene2_icon_color:
-      scene3_entity: scene.absent
+      scene3_entity:
       scene3_name: 
       scene3_background_color:
       scene3_icon_color:
-      scene4_entity: scene.cinema
+      scene4_entity:
       scene4_name:
       scene4_background_color:
       scene4_icon_color:
-      scene5_entity: scene.covers_open
+      scene5_entity:
       scene5_name:
       scene5_background_color:
       scene5_icon_color:
