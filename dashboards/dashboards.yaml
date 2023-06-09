@@ -1,0 +1,27 @@
+phone-dashboard:
+  mode: yaml
+  title: Phone
+  icon: mdi:cellphone
+  show_in_sidebar: true
+  filename: dashboards/v2/phone.yaml
+
+v3-dashboard:
+  mode: yaml
+  title: v3
+  icon: mdi:numeric-3
+  show_in_sidebar: true
+  filename: dashboards/v3/v3.yaml
+
+quick-look-mobile-dashboard:
+  mode: yaml
+  title: Quick Look Mobile
+  icon: mdi:cellphone
+  show_in_sidebar: true
+  filename: dashboards/quick_look_mobile/qlm.yaml
+
+#tablet-dashboard:
+#  mode: yaml
+#  title: Tablet
+#  icon: mdi:tablet
+#  show_in_sidebar: true
+#  filename: dashboards/tablet/tablet.yaml
