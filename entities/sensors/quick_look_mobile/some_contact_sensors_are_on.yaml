@@ -1,0 +1,22 @@
+platform: template
+sensors:
+  some_contact_sensors_are_on:
+    friendly_name: "Some Contact Sensors Are On"
+    value_template: >-
+      {% set entity_ids = [
+        'binary_sensor.hall_door_contact', 
+        'binary_sensor.lounge_window_contact',
+        'binary_sensor.kitchen_window_contact',
+        'binary_sensor.office_window_contact',
+        'binary_sensor.bedroom_window_contact'
+        ] %}
+
+      {% set count = namespace(value=0) %}
+
+      {% for entity_id in entity_ids %}
+        {% if is_state(entity_id, 'on') %}
+          {% set count.value = count.value + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {{ 'off' if count.value == 0 else 'on' }}

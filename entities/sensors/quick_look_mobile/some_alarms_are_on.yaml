@@ -1,0 +1,18 @@
+platform: template
+sensors: 
+  some_alarms_are_on:
+    friendly_name: "Some Alarms Are On"
+    value_template: >-
+      {% set entity_ids = [
+        'alarm_control_panel.alarmo'
+        ] %}
+
+      {% set count = namespace(value=0) %}
+
+      {% for entity_id in entity_ids %}
+        {% if is_state(entity_id, 'triggered') or is_state(entity_id, 'pending') %}
+          {% set count.value = count.value + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {{ 'off' if count.value == 0 else 'on' }}

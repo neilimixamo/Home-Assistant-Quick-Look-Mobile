@@ -1,0 +1,27 @@
+platform: template
+sensors:
+  some_lights_are_on:
+    friendly_name: "Some Lights Are On"
+    value_template: >-
+      {% set entity_ids = [
+        'light.group_hall',
+        'light.group_lounge',
+        'light.kitchen_ceiling',
+        'light.office_ceiling_1',
+        'light.group_bedroom',
+        'light.group_closet',
+        'light.toilet',
+        'light.group_bathroom',
+        ] %}
+
+      {% set count = namespace(value=0) %}
+
+      {% for entity_id in entity_ids %}
+        {% if is_state(entity_id, 'on') %}
+          {% set count.value = count.value + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {{ 'off' if count.value == 0 else 'on' }}
+
+

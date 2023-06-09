@@ -1,0 +1,20 @@
+platform: template
+sensors:
+  some_fans_are_on:
+    friendly_name: "Some fans are on"
+    value_template: >-
+      {% set entity_ids = [
+        'fan.lounge',
+        'fan.air_purifier',
+        'fan.bedroom'
+        ] %}
+
+      {% set count = namespace(value=0) %}
+
+      {% for entity_id in entity_ids %}
+        {% if is_state(entity_id, 'on') %}
+          {% set count.value = count.value + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {{ 'off' if count.value == 0 else 'on' }}

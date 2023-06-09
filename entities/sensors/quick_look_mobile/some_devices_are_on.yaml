@@ -1,0 +1,30 @@
+platform: template
+sensors:
+  some_devices_are_on:
+    friendly_name: "Some Devices Are On"
+    value_template: >-
+      {% set entity_ids = [
+        'switch.lounge_fireplace',
+        'switch.rituals',
+        'switch.kitchen_cooking_plate',
+        'switch.shelly_1pm_oven',
+        'switch.shelly_1pm_dryer',
+        'vacuum.dreame_d9_2',
+        'switch.shelly_plug_milk_warmer',
+        'vacuum.cat_litter',
+        'switch.shelly_plug_washing_machine',
+        'switch.shelly_3em',
+        'switch.shelly_4pm_1',
+        'switch.shelly_4pm_2',
+        'switch.shelly_4pm_3'
+        ] %}
+
+      {% set count = namespace(value=0) %}
+
+      {% for entity_id in entity_ids %}
+        {% if is_state(entity_id, 'on') or is_state(entity_id, 'cleaning')%}
+          {% set count.value = count.value + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {{ 'off' if count.value == 0 else 'on' }}
