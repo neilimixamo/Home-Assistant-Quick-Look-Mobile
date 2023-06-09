@@ -54,8 +54,8 @@ cards:
           - type: custom:button-card # ENTITY 01
             template: access
             variables:
-              entity_contact: #optional
-              entity_occupancy: #optional
+              entity_contact: #optional binary_sensor.entity
+              entity_occupancy: #optional binary_sensor.entity
               name: #required
           - type: custom:button-card # ENTITY 02
             template: access
