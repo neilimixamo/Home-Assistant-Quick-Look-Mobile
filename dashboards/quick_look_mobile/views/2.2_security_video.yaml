@@ -28,16 +28,16 @@ cards:
       grid-area: subheader
     template: subheader_2
     variables:
-      subheader_1_title: Access
+      subheader_1_title: Access #can be changed
       subheader_1_path: security_access
-      subheader_2_title: Video
+      subheader_2_title: Video #can be changed
       subheader_2_path: security_video
   - type: custom:button-card # MAIN TITLE
     view_layout:
       grid-area: main_title
     template: title_sticky
     variables:
-      title: Cameras
+      title: Cameras #can be changed
   - type: custom:layout-card # MAIN
     view_layout:
       grid-area: main
@@ -47,23 +47,38 @@ cards:
       margin: 0vh 0vh 0vh
       padding: 0vh 0.4vh
     cards:
-      - type: custom:button-card # 
+      - type: custom:button-card # ENTITY 01
         template: camera
         variables:
-          entity: camera.dreame_d9_map
-          name: #Aspirateur
+          entity: #required
+          name: #optional
+      - type: custom:button-card # ENTITY 02
+        template: camera
+        variables:
+          entity:
+          name:
+      - type: custom:button-card # ENTITY 03
+        template: camera
+        variables:
+          entity:
+          name:
+      - type: custom:button-card # ENTITY 04
+        template: camera
+        variables:
+          entity:
+          name:
   - type: custom:button-card # FOOTER TITLE
     view_layout:
       grid-area: footer_title
     template: title_sticky
     variables:
-      title: 'Alarm'
+      title: 'Alarm' #can be changed
   - type: custom:button-card # FOOTER
     view_layout:
       grid-area: footer
     template: alarm
     variables:
-      entity: alarm_control_panel.alarmo 
+      entity: #required
   - type: custom:button-card # MENU
     view_layout:
       grid-area: menu
