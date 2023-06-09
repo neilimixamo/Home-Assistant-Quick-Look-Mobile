@@ -28,16 +28,16 @@ cards:
       grid-area: subheader
     template: subheader_2
     variables:
-      subheader_1_title: Members
+      subheader_1_title: Members #can be changed
       subheader_1_path: family_persons
-      subheader_2_title: Map
+      subheader_2_title: Map #can be changed
       subheader_2_path: family_map
   - type: custom:button-card # MAIN TITLE
     view_layout:
       grid-area: main_title
     template: title_sticky
     variables:
-      label: Persons
+      label: Persons #can be changed
   - type: custom:layout-card # MAIN
     view_layout:
       grid-area: main
@@ -49,16 +49,16 @@ cards:
     cards:
       - type: map
         entities:
-          - entity: device_tracker.rio_location
-          - entity: device_tracker.max_ipad
-          - entity: device_tracker.samsung_s10
+          - entity: #requires device_tracker.entity
+          - entity: #requires device_tracker.entity
+          - entity: #requires device_tracker.entity
         dark_mode: false
   - type: custom:button-card # FOOTER TITLE
     view_layout:
       grid-area: footer_title
     template: title_sticky
     variables:
-      title: Scenes
+      title: Scenes #can be changed
   - type: custom:button-card # FOOTER
     view_layout:
       grid-area: footer
