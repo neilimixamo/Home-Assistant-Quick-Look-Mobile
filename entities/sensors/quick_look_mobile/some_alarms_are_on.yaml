@@ -2,9 +2,10 @@ platform: template
 sensors: 
   some_alarms_are_on:
     friendly_name: "Some Alarms Are On"
+  # Replace all "your_entity" by your personal entity_ids
     value_template: >-
       {% set entity_ids = [
-        'alarm_control_panel.alarmo'
+        'alarm_control_panel.your_entity'
         ] %}
 
       {% set count = namespace(value=0) %}
