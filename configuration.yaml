@@ -1,8 +1,8 @@
 frontend:
-  themes: !include_dir_merge_named ../themes/
+  themes: !include_dir_merge_named themes/
 
 lovelace:
   mode: storage
-  dashboards: !include ../dashboards/dashboards.yaml
+  dashboards: !include dashboards/dashboards.yaml
   
-sensor: !include_dir_list ../entities/sensors
+sensor: !include_dir_list entities/sensors
