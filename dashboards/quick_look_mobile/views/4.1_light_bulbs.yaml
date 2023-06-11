@@ -56,7 +56,7 @@ cards:
             variables:
               entity: #required light.entity
               name: #optional
-              expandable_towards: #only for the "light_expandable" template, requires the navigation_path to the children eg: light_bulbs_hall
+              expandable_towards: #only for the "light_expandable" template, requires a navigation_path like 'light_bulbs_room1'
           - type: custom:button-card # ENTITY 02
             template:
             variables:
