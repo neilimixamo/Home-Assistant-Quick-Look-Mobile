@@ -157,6 +157,7 @@ cards:
     view_layout:
       grid-area: footer
     template: scenes
+    variables:
       scene1_entity: #optional scene.entity
       scene1_name: #optional
       scene1_background_color: #optional
