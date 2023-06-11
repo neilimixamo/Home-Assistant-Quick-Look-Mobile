@@ -6,19 +6,17 @@ sensors:
   # Add some more if you want but don't put a comma after the last entity
     value_template: >-
       {% set entity_ids = [
-        'switch.lounge_fireplace',
-        'switch.rituals',
-        'switch.kitchen_cooking_plate',
-        'switch.shelly_1pm_oven',
-        'switch.shelly_1pm_dryer',
-        'vacuum.dreame_d9_2',
-        'switch.shelly_plug_milk_warmer',
-        'vacuum.cat_litter',
-        'switch.shelly_plug_washing_machine',
-        'switch.shelly_3em',
-        'switch.shelly_4pm_1',
-        'switch.shelly_4pm_2',
-        'switch.shelly_4pm_3'
+        'vacuum.your_entity',
+        'vacuum.your_entity',
+        'switch.your_entity',
+        'switch.your_entity',
+        'switch.your_entity',
+        'switch.your_entity',
+        'switch.your_entity',
+        'switch.your_entity',
+        'switch.your_entity',
+        'switch.your_entity',
+        'switch.your_entity'
         ] %}
 
       {% set count = namespace(value=0) %}
