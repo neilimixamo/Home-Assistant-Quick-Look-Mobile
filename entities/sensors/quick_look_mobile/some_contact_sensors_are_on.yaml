@@ -2,13 +2,14 @@ platform: template
 sensors:
   some_contact_sensors_are_on:
     friendly_name: "Some Contact Sensors Are On"
+  # Replace all "your_entity" by your personal entity_ids and add more if you want but don't put a comma after the last entity
     value_template: >-
       {% set entity_ids = [
-        'binary_sensor.hall_door_contact', 
-        'binary_sensor.lounge_window_contact',
-        'binary_sensor.kitchen_window_contact',
-        'binary_sensor.office_window_contact',
-        'binary_sensor.bedroom_window_contact'
+        'binary_sensor.your_entity', 
+        'binary_sensor.your_entity',
+        'binary_sensor.your_entity',
+        'binary_sensor.your_entity',
+        'binary_sensor.your_entity'
         ] %}
 
       {% set count = namespace(value=0) %}
