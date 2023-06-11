@@ -28,9 +28,9 @@ cards:
       grid-area: subheader
     template: subheader_1
     variables:
-      subheader_1_title: Bulbs
+      subheader_1_title: Bulbs #can be changed
       subheader_1_path: light_bulbs
-      subheader_2_title: Covers
+      subheader_2_title: Covers #can be changed
       subheader_2_path: light_covers
   - type: custom:button-card # MAIN TITLE
     view_layout:
@@ -69,29 +69,40 @@ cards:
         columns: 2
         square: false
         cards:
-          - type: custom:button-card # ENTREE
+          - type: custom:button-card # ENTITY 01
             template: light
             variables:
-              name: #Hall
-              entity: #light.group_hall_first
-              label_on: 'Allumée'
-              label_off: 'Eteinte'
-          - type: custom:button-card # COULOIR
+              entity: #requires light.entity
+              name: #optional
+              label_on: #optional
+              label_off: #optional
+          - type: custom:button-card # ENTITY 02
             template: light
             variables:
-              name: Couloir
-              entity: light.group_hall_second
-          - type: custom:button-card # NOTIFIER
+              entity:
+              name:
+              label_on:
+              label_off:
+          - type: custom:button-card # ENTITY 03
             template: light
             variables:
-              name: Notificateur
-              entity: light.hall_notifier
+              entity:
+              name:
+              label_on:
+              label_off:
+          - type: custom:button-card # ENTITY 04
+            template: light
+            variables:
+              entity:
+              name:
+              label_on:
+              label_off:
   - type: custom:button-card # FOOTER TITLE
     view_layout:
       grid-area: footer_title
     template: title_sticky
     variables:
-      title: 'Scenes'
+      title: 'Scenes' #can be changed
   - type: custom:button-card # FOOTER
     view_layout:
       grid-area: footer
