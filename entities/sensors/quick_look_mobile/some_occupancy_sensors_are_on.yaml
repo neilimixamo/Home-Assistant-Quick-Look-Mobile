@@ -6,13 +6,13 @@ sensors:
   # Add some more if you want but don't put a comma after the last entity
     value_template: >-
       {% set entity_ids = [
-        'binary_sensor.group_hall_presence',
-        'binary_sensor.group_lounge_presence',
-        'binary_sensor.group_kitchen_presence',
-        'binary_sensor.office_motion_occupancy',
-        'binary_sensor.group_bedroom_presence',
-        'binary_sensor.toilet_motion_occupancy',
-        'binary_sensor.group_bathroom_presence'
+        'binary_sensor.your_entity',
+        'binary_sensor.your_entity',
+        'binary_sensor.your_entity',
+        'binary_sensor.your_entity',
+        'binary_sensor.your_entity',
+        'binary_sensor.your_entity',
+        'binary_sensor.your_entity'
         ] %}
 
       {% set count = namespace(value=0) %}
