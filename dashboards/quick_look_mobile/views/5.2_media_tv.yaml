@@ -28,16 +28,16 @@ cards:
       grid-area: subheader
     template: subheader_2
     variables:
-      subheader_1_title: Music
+      subheader_1_title: Music #can be changed
       subheader_1_path: media_music
-      subheader_2_title: TV
+      subheader_2_title: TV #can be changed
       subheader_2_path: media_tv  
   - type: custom:button-card # MAIN TITLE
     view_layout:
       grid-area: main_title
     template: title_sticky
     variables:
-      title: TV
+      title: TV #can be changed
   - type: custom:layout-card # MAIN
     view_layout:
       grid-area: main
@@ -51,13 +51,20 @@ cards:
         columns: 2
         square: false
         cards:
-          - type: custom:button-card # FIREPLACE
-            template: device
+          - type: custom:button-card # ENTITY 01
+            template: media
             variables:
-              entity: switch.lounge_fireplace
-              icon: mdi:fireplace
-              on_label: 
-              off_label: 
+              entity: #requires remote.entity or media_player.entity
+              icon: #optional
+              on_label: #optional
+              off_label: #optional
+          - type: custom:button-card # ENTITY 02
+            template: media
+            variables:
+              entity:
+              icon:
+              on_label:
+              off_label:
   - type: custom:button-card # MENU
     view_layout:
       grid-area: menu
