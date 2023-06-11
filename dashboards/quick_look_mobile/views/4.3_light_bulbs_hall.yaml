@@ -1,5 +1,5 @@
-title: lights_bulbs_hall
-path: light_bulbs_hall
+title: lights_bulbs_room1 #change "room1" by your room name
+path: light_bulbs_room1 #change "room1" by tour room name
 icon: mdi:lightbulb
 theme: Quick Look Mobile
 background: 'white'
@@ -37,7 +37,7 @@ cards:
       grid-area: main_title
     template: title_sticky
     variables:
-      title: Hall
+      title: Room 1 #can be changed
   - type: custom:button-card # CHEVRON-LEFT
     view_layout:
       grid-area: main_title
