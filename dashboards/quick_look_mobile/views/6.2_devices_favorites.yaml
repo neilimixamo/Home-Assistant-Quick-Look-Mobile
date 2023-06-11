@@ -28,16 +28,16 @@ cards:
       grid-area: subheader
     template: subheader_2
     variables:
-      subheader_1_title: Rooms
+      subheader_1_title: Rooms #can be changed
       subheader_1_path: devices
-      subheader_2_title: Favorites
+      subheader_2_title: Favorites #can be changed
       subheader_2_path: devices_favorites
   - type: custom:button-card # MAIN TITLE
     view_layout:
       grid-area: main_title
     template: title_sticky
     variables:
-      title: Favorites
+      title: Favorites #can be changed
   - type: custom:button-card # MENU
     view_layout:
       grid-area: menu
