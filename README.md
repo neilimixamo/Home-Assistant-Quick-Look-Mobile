@@ -1,1 +1,1 @@
-# Home-Assistant---Quick-Look-Mobile
+# Home Assistant - Quick Look Mobile
