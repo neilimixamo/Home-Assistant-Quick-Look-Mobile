@@ -6,9 +6,12 @@ sensors:
   # Add some more if you want but don't put a comma after the last entity
     value_template: >-
       {% set entity_ids = [
-        'fan.lounge',
-        'fan.air_purifier',
-        'fan.bedroom'
+        'fan.your_entity',
+        'fan.your_entity',
+        'fan.your_entity',
+        'fan.your_entity',
+        'fan.your_entity',
+        'fan.your_entity'
         ] %}
 
       {% set count = namespace(value=0) %}
