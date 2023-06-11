@@ -1,6 +1,6 @@
 title: light_covers
 path: light_covers
-icon: mdi:home-lightning-bolt
+icon: mdi:roller-shade
 theme: Quick Look Mobile
 background: 'white'
 type: custom:grid-layout
