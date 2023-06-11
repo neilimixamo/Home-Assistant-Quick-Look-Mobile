@@ -25,9 +25,9 @@ cards:
       grid-area: subheader
     template: subheader_1
     variables:
-      subheader_1_title: Rooms
+      subheader_1_title: Rooms #can be changed
       subheader_1_path: devices
-      subheader_2_title: Favorites
+      subheader_2_title: Favorites #can be changed
       subheader_2_path: devices_favorites
   - type: custom:layout-card # MAIN
     view_layout:
@@ -38,182 +38,166 @@ cards:
       margin: 0vh 0vh 0vh
       padding: 0vh 0.4vh
     cards:
-      - type: custom:button-card # LOUNGE
+      - type: custom:button-card # ROOM 1
         template: title_scrollable
         variables:
-          title: Salon
+          title: Room 1 #can be changed
       - type: grid
         columns: 2
         square: false
         cards:
-          - type: custom:button-card # FIREPLACE
+          - type: custom:button-card # ENTITY 01
             template: device
             variables:
-              entity: switch.lounge_fireplace
-              name:
-              icon: mdi:lightbulb
-              label_on: Activée
-              label_off: Désactivée
-          - type: custom:button-card # RITUALS
+              entity: # requires switch.entity or any other entity
+              name: #optional
+              icon: #optional
+              label_on: #optional
+              label_off: #optional
+          - type: custom:button-card # ENTITY 02
             template: device
             variables:
-              entity: switch.rituals
+              entity:
               name:
               icon:
               label_on:
               label_off:
-      - type: custom:button-card # KITCHEN
-        template: title_scrollable
-        variables:
-          title: Cuisine
-      - type: grid
-        columns: 2
-        square: false
-        cards:
-          - type: custom:button-card # PLAQUE
+          - type: custom:button-card # ENTITY 03
             template: device
             variables:
-              entity: switch.kitchen_cooking_plate
+              entity:
               name:
               icon:
-              label_on: Prête
-              label_off: Eteinte
-          - type: custom:button-card # FOUR
-            template: device
-            variables:
-              entity: switch.shelly_1pm_oven
-              name:
-              icon: mdi:toaster-oven
-              label_on: Prêt
+              label_on:
               label_off:
-          - type: custom:button-card # DRYER
+          - type: custom:button-card # ENTITY 04
             template: device
             variables:
-              entity: switch.shelly_1pm_dryer
+              entity:
               name:
-              icon: mdi:tumble-dryer
-              label_on: Prêt
+              icon:
+              label_on:
               label_off:
-          - type: custom:button-card # VACUUM
-            template: device
-            variables:
-              entity: vacuum.dreame_d9_2
-              name:
-              icon: phu:roborock
-              label_on: Nettoyage
-              label_off: En charge
-              custom_state_1:
-                - paused
-              custom_label_1: 'en Pause'
-              custom_state_2:
-                - returning
-              custom_label_2: 'Vers la base'
-              icon_tap_action:
-                action: call-service
-                service: vacuum.start_pause
-                service_data:
-                  entity_id: vacuum.dreame_d9_2
-              icon_hold_action:
-                action: call-service
-                service: vacuum.return_to_base
-                service_data:
-                  entity_id: vacuum.dreame_d9_2
-              name_tap_action:
-                action: navigate
-                navigation_path: vacuum
-          - type: custom:button-card # BABY
-            template: device
-            variables:
-              entity: switch.shelly_plug_milk_warmer
-              name:
-              icon: mdi:baby-bottle
-              label_on: Chauffe
-              label_off:
-      - type: custom:button-card # OFFICE
+      - type: custom:button-card # ROOM 2
         template: title_scrollable
         variables:
-          title: Bureau
+          title: Room 2 #can be changed
       - type: grid
         columns: 2
         square: false
         cards:
-          - type: custom:button-card # LITTER
+          - type: custom:button-card # ENTITY 05
             template: device
             variables:
-              entity: vacuum.cat_litter
+              entity: # requires switch.entity or any other entity
+              name: #optional
+              icon: #optional
+              label_on: #optional
+              label_off: #optional
+          - type: custom:button-card # ENTITY 06
+            template: device
+            variables:
+              entity:
               name:
-              icon: mdi:cat
-              label_on: Nettoyage
-              label_off: En veille
-              icon_tap_action:
-                action: call-service
-                service: vacuum.start_pause
-                service_data:
-                  entity_id: vacuum.cat_litter          
-      - type: custom:button-card # BATHROOM
+              icon:
+              label_on:
+              label_off:
+          - type: custom:button-card # ENTITY 07
+            template: device
+            variables:
+              entity:
+              name:
+              icon:
+              label_on:
+              label_off:
+          - type: custom:button-card # ENTITY 08
+            template: device
+            variables:
+              entity:
+              name:
+              icon:
+              label_on:
+              label_off:
+      - type: custom:button-card # ROOM 3
         template: title_scrollable
         variables:
-          title: Salle de bain
+          title: Room 3 #can be changed
+      - type: grid
+        columns: 2
+        square: false
+        cards:     
+          - type: custom:button-card # ENTITY 09
+            template: device
+            variables:
+              entity: # requires switch.entity or any other entity
+              name: #optional
+              icon: #optional
+              label_on: #optional
+              label_off: #optional
+          - type: custom:button-card # ENTITY 10
+            template: device
+            variables:
+              entity:
+              name:
+              icon:
+              label_on:
+              label_off:
+          - type: custom:button-card # ENTITY 11
+            template: device
+            variables:
+              entity:
+              name:
+              icon:
+              label_on:
+              label_off:
+          - type: custom:button-card # ENTITY 12
+            template: device
+            variables:
+              entity:
+              name:
+              icon:
+              label_on:
+              label_off:
+      - type: custom:button-card # ROOM 4
+        template: title_scrollable
+        variables:
+          title: Room 4 #can be changed
       - type: grid
         columns: 2
         square: false
         cards:
-          - type: custom:button-card # WASHING MACHINE
+          - type: custom:button-card # ENTITY 13
             template: device
             variables:
-              entity: switch.shelly_plug_washing_machine
-              name:
-              icon: mdi:washing-machine
-              label_on: Prêt
-              label_off:
-      - type: custom:button-card # TABLEAU ELECTRIQUE
-        template: title_scrollable
-        variables:
-          title: Tableau Electrique
-      - type: grid
-        columns: 2
-        square: false
-        cards:
-          - type: custom:button-card # SHELLY 3EM
+              entity: # requires switch.entity or any other entity
+              name: #optional
+              icon: #optional
+              label_on: #optional
+              label_off: #optional
+          - type: custom:button-card # ENTITY 14
             template: device
             variables:
-              entity: switch.shelly_3em
+              entity:
               name:
-              icon: mdi:lightning-bolt
+              icon:
               label_on:
               label_off:
-              icon_tap_action:
-                action: none
-          - type: custom:button-card # SHELLY 4PM 1
+          - type: custom:button-card # ENTITY 15
             template: device
             variables:
-              entity: switch.shelly_4pm_1
+              entity:
               name:
-              icon: mdi:lightning-bolt
+              icon:
               label_on:
               label_off:
-              icon_tap_action:
-                action: none
-          - type: custom:button-card # SHELLY 4PM 2
+          - type: custom:button-card # ENTITY 16
             template: device
             variables:
-              entity: switch.shelly_4pm_2
+              entity:
               name:
-              icon: mdi:lightning-bolt
+              icon:
               label_on:
               label_off:
-              icon_tap_action:
-                action: none
-          - type: custom:button-card # SHELLY 4PM 3
-            template: device
-            variables:
-              entity: switch.shelly_4pm_3
-              name:
-              icon: mdi:lightning-bolt
-              label_on:
-              label_off:
-              icon_tap_action:
-                action: none
   - type: custom:button-card # MENU
     view_layout:
       grid-area: menu
