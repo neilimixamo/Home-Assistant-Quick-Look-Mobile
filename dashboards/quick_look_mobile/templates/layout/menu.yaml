@@ -91,7 +91,7 @@ menu:
               action: navigate
               navigation_path: home
           - type: custom:button-card # NOTIFICATIONS
-            name: Alertes
+            name: Notif.
             entity: 
             icon: mdi:bell-outline
             size: 37%
