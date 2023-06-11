@@ -6,16 +6,16 @@ sensors:
   # Add some more if you want but don't put a comma after the last entity
     value_template: >-
       {% set entity_ids = [
-        'media_player.spotify',
-        'media_player.lounge_tv',
-        'media_player.lounge_nest_home_max',
-        'media_player.lounge_nest_hub_max',
-        'media_player.kitchen_nest_audio',
-        'media_player.office_nest_mini',
-        'media_player.bedroom_clock_left',
-        'media_player.bedroom_clock_right',
-        'media_player.closet_nest_mini',
-        'media_player.bathroom_nest_audio',
+        'remote.your_entity',
+        'remote.your_entity',
+        'remote.your_entity',
+        'media_player.your_entity',
+        'media_player.your_entity',
+        'media_player.your_entity',
+        'media_player.your_entity',
+        'media_player.your_entity',
+        'media_player.your_entity',
+        'media_player.your_entity'
         ] %}
 
       {% set count = namespace(value=0) %}
