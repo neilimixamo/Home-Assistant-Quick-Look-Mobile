@@ -3,6 +3,7 @@ sensors:
   some_climates_are_on:
     friendly_name: "Some climates are on"
   # Replace all "your_entity" by your personal entity_ids
+  # Add some more if you want but don't put a comma after the last entity
     value_template: >-
       {% set entity_ids = [
         'climate.your_entity',
