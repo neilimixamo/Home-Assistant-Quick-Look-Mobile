@@ -2,11 +2,12 @@ platform: template
 sensors:
   some_climates_are_on:
     friendly_name: "Some climates are on"
+  # Replace all "your_entity" by your personal entity_ids
     value_template: >-
       {% set entity_ids = [
-        'climate.lounge',
-        'climate.kitchen',
-        'climate.bedroom'
+        'climate.your_entity',
+        'climate.your_entity',
+        'climate.your_entity'
         ] %}
 
       {% set count = namespace(value=0) %}
