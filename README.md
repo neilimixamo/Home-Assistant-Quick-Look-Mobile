@@ -12,7 +12,6 @@ This dashboard provides a clear and minimalistic mobile interface for your home 
 </p>
 
 
-
 ## Prerequisites
 
 Before beginning, make sure you have:
@@ -40,7 +39,7 @@ Before beginning, make sure you have:
 
 ### 3. Add Lines to Configuration.yaml
 
-`yaml
+```yaml
 frontend:
   themes: !include_dir_merge_named themes/
 
@@ -49,7 +48,7 @@ lovelace:
   dashboards: !include dashboards/dashboards.yaml
   
 sensor: !include_dir_list entities/sensors/
-`
+```
 
 You might need to modify these lines to match your current setup, particularly if your configuration is split across multiple files.
 
