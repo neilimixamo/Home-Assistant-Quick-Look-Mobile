@@ -79,7 +79,7 @@ You might need to modify these lines to match your current setup, particularly i
 ### 6. Add Your Entities
 
 - Open the file corresponding to the view you want add entities to. eg open the `3.1_air_heating.yaml` file to add your climate and temperature sensors
-- To avoid disrupting the setup, only modify the lines where it is explicitly mentioned ``#can be changed, #required or #optional``` at the end. These lines have been marked for easy and safe modification.
+- To avoid disrupting the setup, only modify the lines where it is explicitly mentioned ```#can be changed, #required or #optional``` at the end. These lines have been marked for easy and safe modification.
 - Navigate to the "main" section in the view file. By default, you have space for 16 entities but you can add as many as you need or delete unnecessary blocks.
 - Each entity block requires certain variables to be defined. For a climate entity, you'll define `entity` and `name`. `Entity` is the entity_id of your device (e.g., `climate.kitchen`), and `name` is optional; it's the name that will be displayed on the dashboard. If no name is given, the friendly name of the entity will be used.
 - Refresh your dashboard to see the changes by clicking the three dots in the upper-right corner of the Home Assistant interface.
