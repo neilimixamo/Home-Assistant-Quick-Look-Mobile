@@ -69,7 +69,7 @@ You might need to modify these lines to match your current setup, particularly i
 #### 5.2 Header
 
 - The header contains five main categories: `security`, `air`, `light`, `media`, and `devices`. Each of these categories leads to a different view.
-- If none is selected, `home` view is selected. You can also navigate back to it by clicking on an active category.
+- If none is selected, `home` view is selected. You can also navigate back to it by clicking on an active view.
 - Each of these categories further has two subcategories. `Security` includes `access` and `video`, `air` includes `heating` and `cooling`, `light` includes `bulbs` and `covers`, `media` includes `music` and `TV`, and `devices` includes `rooms` and `favorites`.
 - Additionally, there is a special `family` category which can be accessed through the upper left person icon.
 - The header is designed for two main purposes: 
