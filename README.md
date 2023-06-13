@@ -88,7 +88,7 @@ You might need to modify these lines to match your current setup, particularly i
 
 ### 7. Customize Template Sensors
 
-- Each sensor contains a list of entities that are intended to trigger the header for color change if at least on is active.
+- Each sensor contains a list of entities that are intended to trigger the header for color change if at least one is active.
 - To modify or add entities to a template sensor, open the corresponding file and adjust the entity list.
 - Template sensors are located at `/config/entities/sensors/quick_look_mobile`.
 - Entities should match those shoud chose for the corresponding view
