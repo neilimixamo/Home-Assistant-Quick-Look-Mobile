@@ -37,7 +37,7 @@ Before beginning, make sure you have:
 - Using your preferred method (Visual Studio Code, Samba, SSH, local access, etc.),
 - Copy the three extracted folders (`/dashboards`, `/entities` and `/themes`) to your `/config` directory.
 
-### 3. Add Lines to Configuration.yaml
+### 3. Add This to Your `configuration.yaml` File
 
 ```yaml
 frontend:
