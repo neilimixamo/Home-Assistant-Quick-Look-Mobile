@@ -32,7 +32,7 @@ Before beginning, make sure you have:
 - Save the ZIP file to a location on your computer.
 - Extract the contents of the ZIP file.
 
-### 2. Add Files to Home Assistant
+### 2. Copy Folders to Your Home Assistant Server
 
 - Using your preferred method (Visual Studio Code, Samba, SSH, local access, etc.),
 - Copy the three extracted folders (`/dashboards`, `/entities` and `/themes`) to your `/config` directory.
