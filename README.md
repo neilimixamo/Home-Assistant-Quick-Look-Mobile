@@ -1,5 +1,5 @@
 <p align="center">
-  <strong># Home Assistant - Quick Look Mobile</strong>
+  <h1> Home Assistant - Quick Look Mobile</h1>
 </p>
 
 Welcome to the Quick Look Mobile Dashboard for Home Assistant! 
