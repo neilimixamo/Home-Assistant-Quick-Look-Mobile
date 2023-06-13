@@ -24,7 +24,7 @@ Before beginning, make sure you have:
   - [Browser Mod 2](https://github.com/thomasloven/hass-browser_mod) by Thomas Lovén
   - [Card Mod 3](https://github.com/thomasloven/lovelace-card-mod) by Thomas Lovén
 
-## Step-by-Step Guide
+## Installation
 
 ### 1. Download and Extract Dashboard Files
 
