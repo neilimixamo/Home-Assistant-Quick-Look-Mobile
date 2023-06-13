@@ -58,15 +58,15 @@ You might need to modify these lines to match your current setup, particularly i
 - Once rebooted, apply the 'Quick Look Mobile' theme and select 'light mode'.
 - On the left lateral menu, open the newly created dashboard. Since this dashboard is designed for mobile view, it might appear too large on a computer screen. To correct this, press F12 or open your browser's developer tools and select the 'mobile view' option.
 
-#### 5. Dashboard Structure
+### 5. Dashboard Structure
 
-##### 5.1 Views
+#### 5.1 Views
 
 - Navigate to your `/config/dashboard/quick_look_mobile/views` folder.
 - Each file in this `views` folder corresponds to a different view on your dashboard. For instance, `1.1_home.yaml` corresponds to your home view, `2.1_security_access.yaml` corresponds to your security access view, and so forth.
 - Each view has sections for the header, subheader, main title, main and footer spaces.
 
-##### 5.2 Header
+#### 5.2 Header
 
 - The header contains five main categories: `security`, `air`, `light`, `media`, and `devices`. Each of these categories leads to a different view.
 - If none is selected, `home` view is selected. You can also navigate back to it by clicking on an active category.
@@ -76,7 +76,7 @@ You might need to modify these lines to match your current setup, particularly i
   1) allow for rapid navigation through these views 
   2) provide useful status information by changing its color and icon based on 'template sensors' (see 6. Customize Template Sensors) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems. 
 
-#### 6. Add Your Entities
+### 6. Add Your Entities
 
 - Open the file corresponding to the view you want add entities to. eg open the `3.1_air_heating` file to add your climate and temperature sensors
 - To avoid disrupting the setup, only modify the lines where it is explicitly mentioned '#can be changed, #required or #optional' at the end. These lines have been marked for easy and safe modification.
