@@ -1,6 +1,4 @@
-<p align="center">
-  <h1>Home Assistant - Quick Look Mobile</h1>
-</p>
+# Home Assistant - Quick Look Mobile
 
 Welcome to the Quick Look Mobile Dashboard for Home Assistant! 
 
