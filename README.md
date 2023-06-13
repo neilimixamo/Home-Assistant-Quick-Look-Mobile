@@ -91,7 +91,7 @@ You might need to modify these lines to match your current setup, particularly i
 - Each sensor contains a list of entities that are intended to trigger the header for color change if at least one is active.
 - To modify or add entities to a template sensor, open the corresponding file and adjust the entity list.
 - Template sensors are located at `/config/entities/sensors/quick_look_mobile`.
-- Entities should match those shoud chose for the corresponding view
+- Entities should match those you chose for the corresponding view e.g `some_lights_are_on.yaml` template sensor should match the entities you selected first in '`4.1_light_bulbs.yaml` view
 - Dont't put a comma after the last entity
 - After modification, remember to restart your Home Assistant for the changes to take effect.
 
