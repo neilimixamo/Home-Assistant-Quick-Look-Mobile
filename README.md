@@ -28,7 +28,7 @@ Before beginning, make sure you have:
 ### 2. Add Files to Home Assistant
 
 - Using your preferred method (Visual Studio Code, Samba, SSH, local access, etc.),
-- Copy the three extracted folders (`/dashboards`, `/entities` and `/themes`) to your `/config/` directory.
+- Copy the three extracted folders (`/dashboards`, `/entities` and `/themes`) to your `/config` directory.
 
 ### 3. Add Lines to Configuration.yaml
 
@@ -40,7 +40,7 @@ lovelace:
   mode: storage
   dashboards: !include dashboards/dashboards.yaml
   
-sensor: !include_dir_list entities/sensors/
+sensor: !include_dir_list entities/sensors
 ```
 
 You might need to modify these lines to match your current setup, particularly if your configuration is split across multiple files.
