@@ -131,31 +131,15 @@ alarm:
             name:  |
               [[[
                 if (variables.entity) {
-                  const state = states[variables.entity].state;
-                  let name;
-                  const names = {
-                    'disarmed': 'Disarmed', 
-                    'arming': 'Arming',
-                    'armed_away': 'Armed Away',
-                    'pending': 'Pending !',
-                    'triggered': 'Triggered !',
-                    'default': 'Check Alarm'
-                  };
-                  name = names[state] || names['default'];
-                  return name;
+                  return states[variables.entity].state.charAt(0).toUpperCase() + states[variables.entity].state.slice(1);
                 } else  {
-                  return 'Name';
+                  return 'State';
                 }
               ]]]
-            label:   |
+            label:  |
               [[[
                 if (variables.entity) {
-                  const state = states[variables.entity].state;
-                  const label = {
-                    'pending': states["input_text.last_door_opened"].state, 
-                    'triggered': states["input_text.last_door_opened"].state,
-                  };
-                  return label [state] || label['default'];
+                  return states[variables.entity].attributes.friendly_name;
                 } else  {
                   return '';
                 }
