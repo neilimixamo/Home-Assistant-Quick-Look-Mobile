@@ -131,7 +131,22 @@ alarm:
             name:  |
               [[[
                 if (variables.entity) {
-                  return states[variables.entity].state.charAt(0).toUpperCase() + states[variables.entity].state.slice(1);
+                  const state = states[variables.entity].state;
+                  let name;
+                  const names = {
+                    'disarmed': 'Disarmed', 
+                    'arming': 'Arming',
+                    'armed_away': 'Armed (Away)',
+                    'armed_home': 'Armed (Home)',
+                    'armed_night': 'Armed (Night)',
+                    'armed_vacation': 'Armed (Vacation)',
+                    'armed_custom_bypass': 'Armed (Custom)',
+                    'pending': 'Pending !',
+                    'triggered': 'Triggered !',
+                    'default': 'Check Alarm'
+                  };
+                  name = names[state] || names['default'];
+                  return name;
                 } else  {
                   return 'State';
                 }
@@ -141,7 +156,7 @@ alarm:
                 if (variables.entity) {
                   return states[variables.entity].attributes.friendly_name;
                 } else  {
-                  return '';
+                  return 'Name';
                 }
               ]]]
             show_icon: false
