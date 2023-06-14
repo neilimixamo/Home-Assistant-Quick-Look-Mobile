@@ -18,7 +18,7 @@ Before beginning, make sure you have:
 
 - Familiarity with YAML and Home Assistant configuration files
 - HACS with following integrations:
-  - [Button Card](https://github.com/custom-cards/button-card) by ROM Rider
+  - [Button Card](https://github.com/custom-cards/button-card) by RomRider
   - [Slider Card](https://github.com/AnthonMS/my-cards) by Anton MS
   - [Layout Card](https://github.com/thomasloven/lovelace-layout-card) by Thomas Lovén
   - [Browser Mod 2](https://github.com/thomasloven/hass-browser_mod) by Thomas Lovén
