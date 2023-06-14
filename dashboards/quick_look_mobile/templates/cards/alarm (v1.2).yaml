@@ -16,6 +16,10 @@ alarm:
                 'disarmed': '#ECEFF6', 
                 'arming': '#FEE5C9',
                 'armed_away': '#E0F5DD',
+                'armed_home': '#E0F5DD',
+                'armed_night': '#E0F5DD',
+                'armed_vacation': '#E0F5DD',
+                'armed_custom_bypass': '#E0F5DD',
                 'pending': '#FEE5C9',
                 'triggered': '#FFDBCD',
                 'default': '#ECEFF6'
@@ -56,6 +60,10 @@ alarm:
                     'disarmed': 'mdi:shield-lock-open', 
                     'arming': 'mdi:shield-lock-outline',
                     'armed_away': 'mdi:shield-lock',
+                    'armed_home': 'mdi:shield-lock',
+                    'armed_night': 'mdi:shield-lock',
+                    'armed_vacation': 'mdi:shield-lock',
+                    'armed_custom_bypass': 'mdi:shield-lock',
                     'pending': 'mdi:shield-alert-outline',
                     'triggered': 'mdi:shield-alert',
                     'default': 'mdi:shield-off-outline'
@@ -79,6 +87,10 @@ alarm:
                           'disarmed': '#D9D6D6', 
                           'arming': '#FFBB6E',
                           'armed_away': '#A1C3A6',
+                          'armed_home': '#A1C3A6',
+                          'armed_night': '#A1C3A6',
+                          'armed_vacation': '#A1C3A6',
+                          'armed_custom_bypass': '#A1C3A6',
                           'pending': '#FFBB6E',
                           'triggered': '#EA8C67',
                           'default': '#D9D6D6'
@@ -108,7 +120,11 @@ alarm:
                         const colors = {
                           'disarmed': '#F3F6FD', 
                           'arming': '#FFF6DF',
-                          'armed_away': '#F7FFF5', 
+                          'armed_away': '#F7FFF5',
+                          'armed_home': '#F7FFF5',
+                          'armed_night': '#F7FFF5',
+                          'armed_vacation': '#F7FFF5',
+                          'armed_custom_bypass': '#F7FFF5',
                           'pending': '#FFF6DF',
                           'triggered': '#F4F5FF',
                           'default': '#F3F6FD'
@@ -177,7 +193,7 @@ alarm:
                 - font-size: 12px
                 - font-weight: 400
                 - justify-self: center
-                - padding-right: 2vw
+                - padding-right: 7vw
                 - padding-top: 0.5vh
               name:
                 - font-size: 15px
