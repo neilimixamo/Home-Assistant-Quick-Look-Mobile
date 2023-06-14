@@ -264,7 +264,7 @@ sensor:
 - Additionally, there is a special `family` category which can be accessed through the upper left person icon.
 - The header is designed for two main purposes: 
   1) allow for rapid navigation through these views 
-  2) provide useful status information by changing its color and icon based on 'template sensors' (see 6. Customize Template Sensors) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems. 
+  2) provide useful status information by changing its color and icon based on 'template sensors' (see [7. Customize Template Sensors](#7-customize-template-sensors)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems. 
 
 ### 6. Add Your Entities
 
@@ -279,7 +279,7 @@ sensor:
 
 - Each sensor contains a list of entities that are intended to trigger the header for color change if at least one is active.
 - To modify or add entities to a template sensor, open the corresponding file and adjust the entity list.
-- Template sensors are located at `/config/entities/sensors/quick_look_mobile` or at `/config/configuration.yaml` depending on what you did at [Step 3](#3-setup-configurationyaml).
+- Template sensors are located at `/config/entities/sensors/quick_look_mobile` or at `/config/configuration.yaml` depending on your [configuration.yaml setup](#3-setup-configurationyaml).
 - Entities should match those you chose for the corresponding view e.g `some_lights_are_on.yaml` template sensor should match the entities you selected first in '`4.1_light_bulbs.yaml` view
 - Dont't put a comma after the last entity
 - After modification, remember to (quick) restart your Home Assistant for the yaml changes to take effect.
