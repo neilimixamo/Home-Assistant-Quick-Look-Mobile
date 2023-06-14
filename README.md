@@ -51,7 +51,7 @@ sensor: !include_dir_list entities/sensors/
 ```
 
 <details>
-<summary>sensor alternative</summary>
+<summary>sensor: alternative</summary>
   
 You might need to modify these lines to match your current setup, particularly if you don't want to split your sensor configuration across multiple files. Here is the non-splitted alternative:
 
