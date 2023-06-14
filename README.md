@@ -37,7 +37,7 @@ Before beginning, make sure you have:
 - Using your preferred method (Visual Studio Code, Samba, SSH, local access, etc.),
 - Copy the three extracted folders (`/dashboards`, `/entities` and `/themes`) to your `/config` directory.
 
-### 3. Add This to Your `configuration.yaml` File
+### 3. Setup `configuration.yaml`
 
 ```yaml
 frontend:
@@ -50,20 +50,210 @@ lovelace:
 sensor: !include_dir_list entities/sensors/
 ```
 
-You might need to modify these lines to match your current setup, particularly if your configuration is split across multiple files.
+<details>
+<summary>sensor alternative</summary>
+  
+You might need to modify these lines to match your current setup, particularly if you don't want to split your sensor configuration across multiple files. Here is the non-splitted alternative:
+
+```yaml
+sensor: 
+  - platform: template
+    sensors: 
+      some_alarms_are_on:
+        friendly_name: "Some Alarms Are On"
+        value_template: >-
+          {% set entity_ids = [
+            'alarm_control_panel.your_entity'
+            ] %}
+
+          {% set count = namespace(value=0) %}
+
+          {% for entity_id in entity_ids %}
+            {% if is_state(entity_id, 'triggered') or is_state(entity_id, 'pending') %}
+              {% set count.value = count.value + 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {{ 'off' if count.value == 0 else 'on' }}
+
+  - platform: template
+    sensors:
+      some_climates_are_on:
+        friendly_name: "Some climates are on"
+        value_template: >-
+          {% set entity_ids = [
+            'climate.your_entity',
+            'climate.your_entity',
+            'climate.your_entity'
+            ] %}
+
+          {% set count = namespace(value=0) %}
+
+          {% for entity_id in entity_ids %}
+            {% if is_state(entity_id, 'heat') or is_state(entity_id, 'on') %}
+              {% set count.value = count.value + 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {{ 'off' if count.value == 0 else 'on' }}
+
+  - platform: template
+    sensors:
+      some_contact_sensors_are_on:
+        friendly_name: "Some Contact Sensors Are On"
+        value_template: >-
+          {% set entity_ids = [
+            'binary_sensor.your_entity', 
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity'
+            ] %}
+
+          {% set count = namespace(value=0) %}
+
+          {% for entity_id in entity_ids %}
+            {% if is_state(entity_id, 'on') %}
+              {% set count.value = count.value + 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {{ 'off' if count.value == 0 else 'on' }}
+
+  - platform: template
+    sensors:
+      some_devices_are_on:
+        friendly_name: "Some Devices Are On"
+        value_template: >-
+          {% set entity_ids = [
+            'switch.your_entity',
+            'switch.your_entity',
+            'switch.your_entity',
+            'switch.your_entity',
+            'switch.your_entity',
+            'vacuum.your_entity',
+            'vacuum.your_entity'
+            ] %}
+
+          {% set count = namespace(value=0) %}
+
+          {% for entity_id in entity_ids %}
+            {% if is_state(entity_id, 'on') or is_state(entity_id, 'cleaning')%}
+              {% set count.value = count.value + 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {{ 'off' if count.value == 0 else 'on' }}
+
+  - platform: template
+    sensors:
+      some_fans_are_on:
+        friendly_name: "Some fans are on"
+        value_template: >-
+          {% set entity_ids = [
+            'fan.your_entity',
+            'fan.your_entity',
+            'fan.your_entity'
+            ] %}
+
+          {% set count = namespace(value=0) %}
+
+          {% for entity_id in entity_ids %}
+            {% if is_state(entity_id, 'on') %}
+              {% set count.value = count.value + 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {{ 'off' if count.value == 0 else 'on' }}
+
+  - platform: template
+    sensors:
+      some_lights_are_on:
+        friendly_name: "Some Lights Are On"
+        value_template: >-
+          {% set entity_ids = [
+            'light.your_entity',
+            'light.your_entity',
+            'light.your_entity',
+            'light.your_entity',
+            'light.your_entity',
+            'light.your_entity',
+            'light.your_entity',
+            'light.your_entity'
+            ] %}
+
+          {% set count = namespace(value=0) %}
+
+          {% for entity_id in entity_ids %}
+            {% if is_state(entity_id, 'on') %}
+              {% set count.value = count.value + 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {{ 'off' if count.value == 0 else 'on' }}
+
+  - platform: template
+    sensors:
+      some_media_players_are_on:
+        friendly_name: "Some Media Players Are On"
+        value_template: >-
+          {% set entity_ids = [
+            'media_player.your_entity',
+            'media_player.your_entity',
+            'media_player.your_entity',
+            'media_player.your_entity'
+            ] %}
+
+          {% set count = namespace(value=0) %}
+
+          {% for entity_id in entity_ids %}
+            {% if is_state(entity_id, 'playing') %}
+              {% set count.value = count.value + 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {{ 'off' if count.value == 0 else 'on' }}
+
+  - platform: template
+    sensors:
+      some_occupancy_sensors_are_on:
+        friendly_name: "Some Occupancy Sensors Are On"
+        value_template: >-
+          {% set entity_ids = [
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity'
+            ] %}
+
+          {% set count = namespace(value=0) %}
+
+          {% for entity_id in entity_ids %}
+            {% if is_state(entity_id, 'on') %}
+              {% set count.value = count.value + 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {{ 'off' if count.value == 0 else 'on' }}
+```
+</details>
 
 ### 4. Reboot and Apply Theme
 
 - Restart your Home Assistant for the changes to take effect.
 - Once rebooted, apply the 'Quick Look Mobile' theme and select 'light mode'.
-- On the left lateral menu, open the newly created dashboard. Since this dashboard is designed for mobile view, it might appear too large on a computer screen. To correct this, press F12 or open your browser's developer tools and select the 'mobile view' option.
+- On the left lateral menu, open the newly created dashboard. 
+- Since this dashboard is designed for mobile view, it might appear too large on a computer screen. To correct this, press F12 or open your browser's developer tools and select the 'mobile view' option.
 
 ### 5. Dashboard Structure
 
 #### 5.1 Views
 
 - Navigate to your `/config/dashboard/quick_look_mobile/views` folder.
-- Each file in this `views` folder corresponds to a different view on your dashboard. For instance, `1.1_home.yaml` corresponds to your home view, `2.1_security_access.yaml` corresponds to your security access view, and so forth.
+- Each file inside this `views` folder corresponds to a different view on your dashboard. For instance, `1.1_home.yaml` corresponds to your home view, `2.1_security_access.yaml` corresponds to your security access view, and so forth.
 - Each view has sections for the header, subheader, main title, main and footer spaces.
 
 #### 5.2 Header
@@ -89,10 +279,10 @@ You might need to modify these lines to match your current setup, particularly i
 
 - Each sensor contains a list of entities that are intended to trigger the header for color change if at least one is active.
 - To modify or add entities to a template sensor, open the corresponding file and adjust the entity list.
-- Template sensors are located at `/config/entities/sensors/quick_look_mobile`.
+- Template sensors are located at `/config/entities/sensors/quick_look_mobile` or in `/config/configuration.yaml` depending on what you did at [Step 3](#3-setup-configurationyaml).
 - Entities should match those you chose for the corresponding view e.g `some_lights_are_on.yaml` template sensor should match the entities you selected first in '`4.1_light_bulbs.yaml` view
 - Dont't put a comma after the last entity
-- After modification, remember to restart your Home Assistant for the changes to take effect.
+- After modification, remember to (quick) restart your Home Assistant for the yaml changes to take effect.
 
 ### 8. Hide the Native Header (Optional)
 
