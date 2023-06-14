@@ -294,7 +294,7 @@ sensor:
 ## Known Issues and Fixes
 
 - If the native header is hidden, the lateral menu can't be accessed from the views. To access it again, press the 'dev' button located at the bottom of the screen.
-- Currently, the 'assist' icon located at the upper right of the dashboard isn't functional as the way to trigger this popup keeps unclear for me.
+- Currently, the 'assist' icon located at the upper right of the dashboard isn't functional as the way to trigger this dialog keeps unclear for me.
 
 Enjoy your new, customized mobile dashboard for Home Assistant!
 
