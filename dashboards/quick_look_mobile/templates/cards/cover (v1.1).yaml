@@ -103,10 +103,10 @@ cover:
                     } else if (state === 'open') {
                       return variables.label_off;
                     } else {
-                      return "Inconnu";
+                      return "Label";
                     }
                   } 
-                  return "Inconnu";
+                  return "Label";
                 }
               ]]]
             show_icon: false
