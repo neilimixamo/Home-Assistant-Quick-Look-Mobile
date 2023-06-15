@@ -282,10 +282,10 @@ sensor:
   
   - This section is primarily designed for scene management, offering group controls or shortcuts for quick actions. However, when scenes are not relevant, it can be used to display specialized cards such as the alarm or weather cards.
 
-### 6. Translations
-- Subheader, Main and Footer Titles can easily be changed or translated in their respective view yaml files located in `/config/dashboards/quick_look_mobile/views/` where `#can be changed` is mentioned.
-- If you need to translate Header titles or something inside a card (like the weather card) that can't be done through its view file, you'll have to modify its respective template yaml file located in `/config/dashboards/quick_look_mobile/templates/`.
+### 6. Translation
 
+- The Titles for Subheader, Main, and Footer sections can be easily modified or translated in their corresponding view YAML files, located in /config/dashboards/quick_look_mobile/views/ where `#can be changed` is mentioned.
+- If you need to translate Header titles or any content within a card (such as the weather card) that can't be modified directly via its view file, you will need to adjust the corresponding template YAML file, located in /config/dashboards/quick_look_mobile/templates/.
 
 ### 7. Add Your Entities
 
