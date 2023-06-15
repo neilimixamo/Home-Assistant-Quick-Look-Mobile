@@ -284,8 +284,8 @@ sensor:
 
 ### 6. Translation
 
-- The Titles for Subheader, Main, and Footer sections can be easily modified or translated in their corresponding view YAML files, located in /config/dashboards/quick_look_mobile/views/ where `#can be changed` is mentioned.
-- If you need to translate Header titles or any content within a card (such as the weather card) that can't be modified directly via its view file, you will need to adjust the corresponding template YAML file, located in /config/dashboards/quick_look_mobile/templates/.
+- The Titles for Subheader, Main, and Footer sections can be easily modified or translated in their corresponding view YAML files, located in `/config/dashboards/quick_look_mobile/views/` where `#can be changed` is mentioned.
+- If you need to translate Header titles or any content within a card (such as the weather card) that can't be modified directly via its view file, you will need to adjust the corresponding template YAML file, located in `/config/dashboards/quick_look_mobile/templates/`.
 
 ### 7. Add Your Entities
 
