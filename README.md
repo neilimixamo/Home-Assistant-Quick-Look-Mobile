@@ -265,7 +265,7 @@ sensor:
   
   - Each of the Header categories further has two subcategories :
     - `Home` includes `Favorites` and `Energy` (this last one is no functional yet)
-    - `Security` includes `Access` and Video`
+    - `Security` includes `Access` and `Video`,
     - `Air` includes `Heating` and `Cooling`,
     - `Light` includes `Bulbs` and `Covers`,
     - `Media` includes `Music` and `TV`, and
