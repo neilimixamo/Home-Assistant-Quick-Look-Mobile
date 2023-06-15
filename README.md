@@ -4,7 +4,7 @@ Welcome to the Quick Look Mobile Dashboard for Home Assistant!
 
 - This dashboard offers a minimalist mobile interface for a simple home devices management. 
 - It is designed to
-  - Facilitate rapid navigation to any desired device in just two clicks, while still maintaining complete access to all of their controls.   
+  - Facilitate rapid navigation to any desired device in just two clicks, while still maintaining access to all of their controls.   
   - Deliver crucial information at a glance, such as "Is there someone in the house?", "Is there an open door or window?", or "Did some lightbulbs remain on ?"
 
 ## Demo
