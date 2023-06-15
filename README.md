@@ -258,8 +258,8 @@ sensor:
   #### 5.1 Header
   
   - The header is designed for two main purposes: 
-    1) allow for <u>rapid navigation</u> through five main categories, each leading to different views: `Security`, `Air`, `Light`, `Media`, and `Devices`. Additionally, there is a special `family` category which can be accessed through the upper left person icon. If none those categories are selected, `home` view will be displayed. You can also navigate back to `home` by clicking on the active category.
-    2) provide useful <u>status information</u> by changing its color and icon based on 'template sensors' (see [7. Customize Template Sensors](#7-customize-template-sensors)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems.
+    1) allow for __rapid navigation__ through five main categories, each leading to different views: `Security`, `Air`, `Light`, `Media`, and `Devices`. Additionally, there is a special `Family` category which can be accessed through the upper left person icon. If none those categories are selected, `Home` view will be displayed. You can also navigate back to `Home` by clicking on the active category.
+    2) provide useful __status information__ by changing its color and icon based on 'template sensors' (see [7. Customize Template Sensors](#7-customize-template-sensors)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems.
    
   #### 5.2 SubHeader
   
