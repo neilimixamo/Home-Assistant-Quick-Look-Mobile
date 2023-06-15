@@ -249,29 +249,45 @@ sensor:
 - Since this dashboard is designed for mobile view, it might appear too large on a computer screen. To correct this, press F12 or open your browser's developer tools and select the 'mobile view' option.
 
 ### 5. Dashboard Structure
+  
+  - This dashboard is pre-configured with 15 distinct views, which are uniformly structured and can be accessed at `/config/dashboard/quick_look_mobile/views/`.
+  - `1.1_home.yaml` corresponds to your home view, `2.1_security_access.yaml` corresponds to your security access view, and so forth.
+  - Each view represents a unique mobile interface that can be navigated to, using the header and subheader sections.
+  - The remaining sections, from top to bottom, include the main title, main, and footer spaces.
+  
+  #### 5.1 Header
+  
+  - The header is designed for two main purposes: 
+    1) allow for <u>rapid navigation</u> through five main categories, each leading to different views: `Security`, `Air`, `Light`, `Media`, and `Devices`. Additionally, there is a special `family` category which can be accessed through the upper left person icon. If none those categories are selected, `home` view will be displayed. You can also navigate back to `home` by clicking on the active category.
+    2) provide useful <u>status information</u> by changing its color and icon based on 'template sensors' (see [7. Customize Template Sensors](#7-customize-template-sensors)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems.
+   
+  #### 5.2 SubHeader
+  
+  - Each of the Header categories further has two subcategories :
+    - `Home` includes `Favorites` and `Energy` (this last one is no functional yet)
+    - `Security` includes `Access` and Video`
+    - `Air` includes `Heating` and `Cooling`,
+    - `Light` includes `Bulbs` and `Covers`,
+    - `Media` includes `Music` and `TV`, and
+    - `Devices` includes `Rooms` and `Favorites`.
+   
+  #### 5.3 Main
+  
+  - This section is designed with a two-column layout that can display eight cards at once.
+  - However, it does not limit the total number of cards as it allows for vertical scrolling to view and interact with an unlimited number of cards.
+  - Each card is structured with an icon on the left, acting as a switch, and a name&label on the right, providing the more-info dialog for full control.
+  - To configure those cards with your entities, refer to [7. Add your entities](#7-add-your-entities).
+  
+  #### 5.4 Footer
+  
+  - This section is primarily designed for scene management, offering group controls or shortcuts for quick actions. However, when scenes are not relevant, it can be used to display specialized cards such as the alarm or weather cards.
 
-#### 5.1 Views
-
-- Navigate to your `/config/dashboard/quick_look_mobile/views` folder.
-- Each file inside this `views` folder corresponds to a different view on your dashboard. For instance, `1.1_home.yaml` corresponds to your home view, `2.1_security_access.yaml` corresponds to your security access view, and so forth.
-- Each view has sections for the header, subheader, main title, main and footer spaces.
-
-#### 5.2 Header
-
-- The header contains five main categories: `security`, `air`, `light`, `media`, and `devices`. Each of these categories leads to a different view.
-- If none is selected, `home` view is selected. You can also navigate back to it by clicking on an active view.
-- Each of these categories further has two subcategories. `Security` includes `access` and `video`, `air` includes `heating` and `cooling`, `light` includes `bulbs` and `covers`, `media` includes `music` and `TV`, and `devices` includes `rooms` and `favorites`.
-- Additionally, there is a special `family` category which can be accessed through the upper left person icon.
-- The header is designed for two main purposes: 
-  1) allow for rapid navigation through these views 
-  2) provide useful status information by changing its color and icon based on 'template sensors' (see [7. Customize Template Sensors](#7-customize-template-sensors)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems.
-
-#### 5.3 Translations
-- Subheader, Main and Footer Titles can easily be changed in their respective view yaml files where `#can be changed` is mentioned.
-- If you need to translate Header titles or something inside a card like the weather card, you'll have to modify the respective templates yaml files located in `/config/dashboards/quick_look_mobile/templates/`.
+### 6. Translations
+- Subheader, Main and Footer Titles can easily be changed or translated in their respective view yaml files located in `/config/dashboards/quick_look_mobile/views/` where `#can be changed` is mentioned.
+- If you need to translate Header titles or something inside a card (like the weather card) that can't be done through its view file, you'll have to modify its respective template yaml file located in `/config/dashboards/quick_look_mobile/templates/`.
 
 
-### 6. Add Your Entities
+### 7. Add Your Entities
 
 - Open the file corresponding to the view you want add entities to. eg open the `3.1_air_heating.yaml` file to add your climate and temperature sensors
 - To avoid disrupting the setup, only modify the lines where it is explicitly mentioned ```#can be changed, #required or #optional``` at the end. These lines have been marked for easy and safe modification.
@@ -280,7 +296,7 @@ sensor:
 - Refresh your dashboard to see the changes by clicking the three dots in the upper-right corner of the Home Assistant interface.
 - Repeat the above steps to all your views.
 
-### 7. Customize Template Sensors
+### 8. Customize Template Sensors
 
 - Each sensor contains a list of entities that are intended to trigger the header for color change if at least one is active.
 - To modify or add entities to a template sensor, open the corresponding file and adjust the entity list.
@@ -289,7 +305,7 @@ sensor:
 - Dont't put a comma after the last entity
 - After modification, remember to (quick) restart your Home Assistant for the yaml changes to take effect.
 
-### 8. Hide the Native Header (Optional)
+### 9. Hide the Native Header (Optional)
 
 - To improve the aesthetics of the dashboard, you may want to hide the native upper horizontal header.
 - Open the browser mod integration settings.
