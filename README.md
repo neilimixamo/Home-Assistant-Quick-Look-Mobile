@@ -267,7 +267,8 @@ sensor:
   2) provide useful status information by changing its color and icon based on 'template sensors' (see [7. Customize Template Sensors](#7-customize-template-sensors)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems.
 
 #### 5.3 Translations
-Subheader, Main and Footer Titles can easily be changed in their respective view yaml files where '#can be changed' is mentioned. If you need to translate Header titles or something inside a card like the weather card, you'll have to modify the respective templates yaml files located in `/config/dashboards/quick_look_mobile/templates/`.
+- Subheader, Main and Footer Titles can easily be changed in their respective view yaml files where `#can be changed` is mentioned.
+- If you need to translate Header titles or something inside a card like the weather card, you'll have to modify the respective templates yaml files located in `/config/dashboards/quick_look_mobile/templates/`.
 
 
 ### 6. Add Your Entities
