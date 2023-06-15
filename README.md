@@ -78,27 +78,6 @@ sensor:
 
   - platform: template
     sensors:
-      some_climates_are_on:
-        friendly_name: "Some climates are on"
-        value_template: >-
-          {% set entity_ids = [
-            'climate.your_entity',
-            'climate.your_entity',
-            'climate.your_entity'
-            ] %}
-
-          {% set count = namespace(value=0) %}
-
-          {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'heat') or is_state(entity_id, 'on') %}
-              {% set count.value = count.value + 1 %}
-            {% endif %}
-          {% endfor %}
-
-          {{ 'off' if count.value == 0 else 'on' }}
-
-  - platform: template
-    sensors:
       some_contact_sensors_are_on:
         friendly_name: "Some Contact Sensors Are On"
         value_template: >-
@@ -122,23 +101,44 @@ sensor:
 
   - platform: template
     sensors:
-      some_devices_are_on:
-        friendly_name: "Some Devices Are On"
+      some_occupancy_sensors_are_on:
+        friendly_name: "Some Occupancy Sensors Are On"
         value_template: >-
           {% set entity_ids = [
-            'switch.your_entity',
-            'switch.your_entity',
-            'switch.your_entity',
-            'switch.your_entity',
-            'switch.your_entity',
-            'vacuum.your_entity',
-            'vacuum.your_entity'
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity',
+            'binary_sensor.your_entity'
             ] %}
 
           {% set count = namespace(value=0) %}
 
           {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'on') or is_state(entity_id, 'cleaning')%}
+            {% if is_state(entity_id, 'on') %}
+              {% set count.value = count.value + 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {{ 'off' if count.value == 0 else 'on' }}
+
+  - platform: template
+    sensors:
+      some_climates_are_on:
+        friendly_name: "Some climates are on"
+        value_template: >-
+          {% set entity_ids = [
+            'climate.your_entity',
+            'climate.your_entity',
+            'climate.your_entity'
+            ] %}
+
+          {% set count = namespace(value=0) %}
+
+          {% for entity_id in entity_ids %}
+            {% if is_state(entity_id, 'heat') or is_state(entity_id, 'on') %}
               {% set count.value = count.value + 1 %}
             {% endif %}
           {% endfor %}
@@ -216,23 +216,23 @@ sensor:
 
   - platform: template
     sensors:
-      some_occupancy_sensors_are_on:
-        friendly_name: "Some Occupancy Sensors Are On"
+      some_devices_are_on:
+        friendly_name: "Some Devices Are On"
         value_template: >-
           {% set entity_ids = [
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity'
+            'switch.your_entity',
+            'switch.your_entity',
+            'switch.your_entity',
+            'switch.your_entity',
+            'switch.your_entity',
+            'vacuum.your_entity',
+            'vacuum.your_entity'
             ] %}
 
           {% set count = namespace(value=0) %}
 
           {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'on') %}
+            {% if is_state(entity_id, 'on') or is_state(entity_id, 'cleaning')%}
               {% set count.value = count.value + 1 %}
             {% endif %}
           {% endfor %}
@@ -264,7 +264,11 @@ sensor:
 - Additionally, there is a special `family` category which can be accessed through the upper left person icon.
 - The header is designed for two main purposes: 
   1) allow for rapid navigation through these views 
-  2) provide useful status information by changing its color and icon based on 'template sensors' (see [7. Customize Template Sensors](#7-customize-template-sensors)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems. 
+  2) provide useful status information by changing its color and icon based on 'template sensors' (see [7. Customize Template Sensors](#7-customize-template-sensors)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems.
+
+#### 5.3 Translations
+Subheader, Main and Footer Titles can easily be changed in their respective view yaml files where '#can be changed' is mentioned. If you need to translate Header titles or something inside a card like the weather card, you'll have to modify the respective templates yaml files located in `/config/dashboards/quick_look_mobile/templates/`.
+
 
 ### 6. Add Your Entities
 
