@@ -4,8 +4,8 @@ Welcome to the Quick Look Mobile Dashboard for Home Assistant!
 
 - This dashboard offers a minimalist mobile interface for a simple home devices management. 
 - It is designed to
-  - Deliver crucial information at a glance, such as "Is there someone in the house?", "Is there an open door or window?", or "Did I forget to turn a light off ?"
-  - Facilitate rapid navigation to any desired device in just two clicks, while still maintaining complete access to all of their controls.
+  - Facilitate rapid navigation to any desired device in just two clicks, while still maintaining complete access to all of their controls.   
+  - Deliver crucial information at a glance, such as "Is there someone in the house?", "Is there an open door or window?", or "Did some lightbulbs remain on ?"
 
 ## Demo
 Here is a video presentation of the dashboard :
@@ -293,19 +293,19 @@ sensor:
 
 - Open the file corresponding to the view you want add entities to. eg open the `3.1_air_heating.yaml` file to add your climate and temperature sensors.
 - To avoid disrupting the setup, only modify the lines where it is explicitly mentioned ```#can be changed, #required or #optional``` at the end. These lines have been marked for easy and safe modification.
-- Navigate to the "main" section in the view file. By default, you'll find 16 empty entities but you can also add or delete some blocks, based on your needs.
-- Each entity block requires certain variables to be defined. For a climate entity, you'll define `entity` and `name`. `Entity` is the entity_id of your device (e.g., `climate.kitchen`), and `name` is optional; it's the name that will be displayed on the dashboard. If no name is given, the friendly name of the entity will be used.
+- Navigate to the [Main](#3-main) section in the view file. By default, you'll find 16 empty entities but you can also add or delete some, depending on your needs.
+- Each entity block requires certain variables to be defined. For a climate entity, you'll define `entity` and `name`. `Entity` is the entity_id of your device (e.g., `climate.kitchen`), and `name`, which is optional, is the name that will be displayed in the card. If no name is given, the friendly name of the entity will be used.
 - Refresh your dashboard to see the changes by clicking the three dots in the upper-right corner of the Home Assistant interface.
 - Repeat the above steps to all your views.
 
 ## Customize Template Sensors
 
-- Each sensor contains a list of entities that are intended to trigger the header for color change if at least one is active.
-- To modify or add entities to a template sensor, open the corresponding file and adjust the entity list.
-- Template sensors are located at `/config/entities/sensors/quick_look_mobile` or at `/config/configuration.yaml` depending on your [configuration.yaml setup](#3-setup-configurationyaml).
-- Entities should match those you chose for the corresponding view e.g `some_lights_are_on.yaml` template sensor should match the entities you selected first in '`4.1_light_bulbs.yaml` view.
-- Dont't put a comma after the last entity.
-- After modification, remember to (quick) restart your Home Assistant for the yaml changes to take effect.
+- Template Sensors are lists used to monitor the states of specific sets of entities.
+- They are intended to trigger [Header](#1-header) colors and/or icons changes, as soon as any of these entities becomes active.
+- They can be found and modified at `/config/entities/sensors/quick_look_mobile/` or at `/config/configuration.yaml` depending on your [configuration.yaml setup](#3-setup-configurationyaml).
+- Make sure that the entities being monitored in the templates correspond to those already configured in their respective views, as specified in step [Add your Entities](#add-your-entities)
+- Avoid placing a comma after the last entity in the final position of the list.
+- Restart your Home Assistant for the YAML changes to take effect.
 
 ##  Translations (Optional)
 
