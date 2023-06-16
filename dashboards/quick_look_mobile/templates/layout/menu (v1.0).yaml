@@ -114,7 +114,7 @@ menu:
               action: navigate
               navigation_path: notifications
           - type: custom:button-card # SETTINGS
-            name: Param.
+            name: Settings
             entity: 
             icon: mdi:cog-outline
             size: 37%
