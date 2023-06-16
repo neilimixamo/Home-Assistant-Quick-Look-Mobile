@@ -246,7 +246,7 @@ sensor:
 ```
 </details>
 
-### 4. Reboot and Apply Theme
+### 4. Reboot and Apply (Light) Theme
 
 - Restart your Home Assistant for the changes to take effect.
 - Once rebooted, apply the 'Quick Look Mobile' theme and select 'light mode'.
@@ -319,8 +319,8 @@ sensor:
 - Select 'Hide Header'.
 - Choose the mobile device on which you wish to hide the header. The dashboard will look cleaner on mobile without it.
 
-## Known Issues and Fixes
-
+## Known Issues
+- There is no dark theme at the moment
 - If the native header is hidden, the lateral menu can't be accessed from the views. To access it again, press the 'dev' button located at the bottom of the screen.
 - Currently, the 'assist' icon located at the upper right of the dashboard isn't functional as the way to trigger this dialog keeps unclear for me.
 
