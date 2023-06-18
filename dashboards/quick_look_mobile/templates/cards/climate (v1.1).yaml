@@ -1,6 +1,7 @@
 climate:
   variables:
     entity:
+    input_select:
     name:
     label: 
   show_icon: false
@@ -27,7 +28,16 @@ climate:
         type: horizontal-stack
         cards:
           - type: custom:button-card # ICON
-            entity: '[[[ return variables.entity ]]]'
+            entity:  |
+              [[[
+                if (variables.input_select ) {
+                  return variables.input_select;
+                } else if (variables.entity ) {
+                  return variables.entity;
+                } else {
+                    return 'null';
+                }
+              ]]]
             show_icon: |
               [[[
                 if (variables.entity) {
@@ -104,17 +114,24 @@ climate:
                     ]]]
                 - font-size: 14px
                 - font-weight: 800
-            tap_action:
-              action: call-service
-              service:  |
-                [[[
-                  if (variables.entity && states[variables.entity].state == 'off') {
-                  return 'climate.turn_on';
-                  } 
-                  return 'climate.turn_off';
-                ]]]
-              service_data:
-                entity_id: '[[[ return variables.entity ]]]'
+            tap_action: |
+              [[[
+                if (variables.input_select) {
+                  return {
+                    action: 'more-info'
+                  };
+                } else {
+                  return {
+                    action: 'call-service',
+                    service: variables.entity && states[variables.entity].state == 'off'
+                            ? 'climate.turn_on'
+                            : 'climate.turn_off',
+                    service_data: {
+                      entity_id: variables.entity
+                    }
+                  };
+                }
+              ]]]
           - type: custom:button-card # NAME
             entity: '[[[ return variables.entity ]]]'
             name:   |
