@@ -1,6 +1,7 @@
 fan:
   variables:
     entity:
+    input_select: 
     name:
     label_on: 'Active'
     label_off: 'Inactive'
