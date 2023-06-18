@@ -6,7 +6,8 @@ header:
     some_climates_are_on: sensor.some_climates_are_on
     some_fans_are_on: sensor.some_fans_are_on
     some_lights_are_on: sensor.some_lights_are_on
-    some_media_players_are_on: sensor.some_media_players_are_on
+    some_speakers_are_on: sensor.some_speakers_are_on
+    some_tvs_are_on: sensor.some_tvs_are_on
     some_devices_are_on: sensor.some_devices_are_on
   triggers_update: all
   styles:
@@ -248,28 +249,39 @@ header:
           - type: custom:button-card # MEDIA
             template: header_category
             icon:  |
-              [[[ var media = states['sensor.some_media_players_are_on'].state;
-                  if (media == 'on') {
+              [[[ var speaker = states['sensor.some_speakers_are_on'].state;
+                  var tv = states['sensor.some_tvs_are_on'].state;
+                  if (speaker == 'on' || tv == 'on') {
                     return 'mdi:pause';
                   } else {
                     return 'mdi:play';
                   }
               ]]]
             size:  |
-              [[[ var media = states['sensor.some_media_players_are_on'].state;
-                  if (media == 'on') {
+              [[[ var speaker = states['sensor.some_speakers_are_on'].state;
+                  var tv = states['sensor.some_tvs_are_on'].state;
+                  if (speaker == 'on' || tv == 'on') {
                     return '50%';
                   } else {
                     return '60%';
                   }
               ]]]
             variables:
-              on_sensor_1: sensor.some_media_players_are_on
+              on_sensor_1: sensor.some_speakers_are_on
+              on_sensor_2: sensor.some_tvs_are_on
               on_background_color: '#e0f5dd'
               on_border_color: '#7fa585'
               header_view: 'media'
               view: '[[[ return variables.view ]]]'
-              default_path: 'media_music'
+              default_path:  |
+                [[[ if (variables.some_speakers_are_on && states[variables.some_speakers_are_on].state == 'on') {
+                      return 'media_music';
+                    } else if (variables.some_tvs_are_on && states[variables.some_tvs_are_on].state == 'on') {
+                      return 'media_tv';
+                    } else {
+                      return 'media_music';
+                    }
+                ]]]
           - type: custom:button-card # DEVICES
             template: header_category
             icon: mdi:devices
