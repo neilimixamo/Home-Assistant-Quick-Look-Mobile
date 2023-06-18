@@ -79,7 +79,7 @@ climate:
                 - width: 6vh
                 - background-color: |
                     [[[
-                      if (variables.entity && (states[variables.entity].state === 'heat' || states[variables.entity].state === 'cleaning')) {
+                      if (variables.entity && (states[variables.entity].state === 'heat')) {
                         return '#FFBB6E';
                     } else {
                         return '#D9D6D6';
@@ -96,7 +96,7 @@ climate:
               name:
                 - color: |
                     [[[
-                      if (variables.entity && (states[variables.entity].state === 'heat' || states[variables.entity].state === 'cleaning')) {
+                      if (variables.entity && (states[variables.entity].state === 'heat')) {
                         return '#FFF6DF';
                     } else {
                         return '#FAFBFF';
@@ -129,24 +129,22 @@ climate:
               ]]]
             label:  |
               [[[
-                if (variables.entity) {
-                  if (variables.label) {
-                    return variables.label;
-                  } else {
-                      let temperature;
-                      if (states[variables.entity].attributes.current_temperature) {
-                          temperature = states[variables.entity].attributes.current_temperature;
-                      } else if (states[variables.entity].attributes.device_class === 'temperature' ) {
-                          temperature = states[variables.entity].state;
-                            } if (temperature) {
-                              return parseFloat(temperature).toFixed(1) + ' °C';
-                      } else {
-                        return 'Unavailable';
-                      }
-                  }
-                } else {
-                  return "empty";
+                if (!variables.entity) {
+                  return "Label";
                 }
+                
+                if (variables.label) {
+                  return variables.label;
+                } 
+                
+                const entityState = states[variables.entity];
+
+                let temperature = entityState.attributes.current_temperature 
+                                  || entityState.attributes.device_class === 'temperature' && entityState.state;
+
+                return temperature 
+                      ? parseFloat(temperature).toFixed(1) + ' °C' 
+                      : 'Unavailable';
               ]]]
             show_icon: false
             show_label: true
