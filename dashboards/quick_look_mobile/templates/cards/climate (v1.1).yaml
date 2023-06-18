@@ -52,7 +52,7 @@ climate:
               ]]]
             icon:  |
               [[[                  
-                if (variables.entity) {
+                if (variables.entity || variables.input_select) {
                   return 'mdi:thermometer';
                 } else {
                   return 'mdi:help';
