@@ -4,8 +4,8 @@ sensors:
     friendly_name: "Some TVs Are On"
     value_template: >-
       {% set entity_ids = [
-        'remote.tv',
-        'media_player.tv'
+        'remote.your_entity',
+        'media_player.your_entity'
         ] %}
 
       {% set count = namespace(value=0) %}
