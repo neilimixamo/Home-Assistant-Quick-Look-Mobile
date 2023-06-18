@@ -1,6 +1,7 @@
 media:
   variables:
     entity:
+    remote: 
     name:
     on_state: 
       - 'on'
@@ -27,8 +28,10 @@ media:
         - box-shadow: none
         - background-color:  |
             [[[
-              if (variables.entity && variables.on_state.includes(states[variables.entity].state)) {
-                return '#e0f5dd';
+              if (variables.remote && (states[variables.remote].state === 'on')) {
+                  return '#e0f5dd';
+              } else if (variables.entity && variables.on_state.includes(states[variables.entity].state)) {
+                  return '#e0f5dd';
               } else {
                   return '#ECEFF6';
               }
@@ -41,20 +44,27 @@ media:
           - type: custom:button-card # ICON
             entity:  |
               [[[
-                if (variables.entity ) {
-                  return variables.entity;
+                if (variables.remote ) {
+                  return variables.remote;
               } else {
                   return 'null';
               }
               ]]]
             show_name: false
+            show_entity_picture: |
+              [[[
+                if (variables.entity ) {
+                  return true;
+                } else {
+                  return false;
+                }
+              ]]]
             icon: |
               [[[
-                if (variables.entity) {if (variables.icon ) {
-                    return variables.icon;
-                  } else {
-                    return '';
-                  }
+                if (variables.icon ) {
+                  return variables.icon;
+                } else if (variables.entity) {
+                    return 'mdi:cast';
                 } else {
                   return 'mdi:help';
                 }
@@ -66,7 +76,9 @@ media:
                 - width: 6vh
                 - background-color: |
                     [[[
-                      if (variables.entity && variables.on_state.includes(states[variables.entity].state)) {
+                      if (variables.remote && (states[variables.remote].state === 'on')) {
+                          return '#A1C3A6';
+                      } else if (variables.entity && variables.on_state.includes(states[variables.entity].state)) {
                           return '#A1C3A6';
                       } else {
                           return '#D9D6D6';
@@ -87,6 +99,14 @@ media:
                           return '#FAFBFF';
                       }
                     ]]]
+              img_cell:
+                - height: 6.4vh
+                - width: 6.4h
+                - top: -0.3vh
+              entity_picture:
+                - height: 6.4vh
+                - width: 6.4vh
+                - border-radius: 50%
             tap_action: |
               [[[
                 if (variables.icon_tap_action) {
@@ -109,21 +129,23 @@ media:
                     return 'Name';
                 }
               ]]]
-            label:  |
-              [[[
-                if (variables.entity) {
-                  var state = states[variables.entity].state;
-                  if (variables.label_on && variables.on_state.includes(state)) {
-                    return variables.label_on;
-                  } else if (variables.label_off && variables.off_state.includes(state)) {
-                    return variables.label_off;
-                  } else {
-                    return states[variables.entity].state.charAt(0).toUpperCase() + state.slice(1);
+            label: |
+                [[[
+                  let state, label;
+                  if (variables.remote) {
+                    state = states[variables.remote].state;
+                    label = (variables.label_on && state === 'on') ? variables.label_on :
+                            (variables.label_off && state === 'off') ? variables.label_off : null;
+                  } else if (variables.entity) {
+                    state = states[variables.entity].state;
+                    label = (variables.label_on && variables.on_state.includes(state)) ? variables.label_on :
+                            (variables.label_off && variables.off_state.includes(state)) ? variables.label_off : null;
                   }
-                } else {
-                  return "Label"
-                }
-              ]]]
+                  if (!label && state) {
+                    label = state.charAt(0).toUpperCase() + state.slice(1);
+                  }
+                  return label || 'Label';
+                ]]]
             show_icon: false
             show_label: true
             styles:
