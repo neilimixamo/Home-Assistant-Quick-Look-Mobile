@@ -317,7 +317,7 @@ sensor:
 - To improve the aesthetics of the dashboard, you may want to hide the native upper horizontal header.
 - Open the browser mod integration settings.
 - Select 'Hide Header'.
-- Choose the mobile device on which you wish to hide the header. To successfully hide it on local and external browsing, it’s important to consider your phone as two separate devices with their own ID, each needing to be identified in Browser Mod.
+- Choose the mobile device on which you wish to hide the header. To successfully hide it on local and external browsing, it’s important to consider your phone as two separate devices with their own Browser ID, each needing to be identified in Browser Mod.
 
 ## Known Issues
 - There is no dark theme at the moment
