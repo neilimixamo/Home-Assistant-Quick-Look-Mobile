@@ -76,9 +76,9 @@ fan:
                   return true;
                 }
               ]]]
-            icon:   |
+            icon: |
               [[[                  
-                if (variables.entity) {
+                if (variables.entity || variables.input_select) {
                   return 'mdi:fan';
                 } else {
                   return 'mdi:help';
