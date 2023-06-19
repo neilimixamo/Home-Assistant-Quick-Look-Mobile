@@ -170,5 +170,11 @@ media:
                 - justify-self: start
                 - padding-left: 4vw
                 - padding-top: 0.5vh
-            tap_action:
-              action: more-info
+            tap_action: |
+                [[[
+                  if (variables.name_tap_action) {
+                    return variables.name_tap_action;
+                  } else {
+                    return { action: 'more-info' };
+                  }
+                ]]]
