@@ -1,7 +1,6 @@
 climate:
   variables:
     entity:
-    input_select:
     name:
     label: 
   show_icon: false
@@ -14,10 +13,31 @@ climate:
         - cursor: none
         - --mdc-ripple-press-opacity: 0
         - box-shadow: none
-        - background-color:  |
+        - background-color: |
             [[[
-              if (variables.entity && (states[variables.entity].state === 'heat' )) {
+              if (!variables.entity) {
+                return '#ECEFF6';
+              }
+              
+              const state = states[variables.entity].state.toLowerCase();
+              const attributes = states[variables.entity].attributes;
+              const temperature = parseFloat(attributes.temperature);
+              const currentTemperature = parseFloat(attributes.current_temperature);
+
+              if (state === 'auto' || (state.includes('heat') && state.includes('cool'))) {
+                if (temperature > currentTemperature) {
+                  return '#FEE5C9';
+                } else if (temperature < currentTemperature) {
+                  return '#E5E9FF';
+                } else {
+                  return '#ECEFF6';
+                }
+              } else if (state.includes('heat')) {
                 return '#FEE5C9';
+              } else if (state.includes('cool') || state.includes('fan')) {
+                return '#E5E9FF';
+              } else if (state.includes('dry')) {
+                return '#FCEDD1';
               } else {
                 return '#ECEFF6';
               }
@@ -41,10 +61,13 @@ climate:
             show_icon: |
               [[[
                 if (variables.entity) {
-                  if (states[variables.entity].state === 'heat' ) {
-                    return false;
+                  const state = states[variables.entity].state;
+                  const isFloat = !isNaN(state) && !isNaN(parseFloat(state));
+                  
+                  if (state !== 'off' && !isFloat) {
+                      return false;
                   } else {
-                    return true;
+                      return true;
                   }
                 } else {
                   return true;
@@ -61,20 +84,23 @@ climate:
             size: 50%
             show_name: |
               [[[
-                if (variables.entity) {
-                  if (states[variables.entity].state === 'heat' ) {
-                    return true;
+                  if (variables.entity) {
+                      const state = states[variables.entity].state;
+                      const isFloat = !isNaN(state) && !isNaN(parseFloat(state));
+                      
+                      if (state !== 'off' && !isFloat) {
+                          return true;
+                      } else {
+                          return false;
+                      }
                   } else {
-                    return false;
+                      return false;
                   }
-                } else {
-                  return false;
-                }
               ]]]
             name: |
               [[[
                 if (variables.entity) {
-                  if (states[variables.entity].state === 'heat' ) {
+                  if (states[variables.entity].state !== 'off' ) {
                     return states[variables.entity].attributes.temperature + '°';
                   } else {
                     return '';
@@ -89,11 +115,32 @@ climate:
                 - width: 6vh
                 - background-color: |
                     [[[
-                      if (variables.entity && (states[variables.entity].state === 'heat')) {
-                        return '#FFBB6E';
-                    } else {
+                      if (!variables.entity) {
                         return '#D9D6D6';
-                    }
+                      }
+                      
+                      const state = states[variables.entity].state.toLowerCase();
+                      const attributes = states[variables.entity].attributes;
+                      const temperature = parseFloat(attributes.temperature);
+                      const currentTemperature = parseFloat(attributes.current_temperature);
+
+                      if (state === 'auto' || (state.includes('heat') && state.includes('cool'))) {
+                        if (temperature > currentTemperature) {
+                          return '#FFBB6E';
+                        } else if (temperature < currentTemperature) {
+                          return '#8AA3D8';
+                        } else {
+                          return '#D9D6D6';
+                        }
+                      } else if (state.includes('heat')) {
+                        return '#FFBB6E';
+                      } else if (state.includes('cool') || state.includes('fan')) {
+                        return '#8AA3D8';
+                      } else if (state.includes('dry')) {
+                        return '#D3C09D';
+                      } else {
+                        return '#D9D6D6';
+                      }
                     ]]]
                 - border-radius: 50%
                 - box-shadow: none
@@ -104,14 +151,7 @@ climate:
               icon:
                 - color: '#F3F6FD'
               name:
-                - color: |
-                    [[[
-                      if (variables.entity && (states[variables.entity].state === 'heat')) {
-                        return '#FFF6DF';
-                    } else {
-                        return '#FAFBFF';
-                    }
-                    ]]]
+                - color: '#F3F6FD'
                 - font-size: 14px
                 - font-weight: 800
             tap_action: |
