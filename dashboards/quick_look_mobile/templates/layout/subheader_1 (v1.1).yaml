@@ -38,6 +38,7 @@ subheader_1:
                 - height: 5vh
                 - width: auto
                 - background-color: transparent
+                - border-radius: 0px
                 - box-shadow: none
                 - margin-top: 0.5vh
                 - cursor: none
@@ -65,6 +66,7 @@ subheader_1:
                 - height: 5vh
                 - width: auto
                 - background-color: transparent
+                - border-radius: 0px
                 - box-shadow: none
                 - margin-top: 0.5vh
                 - cursor: none
