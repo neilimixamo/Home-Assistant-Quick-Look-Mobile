@@ -55,81 +55,97 @@ cards:
             template: climate
             variables:
               entity: #required climate.entity or sensor.temperature_entity
+              temp_unit: #optional, celsius by default but can be changed to fahrenheit 
               name: #optional
           - type: custom:button-card # ENTITY 02
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 03
             template: climate
             variables:
-              entity: 
+              entity
+              temp_unit:: 
               name:
           - type: custom:button-card # ENTITY 04
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 05
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 06
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 07
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 08
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 09
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 10
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 11
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 12
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 13
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 14
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 15
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
           - type: custom:button-card # ENTITY 16
             template: climate
             variables:
-              entity: 
+              entity:
+              temp_unit: 
               name:
   - type: custom:button-card # FOOTER TITLE
     view_layout:
