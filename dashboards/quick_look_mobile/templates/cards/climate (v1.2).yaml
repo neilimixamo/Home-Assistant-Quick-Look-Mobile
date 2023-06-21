@@ -1,6 +1,7 @@
 climate:
   variables:
     entity:
+    temp_unit: #celsius #fahrenheit 
     name:
     label: 
   show_icon: false
@@ -199,9 +200,14 @@ climate:
                 let temperature = entityState.attributes.current_temperature 
                                   || entityState.attributes.device_class === 'temperature' && entityState.state;
 
-                return temperature 
-                      ? parseFloat(temperature).toFixed(1) + ' °C' 
-                      : 'Unavailable';
+                if (!temperature) {
+                  return 'Unavailable';
+                }
+
+                const unit = variables.temp_unit || 'celsius';
+                const unitSymbol = unit === 'fahrenheit' ? '°F' : '°C';
+
+                return parseFloat(temperature).toFixed(1) + ' ' + unitSymbol;
               ]]]
             show_icon: false
             show_label: true
