@@ -67,7 +67,7 @@ cards:
             template: climate
             variables:
               entity
-              temp_unit:: 
+              temp_unit:
               name:
           - type: custom:button-card # ENTITY 04
             template: climate
