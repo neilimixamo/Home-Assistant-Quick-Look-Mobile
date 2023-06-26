@@ -1,0 +1,126 @@
+title: lights_covers_room1 #change "room1" by your room name
+path: light_covers_room1 #change "room1" by tour room name
+icon: mdi:roller-shade
+theme: Quick Look Mobile
+background: 'white'
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: 19.5vh 5.5vh 4.6vh 47.4vh 4vh 10vh 9vh
+  grid-template-areas: |
+    "header"
+    "subheader"
+    "main_title"
+    "main"
+    "footer_title"
+    "footer"
+    "menu"
+cards:
+  - type: custom:button-card # HEADER
+    view_layout:
+      grid-area: header
+    template: header
+    variables:
+      view: light  
+  - type: custom:button-card # SUBHEADER
+    view_layout:
+      grid-area: subheader
+    template: subheader_2
+    variables:
+      subheader_1_title: Bulbs #can be changed
+      subheader_1_path: light_bulbs
+      subheader_2_title: Covers #can be changed
+      subheader_2_path: light_covers
+  - type: custom:button-card # MAIN TITLE
+    view_layout:
+      grid-area: main_title
+    template: title_sticky
+    variables:
+      title: Room 1 #can be changed
+  - type: custom:button-card # CHEVRON-LEFT
+    view_layout:
+      grid-area: main_title
+    icon: mdi:chevron-left
+    color: var(--chevron-color)
+    size: 65%
+    styles:
+      card:
+        - background: transparent
+        - box-shadow: none
+        - border-radius: 50%
+        - height: 4.6vh
+        - width: 4.6vh
+        - left: 82vw
+        - bottom: 0.3vh
+    tap_action:
+      action: navigate
+      navigation_path: 'light_covers'
+  - type: custom:layout-card # MAIN
+    view_layout:
+      grid-area: main
+    layout_type: custom:vertical-layout
+    layout:
+      height: 47.4vh
+      margin: 0vh 0vh 0vh
+      padding: 0vh 0.4vh
+    cards:
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # ENTITY 01
+            template: cover
+            variables:
+              entity: #requires cover.entity_id
+              name: #optional
+          - type: custom:button-card # ENTITY 02
+            template: cover
+            variables:
+              entity:
+              name:
+          - type: custom:button-card # ENTITY 03
+            template: cover
+            variables:
+              entity:
+              name:
+          - type: custom:button-card # ENTITY 04
+            template: cover
+            variables:
+              entity:
+              name:
+  - type: custom:button-card # FOOTER TITLE
+    view_layout:
+      grid-area: footer_title
+    template: title_sticky
+    variables:
+      title: 'Scenes' #can be changed
+  - type: custom:button-card # FOOTER
+    view_layout:
+      grid-area: footer
+    template: scenes
+    variables:
+      scene1_entity: #optional scene.entity
+      scene1_name: #optional
+      scene1_background_color: #optional
+      scene1_icon_color: #optional
+      scene2_entity: #optional scene.entity
+      scene2_name: #optional
+      scene2_background_color: #optional
+      scene2_icon_color: #optional
+      scene3_entity: #optional scene.entity
+      scene3_name:  #optional
+      scene3_background_color: #optional
+      scene3_icon_color: #optional
+      scene4_entity: #optional scene.entity
+      scene4_name: #optional
+      scene4_background_color: #optional
+      scene4_icon_color: #optional
+      scene5_entity: #optional scene.entity
+      scene5_name: #optional
+      scene5_background_color: #optional
+      scene5_icon_color: #optional
+  - type: custom:button-card # MENU
+    view_layout:
+      grid-area: menu
+    template: menu
