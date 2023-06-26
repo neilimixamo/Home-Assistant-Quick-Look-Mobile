@@ -63,7 +63,7 @@ cover_expandable:
                 - border-radius: 50%
                 - box-shadow: none
                 - top: 1.6vh
-                - left: 4vw
+                - left: 3.8vw
                 - cursor: none 
                 - --mdc-ripple-press-opacity: 0 
               icon:
@@ -120,7 +120,7 @@ cover_expandable:
                 - border-radius: 0%
                 - box-shadow: none
                 - top: -0.85vh
-                - left: 1.7vw
+                - left: 1.6vw
                 - cursor: none 
                 - --mdc-ripple-press-opacity: 0 
               name: 
