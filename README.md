@@ -1,3 +1,5 @@
+<a href="https://www.buymeacoffee.com/neilimixamo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 # Home Assistant - Quick Look Mobile
 
 Welcome to the Quick Look Mobile Dashboard for Home Assistant! 
