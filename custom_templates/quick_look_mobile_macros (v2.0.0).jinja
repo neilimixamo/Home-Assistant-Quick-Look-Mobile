@@ -3,7 +3,7 @@
 # This file consists of two parts.
 # Only first part requires a modification from you. 
 # To prioritize simplicity and compatibility, I have chosen to individually list all the entities to be monitored in the Header.
-# Replace every "your_entity_id" with your personal entities IDs
+# Replace every "your_entity" with your personal entities IDs
 # The second part may be changed but is intended for advanced users who wish to create smart rules for entities inclusion or exclusion.
 #
 ####################################################################################################################################
@@ -18,39 +18,52 @@
 
 # ALARMS :
 {% set alarm_entity_ids = [
-  'alarm_control_panel.alarmo',
+  'alarm_control_panel.your_entity',
   'alarm_control_panel.your_entity',
   'alarm_control_panel.your_entity',
 ] %}
-
 
 # DOORS & WINDOWS :
 {% set contact_entity_ids = [
-  'binary_sensor.hall_door_contact', 
-  'binary_sensor.lounge_window_contact',
-  'binary_sensor.kitchen_window_contact',
-  'binary_sensor.office_window_contact',
-  'binary_sensor.bedroom_window_contact',
+  'binary_sensor.your_entity', 
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
 ] %}
-
 
 # PRESENCES:        
 {% set occupancy_entity_ids = [
-  'binary_sensor.group_hall_presence',
-  'binary_sensor.group_kitchen_presence',
-  'binary_sensor.group_kitchen_presence',
-  'binary_sensor.office_motion_occupancy',
-  'binary_sensor.group_bedroom_presence',
-  'binary_sensor.toilet_motion_occupancy',
-  'binary_sensor.group_bathroom_presence',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
+  'binary_sensor.your_entity',
 ] %}
-
 
 # LOCKS:        
 {% set locks_entity_ids = [
-  'lock.fake',
+  'lock.your_entity',
+  'lock.your_entity',
+  'lock.your_entity',
+  'lock.your_entity',
+  'lock.your_entity',
+  'lock.your_entity',
+  'lock.your_entity',
+  'lock.your_entity',
+  'lock.your_entity',
+  'lock.your_entity',
 ] %}
-
 
 ############################
 #
@@ -58,24 +71,33 @@
 #
 ############################
 
-
 # CLIMATES :
-  {% set climate_entity_ids = [
-    'climate.lounge',
-    'climate.kitchen',
-    'climate.bedroom',
-    'climate.lr_ac_mode',
-    'climate.lounge_ac',
-  ] %}
-
+{% set climate_entity_ids = [
+  'climate.your_entity',
+  'climate.your_entity',
+  'climate.your_entity',
+  'climate.your_entity',
+  'climate.your_entity',
+  'climate.your_entity',
+  'climate.your_entity',
+  'climate.your_entity',
+  'climate.your_entity',
+  'climate.your_entity',
+] %}
 
 # FANS :
 {% set fan_entity_ids = [
-  'fan.lounge',
-  'fan.air_purifier',
-  'fan.bedroom',
+  'fan.your_entity',
+  'fan.your_entity',
+  'fan.your_entity',
+  'fan.your_entity',
+  'fan.your_entity',
+  'fan.your_entity',
+  'fan.your_entity',
+  'fan.your_entity',
+  'fan.your_entity',
+  'fan.your_entity',
 ] %}
-
 
 ############################
 #
@@ -85,35 +107,31 @@
 
 # LIGHTBULBS :
 {% set light_entity_ids = [
-  'light.hall_notifier',
-  'light.group_hall_first',
-  'light.group_hall_second',
-  'light.group_lounge_table',
-  'light.group_lounge_deco',  
-  'light.lounge_park',
-  'light.lounge_bar',
-  'light.lounge_sofa',
-  'light.lounge_fan',
-  'light.group_lounge_spots',
-  'light.kitchen_ceiling',
-  'light.office_ceiling_1',
-  'light.group_bedroom_ceiling',
-  'light.group_bedroom_sides',
-  'light.group_closet_ceiling',
-  'light.closet_ceiling_cloud',
-  'light.toilet',
-  'light.group_bathroom_ceiling',
-  'light.bathroom_mirror',
+  'light.your_entity',
+  'light.your_entity',
+  'light.your_entity',
+  'light.your_entity', 
+  'light.your_entity',  
+  'light.your_entity',
+  'light.your_entity',
+  'light.your_entity',
+  'light.your_entity',
+  'light.your_entity',
 ] %}
 
 # COVERS :
 {% set cover_entity_ids = [
-  'cover.lounge',
-  'cover.kitchen',
-  'cover.office',
-  'cover.bedroom',
+  'cover.your_entity',
+  'cover.your_entity',
+  'cover.your_entity',
+  'cover.your_entity',
+  'cover.your_entity',
+  'cover.your_entity',
+  'cover.your_entity',
+  'cover.your_entity',
+  'cover.your_entity',
+  'cover.your_entity',
 ] %}
-
 
 ############################
 #
@@ -123,24 +141,23 @@
 
 # AUDIO PLAYERS :
 {% set audio_player_entity_ids = [
-  'media_player.group_all',
-  'media_player.lounge_nest_home_max',
-  'media_player.lounge_nest_hub_max',
-  'media_player.kitchen_nest_audio',
-  'media_player.office_nest_mini',
-  'media_player.bedroom_clock_left',
-  'media_player.bedroom_clock_right',
-  'media_player.closet_nest_mini',
-  'media_player.bathroom_nest_audio',
+  'media_player.your_entity',
+  'media_player.your_entity',
+  'media_player.your_entity',
+  'media_player.your_entity',
+  'media_player.your_entity',
+  'media_player.your_entity',
+  'media_player.your_entity',
+  'media_player.your_entity',
+  'media_player.your_entity',
+  'media_player.your_entity',
 ] %}
-
 
 # VIDEO PLAYERS :
 {% set video_player_entity_ids = [
-  'media_player.tv',
-  'media_player.jellyfin_lili_tv',
+  'media_player.your_entity',
+  'media_player.your_entity',
 ] %}
-
 
 ############################
 #
@@ -150,19 +167,19 @@
 
 # DEVICES (SWITCHES, VACUUMS, SENSORS, etc) :
 {% set device_entity_ids = [
-  'switch.lounge_fireplace',
-  'switch.rituals',
-  'switch.kitchen_cooking_plate',
-  'switch.shelly_1pm_oven',
-  'switch.shelly_1pm_dryer',
-  'vacuum.dreame_d9_2',
-  'switch.shelly_plug_milk_warmer',
-  'vacuum.cat_litter',
-  'switch.shelly_plug_washing_machine',
-  'switch.shelly_3em',
-  'switch.shelly_4pm_1',
-  'switch.shelly_4pm_2',
-  'switch.shelly_4pm_3',
+  'vacuum.your_entity',
+  'vacuum.your_entity',
+  'vacuum.your_entity',
+  'switch.your_entity',
+  'switch.your_entity',
+  'switch.your_entity',
+  'switch.your_entity',
+  'vacuum.your_entity',
+  'switch.your_entity',
+  'switch.your_entity',
+  'switch.your_entity',
+  'switch.your_entity',
+  'switch.your_entity',
 ] %}
 
 
