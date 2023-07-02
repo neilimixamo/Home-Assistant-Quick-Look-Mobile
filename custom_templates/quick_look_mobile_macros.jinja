@@ -1,0 +1,335 @@
+#### PART 1 ########################################################################################################################
+#
+# This file consists of two parts.
+# Only first part requires a modification from you. 
+# To prioritize simplicity and compatibility, I have chosen to individually list all the entities to be monitored in the Header.
+# Replace every "your_entity_id" with your personal entities IDs
+# The second part may be changed but is intended for advanced users who wish to create smart rules for entities inclusion or exclusion.
+#
+####################################################################################################################################
+
+
+
+############################
+#
+# SECURITY MONITORING
+#
+############################
+
+# ALARMS :
+{% set alarm_entity_ids = [
+  'alarm_control_panel.alarmo',
+  'alarm_control_panel.your_entity',
+  'alarm_control_panel.your_entity',
+] %}
+
+
+# DOORS & WINDOWS :
+{% set contact_entity_ids = [
+  'binary_sensor.hall_door_contact', 
+  'binary_sensor.lounge_window_contact',
+  'binary_sensor.kitchen_window_contact',
+  'binary_sensor.office_window_contact',
+  'binary_sensor.bedroom_window_contact',
+] %}
+
+
+# PRESENCES:        
+{% set occupancy_entity_ids = [
+  'binary_sensor.group_hall_presence',
+  'binary_sensor.group_kitchen_presence',
+  'binary_sensor.group_kitchen_presence',
+  'binary_sensor.office_motion_occupancy',
+  'binary_sensor.group_bedroom_presence',
+  'binary_sensor.toilet_motion_occupancy',
+  'binary_sensor.group_bathroom_presence',
+] %}
+
+
+# LOCKS:        
+{% set locks_entity_ids = [
+  'lock.fake',
+] %}
+
+
+############################
+#
+# AIR MONITORING
+#
+############################
+
+
+# CLIMATES :
+  {% set climate_entity_ids = [
+    'climate.lounge',
+    'climate.kitchen',
+    'climate.bedroom',
+    'climate.lr_ac_mode',
+    'climate.lounge_ac',
+  ] %}
+
+
+# FANS :
+{% set fan_entity_ids = [
+  'fan.lounge',
+  'fan.air_purifier',
+  'fan.bedroom',
+] %}
+
+
+############################
+#
+# LIGHT
+#
+############################
+
+# LIGHTBULBS :
+{% set light_entity_ids = [
+  'light.hall_notifier',
+  'light.group_hall_first',
+  'light.group_hall_second',
+  'light.group_lounge_table',
+  'light.group_lounge_deco',  
+  'light.lounge_park',
+  'light.lounge_bar',
+  'light.lounge_sofa',
+  'light.lounge_fan',
+  'light.group_lounge_spots',
+  'light.kitchen_ceiling',
+  'light.office_ceiling_1',
+  'light.group_bedroom_ceiling',
+  'light.group_bedroom_sides',
+  'light.group_closet_ceiling',
+  'light.closet_ceiling_cloud',
+  'light.toilet',
+  'light.group_bathroom_ceiling',
+  'light.bathroom_mirror',
+] %}
+
+# COVERS :
+{% set cover_entity_ids = [
+  'cover.lounge',
+  'cover.kitchen',
+  'cover.office',
+  'cover.bedroom',
+] %}
+
+
+############################
+#
+# MEDIA PLAYERS MONITORING
+#
+############################
+
+# AUDIO PLAYERS :
+{% set audio_player_entity_ids = [
+  'media_player.group_all',
+  'media_player.lounge_nest_home_max',
+  'media_player.lounge_nest_hub_max',
+  'media_player.kitchen_nest_audio',
+  'media_player.office_nest_mini',
+  'media_player.bedroom_clock_left',
+  'media_player.bedroom_clock_right',
+  'media_player.closet_nest_mini',
+  'media_player.bathroom_nest_audio',
+] %}
+
+
+# VIDEO PLAYERS :
+{% set video_player_entity_ids = [
+  'media_player.tv',
+  'media_player.jellyfin_lili_tv',
+] %}
+
+
+############################
+#
+# EQUIPMENT MONITORING
+#
+############################
+
+# DEVICES (SWITCHES, VACUUMS, SENSORS, etc) :
+{% set device_entity_ids = [
+  'switch.lounge_fireplace',
+  'switch.rituals',
+  'switch.kitchen_cooking_plate',
+  'switch.shelly_1pm_oven',
+  'switch.shelly_1pm_dryer',
+  'vacuum.dreame_d9_2',
+  'switch.shelly_plug_milk_warmer',
+  'vacuum.cat_litter',
+  'switch.shelly_plug_washing_machine',
+  'switch.shelly_3em',
+  'switch.shelly_4pm_1',
+  'switch.shelly_4pm_2',
+  'switch.shelly_4pm_3',
+] %}
+
+
+    |   |
+    |   |
+    |   |    
+    |   |
+    |   |
+    |   |
+   \     /
+    \   /
+     \ /
+
+
+### PART 2 #########################################################################################################################
+#
+# MACROS :
+# Don't change the following code unless you have experience with Jinja2 templating. 
+# Any incorrect modifications may lead to unpredictable results.
+#
+####################################################################################################################################
+
+
+{% macro some_alarms_are_on() %}
+  {% set triggered_count = namespace(value=0) %}
+  {% set armed_count = namespace(value=0) %}
+  {% for entity_id in alarm_entity_ids %}
+    {% if is_state(entity_id, 'triggered') or is_state(entity_id, 'pending') %}
+      {% set triggered_count.value = triggered_count.value + 1 %}
+    {% elif states(entity_id).startswith('armed') %}
+      {% set armed_count.value = armed_count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if triggered_count.value > 0 %}
+    {{ 'on' ~ ',' ~ triggered_count.value }}
+  {% else %}
+    {{ 'off' if armed_count.value == 0 else 'armed' ~ ',' ~ armed_count.value }}
+  {% endif %}
+{% endmacro %}
+
+
+{% macro some_contact_sensors_are_on() %}
+  {% set count = namespace(value=0) %}
+  {% for entity_id in contact_entity_ids %}
+    {% if is_state(entity_id, 'on') %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {{ 'off' if count.value == 0 else 'on' ~ ',' ~ count.value }}
+{% endmacro %}
+
+
+{% macro some_occupancy_sensors_are_on() %}
+  {% set count = namespace(value=0) %}
+  {% for entity_id in occupancy_entity_ids %}
+    {% if is_state(entity_id, 'on') %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {{ 'off' if count.value == 0 else 'on' ~ ',' ~ count.value }}
+{% endmacro %}
+
+
+{% macro some_locks_are_on() %}
+  {% set count = namespace(value=0) %}
+  {% for entity_id in locks_entity_ids %}
+    {% if is_state(entity_id, 'unlocked') %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {{ 'off' if count.value == 0 else 'on' ~ ',' ~ count.value }}
+{% endmacro %}
+
+
+{% macro some_climates_are_on() %}
+  {% set ns = namespace(result='', count=0) %}
+  {% for entity in climate_entity_ids %}
+    {% set entity_state = states(entity) %}
+    {% if ns.result %}
+      {% set ns.result = ns.result ~ ', ' ~ entity_state %}
+    {% else %}
+      {% set ns.result = entity_state %}
+    {% endif %}
+    {% if entity_state in ['heat', 'cool', 'fan', 'dry', 'auto'] %}
+      {% set ns.count = ns.count + 1 %}
+    {% endif %}
+  {% endfor %} 
+  {% set dominant_state = 'off' %}
+  {% if 'heat' in ns.result %} 
+    {% set dominant_state = 'heat' %}
+  {% elif 'auto' in ns.result %} 
+    {% set dominant_state = 'auto' %}
+  {% elif 'cool' in ns.result or 'fan' in ns.result %} 
+    {% set dominant_state = 'cool' %}
+  {% elif 'dry' in ns.result %} 
+    {% set dominant_state = 'dry' %}
+  {% endif %}
+  {{ dominant_state }}, {{ ns.count }}
+{% endmacro %}
+
+
+{% macro some_fans_are_on() %}
+  {% set count = namespace(value=0) %}
+  {% for entity_id in fan_entity_ids %}
+    {% if is_state(entity_id, 'on') %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {{ 'off' if count.value == 0 else 'on' ~ ',' ~ count.value }}
+{% endmacro %}
+
+
+{% macro some_lights_are_on() %}
+  {% set count = namespace(value=0) %}
+  {% for entity_id in light_entity_ids %}
+    {% if is_state(entity_id, 'on') %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {% set state = 'off' if count.value == 0 else 'on' %}
+  {{ state ~ ',' ~ count.value }}
+{% endmacro %}
+
+
+{% macro some_covers_are_on() %}
+  {% set count = namespace(value=0) %}
+  {% for entity_id in cover_entity_ids %}
+    {% if is_state(entity_id, 'closed') %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {{ 'off' if count.value == 0 else 'on' ~ ',' ~ count.value }}
+{% endmacro %}
+
+
+{% macro some_audio_players_are_on() %}
+  {% set count = namespace(value=0) %}
+  {% for entity_id in audio_player_entity_ids %}
+    {% if is_state(entity_id, 'on') or is_state(entity_id, 'playing') or is_state(entity_id, 'buffering') or is_state(entity_id, 'paused') %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {{ 'off' if count.value == 0 else 'on' ~ ',' ~ count.value }}
+{% endmacro %}
+
+{% macro some_video_players_are_on() %}
+  {% set count = namespace(value=0) %}
+  {% for entity_id in video_player_entity_ids %}
+    {% if is_state(entity_id, 'on') or is_state(entity_id, 'playing') or is_state(entity_id, 'buffering') or is_state(entity_id, 'paused') %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {{ 'off' if count.value == 0 else 'on' ~ ',' ~ count.value }}
+{% endmacro %}
+
+
+{% macro some_devices_are_on() %}
+  {% set count = namespace(value=0) %}
+  {% for entity_id in device_entity_ids %}
+    {% if is_state(entity_id, 'on') or is_state(entity_id, 'cleaning') %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {{ 'off' if count.value == 0 else 'on' ~ ',' ~ count.value }}
+{% endmacro %}
+
+
+
+
+
