@@ -1,0 +1,47 @@
+camera:
+  variables:
+    entity: 
+    name: 
+  show_entity_picture: true
+  show_icon: false
+  show_name: false
+  triggers_update: all
+  styles:
+    card:
+      - height: 24.9vh
+      - padding-top: -3vh
+      - border-radius: 27px
+      - cursor: none
+      - --mdc-ripple-press-opacity: 0
+      - box-shadow: none
+      - background-color: 'var(--background-inactive)'
+  custom_fields: 
+    camera:
+      card:
+        type: picture-entity
+        entity: '[[[ return variables.entity ]]]'
+        camera_image: '[[[ return variables.entity ]]]'
+        show_state: false
+        show_name: true
+        camera_view: auto
+        name: |
+          [[[
+            if (variables.name) {
+              return variables.name;
+            } else if (variables.entity) {
+                return states[variables.entity].attributes.friendly_name;
+            } else {
+                return 'Name';
+            }
+          ]]]
+        card_mod:
+          style: |
+            ha-card {
+              height: 24.9vh !important;
+              margin-top: -1.7vh !important;
+            }
+
+      #
+# background: >-
+#      center / cover no-repeat fixed
+#      url('https://live.staticflickr.com/8047/8105512307_f11f2c4339_b_d.jpg')

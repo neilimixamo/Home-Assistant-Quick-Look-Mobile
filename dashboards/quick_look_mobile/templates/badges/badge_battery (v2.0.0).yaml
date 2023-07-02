@@ -1,0 +1,98 @@
+badge_battery:
+  custom_fields:
+    icon:
+      card:
+        custom_fields:
+          badge:
+            card:
+              type: custom:button-card
+              show_icon: true
+              show_label: false
+              show_name: false
+              icon: |
+                [[[
+                  var entity = variables.entity;
+                  var battery = variables.battery;
+
+                  if (entity && battery) {
+                    if (states[battery].state <= '25') {
+                      return 'mdi:battery-20';
+                    } else if (states[battery].state >= '60') {
+                      return '';
+                    } else {
+                      return 'mdi:battery-60';
+                    }
+                  } else {
+                    return 'transparent';
+                  }
+                ]]]
+              size: 70%
+              styles:
+                icon:
+                  - display: flex
+                  - justify-content: center
+                  - align-items: center
+                  - color: |
+                      [[[
+                        var entity = variables.entity;
+                        var battery = variables.battery;
+
+                        if (entity && battery) {
+                          if (states[battery].state <= '25') {
+                            return 'var(--battery-icon-low)';
+                          } else if (states[battery].state >= '60') {
+                            return 'var(--battery-icon-high)';
+                          } else {
+                            return 'var(--battery-icon-medium)';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      ]]]
+                card:
+                  - display: flex
+                  - justify-content: center
+                  - align-items: center
+                  - height: 2vh
+                  - width: 2vh
+                  - border-radius: 50%
+                  - border: solid
+                  - border-width: 1px
+                  - position: absolute
+                  - top: -6vh
+                  - left: -4vw
+                  - background: |
+                      [[[
+                        var entity = variables.entity;
+                        var battery = variables.battery;
+
+                        if (entity && battery) {
+                          if (states[battery].state <= '25') {
+                            return 'var(--battery-icon-background-low)';
+                          } else if (states[battery].state >= '60') {
+                            return 'var(--battery-icon-background-high)';
+                          } else {
+                            return 'var(--battery-icon-background-medium)';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      ]]]
+                  - border-color: |
+                      [[[
+                        var entity = variables.entity;
+                        var battery = variables.battery;
+
+                        if (entity && battery) {
+                          if (states[battery].state <= '25') {
+                            return 'var(--battery-icon-background-low)';
+                          } else if (states[battery].state >= '60') {
+                            return 'var(--battery-icon-background-high)';
+                          } else {
+                            return 'var(--battery-icon-background-medium)';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      ]]]
+                  - box-shadow: 'none'

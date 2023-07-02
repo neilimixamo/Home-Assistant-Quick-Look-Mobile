@@ -1,0 +1,47 @@
+title_sticky:
+  variables:
+    title: 
+  show_name: false  
+  triggers_update: all
+  styles:
+      card:
+        - height: 4.5vh
+        - width: 100.8vw
+        - margin: 0vh -4vw -0.1vh
+        - background-color: transparent
+        - padding: 0px
+        - border-radius: 0px
+        - box-shadow: none
+        - cursor: none
+        - --mdc-ripple-press-opacity: 0
+      grid:
+        - grid-template-rows: auto
+        - grid-template-columns: 1fr
+        - grid-template-areas: |
+            "title" 
+  custom_fields:
+    title:
+      card:
+        type: custom:button-card
+        show_label: true
+        label:  |
+          [[[
+            if (variables.title) {
+              return variables.title;
+            } else {
+              return 'Title';
+            }
+          ]]]
+        styles:
+          card:
+            - height: 4vh
+            - background-color: transparent
+            - margin-left: 3vh
+            - box-shadow: none
+            - cursor: none
+            - --mdc-ripple-press-opacity: 0
+          label:
+            - color: var(--text-color)
+            - font-size: 15px
+            - font-weight: 500
+            - justify-self: start 

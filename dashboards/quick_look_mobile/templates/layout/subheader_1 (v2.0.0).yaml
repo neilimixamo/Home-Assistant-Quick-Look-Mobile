@@ -1,0 +1,84 @@
+subheader_1:
+  variables: 
+    subheader_1_title:
+    subheader_1_path:
+    subheader_2_title:
+    subheader_2_path:
+  layout: name_state
+  styles:
+    card:
+      - height: 6vh
+      - width: 100.8vw
+      - margin: 0.5vh -4vw
+      - background-color: transparent
+      - padding: 0px
+      - border-radius: 0px
+      - box-shadow: none
+      - cursor: none
+      - --mdc-ripple-press-opacity: 0
+      - display: flex
+      - justify-content: center
+    grid:
+      - grid-template-rows: 60% 40%
+      - grid-template-areas: |
+          "name"
+          "icon"
+  custom_fields:
+    name:
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            name: '[[[ return variables.subheader_1_title ]]]'
+            tap_action:
+              action: navigate
+              navigation_path: '[[[ return variables.subheader_1_path ]]]'
+            styles:
+              card:
+                - height: 5vh
+                - width: auto
+                - background-color: transparent
+                - border-radius: 0px
+                - box-shadow: none
+                - margin-top: 0.5vh
+                - cursor: none
+                - --mdc-ripple-press-opacity: 0
+              name:
+                - color: var(--text-color)
+                - margin-top: 1.7vh
+                - font-size: 20px
+                - font-weight: 600
+                - align-self: center
+                - justify-self: center
+          - type: custom:button-card
+            styles:
+              card:
+                - height: 5vh
+                - width: 4vw
+                - background-color: transparent
+                - box-shadow: none
+          - type: custom:button-card
+            name: '[[[ return variables.subheader_2_title ]]]'
+            tap_action:
+              action: navigate
+              navigation_path: '[[[ return variables.subheader_2_path ]]]'
+            styles:
+              card:
+                - height: 5vh
+                - width: auto
+                - background-color: transparent
+                - border-radius: 0px
+                - box-shadow: none
+                - margin-top: 0.5vh
+                - cursor: none
+                - --mdc-ripple-press-opacity: 0
+              name:
+                - color: var(--text-color)
+                - margin-top: 1.7vh
+                - font-size: 20px
+                - font-weight: 400
+                - align-self: center
+                - justify-self: center
+
+
+

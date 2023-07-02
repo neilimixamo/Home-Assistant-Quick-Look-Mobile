@@ -1,0 +1,500 @@
+security:
+  template: basic_card
+  variables:
+    contact:
+    occupancy:
+    lock:
+    contact_battery:
+    occupancy_battery:
+    lock_battery:
+    name:
+  styles:
+    card:
+      - background-color: |
+          [[[
+            var contact = variables.contact;
+            var occupancy = variables.occupancy;
+            var lock = variables.lock; 
+
+            if (contact || occupancy || lock) {
+              if (contact && states[contact].state === 'on') {
+                return 'var(--security-background-active)';
+              } else if (occupancy && states[occupancy].state === 'on') {
+                return 'var(--security-background-active)';
+              } else if (lock && states[lock].state === 'unlocked') {
+                return 'var(--security-background-active)';
+              } else if (lock){
+                return 'var(--security-background-inactive)';
+              } else {
+                return 'var(--security-background-inactive)';
+              }
+            } else {
+              return 'var(--security-background-inactive)';
+            }
+          ]]]
+  custom_fields:
+    icon:
+      card:
+        tap_action: none
+        icon: |
+          [[[
+            var contact = variables.contact;
+            var occupancy = variables.occupancy;
+            var lock = variables.lock; 
+
+            if (contact || occupancy || lock) {
+              if (contact && states[contact].state === 'on') {
+                return 'mdi:door-open';
+              } else if (occupancy && states[occupancy].state === 'on') {
+                return 'mdi:motion-sensor';
+              } else if (lock && states[lock].state === 'unlocked') {
+                return 'mdi:lock-open';
+              } else if (lock){
+                return 'mdi:lock';
+              } else if (contact && !occupancy) {
+                return 'mdi:door-closed';
+              } else if (!contact && occupancy) {
+                return 'mdi:motion-sensor-off';
+              } else {
+                return 'mdi:shield-check';
+              }
+            } else {
+              return 'mdi:help';
+            }
+          ]]]
+        styles:
+          card:
+            - overflow: visible
+            - background-color: |
+                [[[
+                  var contact = variables.contact;
+                  var occupancy = variables.occupancy;
+                  var lock = variables.lock; 
+
+                  if (contact || occupancy || lock) {
+                    if (contact && states[contact].state === 'on') {
+                      return 'var(--security-icon-background-active)';
+                    } else if (occupancy && states[occupancy].state === 'on') {
+                      return 'var(--security-icon-background-active)';
+                    } else if (lock && states[lock].state === 'unlocked') {
+                      return 'var(--security-icon-background-active)';
+                    } else if (lock){
+                      return 'var(--security-icon-background-inactive)';
+                    } else {
+                      return 'var(--security-icon-background-inactive)';
+                    }
+                  } else {
+                    return 'var(--security-icon-background-inactive)';
+                  }
+                ]]]
+          icon:
+            - color: |
+                [[[
+                  var contact = variables.contact;
+                  var occupancy = variables.occupancy;
+                  var lock = variables.lock; 
+
+                  if (contact || occupancy || lock) {
+                    if (variables.contact && states[variables.contact].state === 'on' ) {
+                      return 'var(--security-icon-active';
+                    } else if (variables.occupancy && states[variables.occupancy].state === 'on' ) {
+                        return 'var(--security-icon-active)';
+                    } else if (variables.lock && states[variables.lock].state === 'unlocked' ) { 
+                        return 'var(--security-icon-active)';
+                    } else {
+                        return 'var(--security-icon-inactive)';
+                    }
+                  } else {
+                    return 'var(--security-icon-inactive)';
+                  }
+                ]]]
+        custom_fields:
+          badge:
+            card:
+              type: custom:button-card
+              show_icon: true
+              show_label: false
+              show_name: false
+              icon: |
+                  [[[
+                    var contact = variables.contact;
+                    var contact_battery = variables.contact_battery;
+                    var occupancy = variables.occupancy;
+                    var occupancy_battery = variables.occupancy_battery;
+                    var lock = variables.lock;
+                    var lock_battery = variables.lock_battery;
+
+                    if (contact || occupancy || lock) {
+                      if (contact && states[contact].state === 'on') {
+                        if (contact_battery) {
+                          if (states[contact_battery].state <= '25') {
+                            return 'mdi:battery-20';
+                          } else if (states[contact_battery].state >= '60') {
+                            return '';
+                          } else {
+                            return 'mdi:battery-60';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      } else if (occupancy && states[occupancy].state === 'on') {
+                        if (occupancy_battery) {
+                          if (states[occupancy_battery].state <= '25') {
+                            return 'mdi:battery-20';
+                          } else if (states[occupancy_battery].state >= '60') {
+                            return '';
+                          } else {
+                            return 'mdi:battery-60';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      } else if (lock) {
+                        if (lock_battery) {
+                          if (states[lock_battery].state <= '25') {
+                            return 'mdi:battery-20';
+                          } else if (states[lock_battery].state >= '60') {
+                            return '';
+                          } else {
+                            return 'mdi:battery-60';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      } else if (contact && !occupancy) {
+                        if (contact_battery) {
+                          if (states[contact_battery].state <= '25') {
+                            return 'mdi:battery-20';
+                          } else if (states[contact_battery].state >= '60') {
+                            return '';
+                          } else {
+                            return 'mdi:battery-60';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      } else if (!contact && occupancy) {
+                        if (occupancy_battery) {
+                          if (states[occupancy_battery].state <= '25') {
+                            return 'mdi:battery-20';
+                          } else if (states[occupancy_battery].state >= '60') {
+                            return '';
+                          } else {
+                            return 'mdi:battery-60';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      } else {
+                        return 'transparent';
+                      }
+                    } else {
+                      return 'transparent';
+                    }
+                  ]]]
+              size: 70%
+              styles:
+                icon:
+                  - display: flex
+                  - justify-content: center
+                  - align-items: center
+                  - color:  |
+                      [[[
+                        var contact = variables.contact;
+                        var contact_battery = variables.contact_battery;
+                        var occupancy = variables.occupancy;
+                        var occupancy_battery = variables.occupancy_battery;
+                        var lock = variables.lock;
+                        var lock_battery = variables.lock_battery;
+
+                        if (contact || occupancy || lock) {
+                          if (contact && states[contact].state === 'on') {
+                            if (contact_battery) {
+                              if (states[contact_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[contact_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (occupancy && states[occupancy].state === 'on') {
+                            if (occupancy_battery) {
+                              if (states[occupancy_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[occupancy_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (lock) {
+                            if (lock_battery) {
+                              if (states[lock_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[lock_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (contact && !occupancy) {
+                            if (contact_battery) {
+                              if (states[contact_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[contact_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (!contact && occupancy) {
+                            if (occupancy_battery) {
+                              if (states[occupancy_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[occupancy_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else {
+                            return 'transparent';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      ]]]
+                card:
+                  - display: flex
+                  - justify-content: center
+                  - align-items: center
+                  - height: 2vh
+                  - width: 2vh
+                  - border-radius: 50%
+                  - border: solid
+                  - border-width: 1px
+                  - position: absolute
+                  - top: -6vh
+                  - left: -4vw
+                  - background: |
+                      [[[
+                        var contact = variables.contact;
+                        var contact_battery = variables.contact_battery;
+                        var occupancy = variables.occupancy;
+                        var occupancy_battery = variables.occupancy_battery;
+                        var lock = variables.lock;
+                        var lock_battery = variables.lock_battery;
+
+                        if (contact || occupancy || lock) {
+                          if (contact && states[contact].state === 'on') {
+                            if (contact_battery) {
+                              if (states[contact_battery].state <= '25') {
+                                return 'var(--battery-icon-background-low)';
+                              } else if (states[contact_battery].state >= '60') {
+                                return 'var(--battery-icon-background-high)';
+                              } else {
+                                return 'var(--battery-icon-background-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (occupancy && states[occupancy].state === 'on') {
+                            if (occupancy_battery) {
+                              if (states[occupancy_battery].state <= '25') {
+                                return 'var(--battery-icon-background-low)';
+                              } else if (states[occupancy_battery].state >= '60') {
+                                return 'var(--battery-icon-background-high)';
+                              } else {
+                                return 'var(--battery-icon-background-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (lock) {
+                            if (lock_battery) {
+                              if (states[lock_battery].state <= '25') {
+                                return 'var(--battery-icon-background-low)';
+                              } else if (states[lock_battery].state >= '60') {
+                                return 'var(--battery-icon-background-high)';
+                              } else {
+                                return 'var(--battery-icon-background-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (contact && !occupancy) {
+                            if (contact_battery) {
+                              if (states[contact_battery].state <= '25') {
+                                return 'var(--battery-icon-background-low)';
+                              } else if (states[contact_battery].state >= '60') {
+                                return 'var(--battery-icon-background-high)';
+                              } else {
+                                return 'var(--battery-icon-background-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (!contact && occupancy) {
+                            if (occupancy_battery) {
+                              if (states[occupancy_battery].state <= '25') {
+                                return 'var(--battery-icon-background-low)';
+                              } else if (states[occupancy_battery].state >= '60') {
+                                return 'var(--battery-icon-background-high)';
+                              } else {
+                                return 'var(--battery-icon-background-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else {
+                            return 'transparent';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      ]]]
+                  - border-color:  |
+                      [[[
+                        var contact = variables.contact;
+                        var contact_battery = variables.contact_battery;
+                        var occupancy = variables.occupancy;
+                        var occupancy_battery = variables.occupancy_battery;
+                        var lock = variables.lock;
+                        var lock_battery = variables.lock_battery;
+
+                        if (contact || occupancy || lock) {
+                          if (contact && states[contact].state === 'on') {
+                            if (contact_battery) {
+                              if (states[contact_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[contact_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (occupancy && states[occupancy].state === 'on') {
+                            if (occupancy_battery) {
+                              if (states[occupancy_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[occupancy_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (lock) {
+                            if (lock_battery) {
+                              if (states[lock_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[lock_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (contact && !occupancy) {
+                            if (contact_battery) {
+                              if (states[contact_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[contact_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else if (!contact && occupancy) {
+                            if (occupancy_battery) {
+                              if (states[occupancy_battery].state <= '25') {
+                                return 'var(--battery-icon-low)';
+                              } else if (states[occupancy_battery].state >= '60') {
+                                return 'var(--battery-icon-high)';
+                              } else {
+                                return 'var(--battery-icon-medium)';
+                              }
+                            } else {
+                              return 'transparent';
+                            }
+                          } else {
+                            return 'transparent';
+                          }
+                        } else {
+                          return 'transparent';
+                        }
+                      ]]]
+                  - box-shadow: 'none'
+    name:
+      card:
+        entity: |
+          [[[
+            var contact = variables.contact;
+            var occupancy = variables.occupancy;
+            var lock = variables.lock; 
+
+            if (contact || occupancy || lock) {
+              if (contact && states[contact].state === 'on') {
+                return variables.contact;
+              } else if (occupancy && states[occupancy].state === 'on') {
+                return variables.occupancy;
+              } else if (lock){
+                return variables.lock;
+              } else if (occupancy) {
+                return variables.occupancy;
+              } else if (contact) {
+                return variables.contact;
+              }
+            }
+          ]]]
+        name: |
+          [[[
+            if (variables.name) {
+              return variables.name;
+            } else {
+              return 'Name';
+            }
+          ]]]
+        label: |
+          [[[
+            var contact = variables.contact;
+            var occupancy = variables.occupancy;
+            var lock = variables.lock; 
+
+            if (contact || occupancy || lock) {
+              if (contact && states[contact].state === 'on') {
+                return 'Open';
+              } else if (occupancy && states[occupancy].state === 'on') {
+                return 'Presence';
+              } else if (lock && states[lock].state === 'unlocked') {
+                return 'Unlocked';
+              } else if (lock){
+                return 'Locked';
+              } else if (contact && !occupancy) {
+                return 'Closed';
+              } else if (!contact && occupancy) {
+                return 'Absence';
+              } else {
+                return 'Secured';
+              }
+            } else {
+              return 'Label';
+            }
+          ]]]

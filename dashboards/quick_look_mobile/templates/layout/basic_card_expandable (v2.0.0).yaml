@@ -1,0 +1,145 @@
+basic_card_expandable:
+  variables:
+    entity:
+    name:
+  show_icon: false
+  show_name: false
+  triggers_update: all
+  styles:
+    card:
+      - height: 10.8vh
+      - padding: 0px
+      - border-radius: 27px
+      - cursor: none
+      - --mdc-ripple-press-opacity: 0
+      - box-shadow: none
+    grid:
+      - grid-template-columns: 46% 40% 14%
+      - grid-template-rows: 1fr
+      - grid-template-areas: '"icon name chevron"'
+      - align-items: center
+      - justify-items: center
+  custom_fields:
+    slider_visible: 
+      card: 
+        type: custom:my-slider-v2
+        styles:
+          card:
+            - display: none
+    icon:
+      card:
+        type: custom:button-card # ICON
+        entity: '[[[ return variables.entity ]]]'
+        show_name: false
+        size: 50%
+        styles:
+          card:
+            - height: 6vh
+            - width: 6vh
+            - border-radius: 50%
+            - box-shadow: none
+            - cursor: none 
+            - --mdc-ripple-press-opacity: 0 
+        tap_action: |
+            [[[ 
+              if (variables.icon_tap_action) {
+                return variables.icon_tap_action;
+              } else {
+                return { action: 'toggle' };
+              }
+            ]]]
+        double_tap_action: |
+          [[[
+            if (variables.icon_double_tap_action) {
+              return variables.icon_double_tap_action;
+            } else {
+              return { action: 'none' };
+            }
+          ]]]
+        hold_action: |
+          [[[
+            if (variables.icon_hold_action) {
+              return variables.icon_hold_action;
+            } else {
+              return { action: 'none' };
+            }
+          ]]]
+    name:
+      card:
+        type: custom:button-card # NAME & LABEL
+        entity: '[[[ return variables.entity ]]]'
+        name: |
+          [[[
+            if (variables.name) {
+              return variables.name;
+            } else if (variables.entity) {
+                return states[variables.entity].attributes.friendly_name;
+            } else {
+                return 'Name';
+            }
+          ]]]
+        show_icon: false
+        show_label: true
+        styles:
+          card:
+            - height: 10.8vh
+            - width: 17.8vw
+            - background-color: transparent
+            - border-radius: 0%
+            - box-shadow: none
+            - cursor: none 
+            - --mdc-ripple-press-opacity: 0 
+          name: 
+            - font-size: 14px
+            - font-weight: 500
+            - justify-self: start
+            - padding-left: 0vw
+          label: 
+            - font-size: 12px
+            - font-weight: 400
+            - justify-self: start
+            - padding-left: 0vw
+            - padding-top: 0.5vh
+        tap_action: |
+            [[[
+              if (variables.name_tap_action) {
+                return variables.name_tap_action;
+              } else {
+                return { action: 'more-info' };
+              }
+            ]]]
+        double_tap_action: |
+          [[[
+            if (variables.name_double_tap_action) {
+              return variables.name_double_tap_action;
+            } else {
+              return { action: 'none' };
+            }
+          ]]]
+        hold_action: |
+          [[[
+            if (variables.name_hold_action) {
+              return variables.name_hold_action;
+            } else {
+              return { action: 'none' };
+            }
+          ]]]
+    chevron:
+      card:
+        type: custom:button-card # CHEVRON
+        icon: mdi:chevron-right
+        color: 'var(--chevron-color)'
+        size: 80%
+        styles:
+          card:
+            - background-color: transparent
+            - height: 10.8vh
+            - width: 3.5vh
+            - right: 1vw
+            - box-shadow: none
+            - border-radius: 0%
+            - cursor: none
+            - --mdc-ripple-press-opacity: 0
+        tap_action:
+          action: navigate
+          navigation_path: '[[[ return variables.expand_to ]]]'

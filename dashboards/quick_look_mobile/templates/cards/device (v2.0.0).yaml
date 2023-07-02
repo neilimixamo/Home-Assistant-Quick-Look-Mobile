@@ -1,0 +1,100 @@
+device:
+  template: 
+    - basic_card
+    - badge_battery
+  variables:
+    entity:
+    name:
+    label_on: 'Active'
+    on_state: 
+      - 'on'
+      - 'cleaning'
+    label_off: 'Inactive'
+    off_state: 
+      - 'off'
+      - 'docked'
+      - 'idle'
+      - 'paused'
+    custom_state_1:
+    custom_label_1:
+    custom_state_2:
+    custom_label_2:
+    icon_tap_action:
+    icon_hold_action:
+    name_tap_action:
+  styles:
+    card:
+      - background-color: |
+          [[[
+            if (variables.entity && (states[variables.entity].state === 'on' || states[variables.entity].state === 'cleaning')) {
+              return 'var(--device-background-active)';
+            } else {
+              return 'var(--device-background-inactive)';
+            }
+          ]]]
+  custom_fields:
+    icon:
+      card:
+        icon: |
+          [[[
+            if (variables.entity) {
+              if (variables.icon ) {
+                return variables.icon;
+              } else {
+                  return '';
+              }
+            } else {
+                return 'mdi:help';
+            }
+          ]]]
+        styles:
+          card:
+            - overflow: visible
+            - background-color: |
+                [[[
+                  if (variables.entity && (states[variables.entity].state === 'on' || states[variables.entity].state === 'cleaning')) {
+                    return 'var(--device-icon-background-active)';
+                  } else {
+                      return 'var(--device-icon-background-inactive)';
+                  }
+                ]]]
+          icon:
+            - color: |
+                [[[
+                  if (variables.entity && (states[variables.entity].state === 'on' || states[variables.entity].state === 'cleaning')) {
+                    return 'var(--device-icon-active)';
+                  } else {
+                      return 'var(--device-icon-inactive)';
+                  }
+                ]]]
+        custom_fields:
+          badge:
+            type: custom:button-card # calls for the 'badge_battery' template
+    name:
+      card:
+        label:  |
+          [[[
+            if (variables.entity) {
+              if (states[variables.entity].state === 'unavailable' || states[variables.entity].state === 'unknown') {
+                return "Unavailable";
+              } else if (variables.label) {
+                return variables.label;
+              } else {
+                var state = states[variables.entity].state;
+                if (state === 'unavailable') {
+                  return "Unavailable";
+                } else if (variables.on_state.includes(state)) {
+                  return variables.label_on;
+                } else if (variables.off_state.includes(state)) {
+                  return variables.label_off;
+                } else if (variables.custom_state_1.includes(state)) {
+                  return variables.custom_label_1;
+                } else if (variables.custom_state_2.includes(state)) {
+                  return variables.custom_label_2;
+                }
+              }
+            } else {
+              return "Label";
+            }                
+          ]]]
+          

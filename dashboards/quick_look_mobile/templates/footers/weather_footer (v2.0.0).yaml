@@ -1,0 +1,183 @@
+weather_footer:
+  variables: 
+    entity:
+  show_icon: false
+  show_label: false
+  show_state: false
+  triggers_update: all
+  styles:
+    card:
+      - background-color: |
+          [[[
+            if (variables.entity) {
+              const state = states[variables.entity].state;
+              let colorVariable;
+              colorVariable = `var(--weather-background-${state}, var(--weather-background-default))`;
+              return colorVariable;
+            } else  {
+              return 'var(--weather-background-default)';
+            }
+          ]]]
+      - border-radius: 27px
+      - box-shadow: none
+      - cursor: none
+      - height: 8.4vh
+      - margin-left: 0vh
+      - --mdc-ripple-press-opacity: 0
+      - width: 93vw
+  custom_fields:
+    buttons:
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:button-card #ICON
+            entity: |
+              [[[ 
+                if (variables.entity) {
+                  return variables.entity;
+                } else {
+                  return '';
+                }
+              ]]]
+            icon:  |
+              [[[
+                if (variables.entity) {
+                  const state = states[variables.entity].state;
+                  let icon;
+                  const icons = {
+                    'clear-night': 'mdi:weather-night', 
+                    'cloudy': 'mdi:weather-cloudy',
+                    'fog': 'mdi:weather-fog',
+                    'hail': 'mdi:weather-hail',
+                    'lightning': 'mdi:weather-lightning',
+                    'lightning-rainy': 'mdi:weather-lightning-rainy',
+                    'partlycloudy': 'mdi:weather-partly-cloudy',
+                    'pouring': 'mdi:weather-pouring',
+                    'rainy': 'mdi:weather-rainy',
+                    'snowy': 'mdi:weather-snowy',
+                    'snowy-rainy': 'mdi:weather-snowy-rainy',
+                    'sunny': 'mdi:weather-sunny',
+                    'windy': 'mdi:weather-windy',
+                    'windy-variant': 'mdi:weather-windy-variant',
+                    'exceptional': 'mdi:alert-circle-outline',
+                    'default': 'mdi:help-circle-outline'
+                  };
+                  icon = icons[state] || icons['default'];
+                  return icon;
+                } else  {
+                  return 'mdi:help';
+                }
+              ]]]
+            show_name: false
+            size: 60%
+            styles:
+              card:
+                - background-color:  |
+                    [[[
+                      if (variables.entity) {
+                        const state = states[variables.entity].state;
+                        let colorVariable;
+                        colorVariable = `var(--weather-icon-background-${state}, var(--weather-icon-background-default))`;
+                        return colorVariable;
+                      } else  {
+                        return 'var(--weather-icon-background-default)';
+                      }
+                    ]]]
+                - border-radius: 50%
+                - box-shadow: none
+                - cursor: none
+                - height: 6vh
+                - left: 0vw
+                - margin-right: 0vw
+                - position: relative
+                - --mdc-ripple-press-opacity: 0
+                - top: -0.5vh
+                - width: 6vh
+              icon:
+                - color: 'var(--weather-icon)'
+            tap_action:
+              action: none
+          - type: custom:button-card # NAME & LABEL
+            entity: |
+              [[[ 
+                if (variables.entity) {
+                  return variables.entity;
+                } else {
+                  return '';
+                }
+              ]]]
+            name:   |
+              [[[
+                if (variables.entity) {
+                  const state = states[variables.entity].state;
+                  let name;
+                  const names = {
+                    'clear-night': 'Clear Night', 
+                    'cloudy': 'Cloudy',
+                    'fog': 'Fog',
+                    'hail': 'Hail',
+                    'lightning': 'Lightning',
+                    'lightning-rainy': 'Lightning Rainy',
+                    'partlycloudy': 'Partly Cloudy',
+                    'pouring': 'Pouring',
+                    'rainy': 'Rainy',
+                    'snowy': 'Snowy',
+                    'snowy-rainy': 'Snowy Rainy',
+                    'sunny': 'Sunny',
+                    'windy': 'Windy',
+                    'windy-variant': 'Windy Variant',
+                    'exceptional': 'Exceptional',
+                    'default': 'Default'
+                  };
+                  name = names[state] || names['default'];
+                  return name;
+                } else  {
+                  return 'Choose Entity';
+                }
+              ]]]
+            label: |
+              [[[
+                if (variables.entity) {
+                  const state = states[variables.entity];
+                  const temperature = state.attributes.temperature;
+                  const windSpeed = state.attributes.wind_speed;
+
+                  if (temperature) {
+                    return `${temperature}°C`;
+                  } else {
+                    return '';
+                  }
+                } else {
+                  return '';
+                }
+              ]]]
+            show_icon: false
+            show_label: true
+            styles:
+              card:
+                - background-color: transparent
+                - border-radius: 0%
+                - box-shadow: none
+                - cursor: none
+                - height: 8.4vh
+                - margin-right: 10.5vw
+                - position: relative
+                - --mdc-ripple-press-opacity: 0
+                - top: -1.8vh
+                - width: 63vw
+              name:
+                - color: 'var(--text-color)'
+                - font-size: 16px
+                - font-weight: 500
+                - justify-self: center
+                - padding-right: 7vw
+              label:
+                - color: 'var(--text-color)'
+                - font-size: 13px
+                - font-weight: 400
+                - justify-self: center
+                - padding-right: 7vw
+                - padding-top: 0.4vh
+            tap_action:
+              action: more-info
+

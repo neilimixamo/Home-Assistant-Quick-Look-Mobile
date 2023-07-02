@@ -1,0 +1,154 @@
+light:
+  template: basic_card
+  variables:
+    entity:
+    name:
+    label_on: 'On' #not used
+    label_off: 'Off' #can be changed
+  styles:
+      card:
+        - background-color: |
+            [[[
+              if (variables.entity && states[variables.entity].state === 'on') {
+                return 'var(--light-background-inactive)';
+              } 
+              return 'var(--light-background-inactive)';
+            ]]]
+  custom_fields:
+    slider_visible:
+      card:
+        type: custom:my-slider-v2
+        entity: |
+            [[[
+              if (variables.entity) {
+                return variables.entity;
+              } else {
+                return '';
+              }
+            ]]]
+        intermediate: false
+        styles:
+          card:
+            - display: block
+            - position: absolute
+            - height: 100%
+            - width: 100%
+            - background-color: transparent
+            - border-radius: 27px
+            - box-shadow: none
+            - bottom: 0vh
+            - left: 0vw
+          container:
+            - width: 100%
+            - height: 100%
+            - position: absolute
+            - bottom: 0vh
+            - right: 0vw
+            - overflow: hidden
+            - border-radius: 27px
+          track:
+            - width: 100%
+            - height: 100%
+            - position: absolute
+            - bottom: 0vh
+            - right: 0vw
+            - border-radius: 27px
+            - background-color:  |
+                [[[
+                  if (variables.entity) {
+                    var state = states[variables.entity].state;
+                    var brightness = states[variables.entity].attributes.brightness;
+
+                    if (state === 'on' && brightness) {
+                      return 'var(--light-slider-track-active)';
+                    } 
+                  }
+                  return 'var(--light-slider-track-inactive)';
+                ]]]
+          progress:
+            - height: 100%
+            - background:  |
+                [[[
+                  if (variables.entity) {
+                    var state = states[variables.entity].state;
+                    var brightness = states[variables.entity].attributes.brightness;
+
+                    if (state === 'on' && brightness) {
+                      return 'var(--light-background-active)';
+                    } 
+                  }
+                  return 'var(--light-background-inactive)';
+                ]]]
+            - border-radius: 27px 0px 0px 27px
+          thumb:
+            - width: 0px
+    icon:
+      card:
+        icon: |
+          [[[
+            if (variables.entity) {
+              if (variables.icon ) {
+                return variables.icon;
+              } else {
+                  return '';
+              }
+            } else {
+                return 'mdi:help';
+            }
+          ]]]
+        styles:  
+          card:
+            - background-color:  |
+                [[[
+                  if (variables.entity) {
+                    var state = states[variables.entity].state;
+                    var brightness = states[variables.entity].attributes.brightness;
+
+                    if (state === 'on' && brightness) {
+                      return 'var(--light-icon-background-active)';
+                    } 
+                  }
+                  return 'var(--light-icon-background-inactive)';
+                ]]]
+          icon:
+            - color:  |
+                [[[
+                  if (variables.entity && states[variables.entity].state === 'on') {
+                  return 'var(--light-icon-active)';
+                  } 
+                  return 'var(--light-icon-inactive)';
+                ]]]
+    name:
+      card:
+        entity: |
+          [[[
+            if (variables.entity ) {
+              return variables.entity;
+            } else {
+                return 'null';
+            }
+          ]]]
+        label: |
+          [[[
+            if (variables.entity) {
+              var state = states[variables.entity].state;
+              if (state === 'on') {
+                var brightness = states[variables.entity].attributes.brightness;
+                if (brightness) {
+                  if (brightness !== undefined) {
+                    return Math.round((brightness)/255*100) + '%';
+                  } else {
+                    return variables.label_off;
+                  }
+                } else {
+                  return variables.label_on;
+                }
+              } else if (state === 'off') {                      
+                return variables.label_off ;
+              } else {
+                return "Unavailable";
+              }
+            } else {
+              return "Label"
+            }
+          ]]]

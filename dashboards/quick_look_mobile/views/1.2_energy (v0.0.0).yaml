@@ -1,0 +1,51 @@
+title: home_energy
+path: home_energy
+icon: mdi:lightning-bolt
+theme: Quick Look Mobile
+background: "var(--theme)"
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: 19.5vh 7.5vh 50vh 4vh 10vh 9vh
+  grid-template-areas: |
+    "header"
+    "subheader"
+    "main"
+    "footer_title"
+    "footer"
+    "menu"
+cards:
+  - type: custom:button-card # HEADER
+    view_layout:
+      grid-area: header
+    template: header
+    variables:
+      view: home
+  - type: custom:button-card # SUBHEADER
+    view_layout:
+      grid-area: subheader
+    template: subheader_2
+    variables:
+      subheader_1_title: Favorites #can be changed
+      subheader_1_path: home_favorites
+      subheader_2_title: Energy #can be changed
+      subheader_2_path: home_energy
+  - type: custom:layout-card # MAIN
+    view_layout:
+      grid-area: main
+    layout_type: custom:vertical-layout
+    layout:
+      height: 50vh
+      margin: 0vh 0vh 0vh
+      padding: 0vh 0.4vh
+    cards:
+      # This is where you can customize this view to fit your system and devices. 
+      - type: custom:button-card # TITLE 1
+        template: title_scrollable
+        variables:
+          title: Nothing here, work in progress #can be changed
+  - type: custom:button-card # MENU
+    view_layout:
+      grid-area: menu
+    template: menu

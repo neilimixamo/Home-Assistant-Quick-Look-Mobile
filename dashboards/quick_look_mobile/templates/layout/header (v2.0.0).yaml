@@ -1,0 +1,343 @@
+header:
+  triggers_update: all
+  styles:
+      card:
+        - height: 19.5vh
+        - width: 100.8vw
+        - margin: 0vh -4vw
+        - background-color: transparent
+        - padding: 0px 15px 10px 18px
+        - border-radius: 0px
+        - box-shadow: none
+        - cursor: none
+      grid:
+        - grid-template-rows: auto 0px auto
+        - grid-template-columns: auto
+        - grid-template-areas: |
+            "row1"
+            "gap"
+            "row2"  
+  custom_fields:
+    row1:
+      card:
+        type: custom:button-card
+        styles:
+          card:
+            - height: 9vh  
+            - padding: 1vh 1vw 0vh
+            - box-shadow: none
+            - background-color: transparent
+            - cursor: none 
+            - --mdc-ripple-press-opacity: 0 
+          grid:
+            - grid-template-columns: min-content auto min-content
+            - grid-template-rows: min-content
+            - grid-template-areas: |
+                "left_menu title right_menu"
+        custom_fields:
+          left_menu:
+            card:
+              type: custom:button-card
+              entity: zone.home
+              show_name: false
+              icon: | 
+                [[[
+                  return states["zone.home"].state === '0' ? 'mdi:account-off-outline' :
+                         states["zone.home"].state === '1' ? 'mdi:account-outline' :
+                         states["zone.home"].state > '1' ? 'mdi:account-multiple-outline' :
+                         '';
+                ]]]
+              color: "[[[ return variables.view === 'family' ? 'var(--person-icon-inactive)' : 'var(--person-border-active)'; ]]]"
+              size: 80%
+              tap_action: 
+                action: navigate
+                navigation_path: "[[[ return variables.view === 'family' ? 'home' : 'family_persons'; ]]]"
+              styles:
+                card:
+                  - border-radius: 50%
+                  - height: 4.2vh
+                  - width: 4.2vh
+                  - box-shadow: none
+                  - background-color: "[[[ return variables.view === 'family' ? 'var(--person-icon-background-inactive)' : 'transparent'; ]]]"
+                  - cursor: none
+                  - --mdc-ripple-press-opacity: 0
+          title:
+            card:
+              type: custom:button-card
+              name: |
+                [[[ 
+                   return variables.view === 'home' ? 'Home' :
+                          variables.view === 'family' ? 'Family' :
+                          variables.view === 'air' ? 'Air' :
+                          variables.view === 'equipment' ? 'Equipment' :
+                          variables.view === 'light' ? 'Light' :
+                          variables.view === 'media' ? 'Media' :
+                          variables.view === 'security' ? 'Security' :
+                          'Default';
+                ]]]
+              styles:
+                name:
+                  - color: var(--text-color)
+                  - font-size: 24px
+                  - font-weight: 600
+                card:
+                  - box-shadow: none
+                  - background-color: transparent
+                  - cursor: none
+                  - left: -1vw
+                  - --mdc-ripple-press-opacity: 0
+          right_menu:
+            card:
+              type: custom:button-card
+              icon: mdi:message-processing-outline
+              color: var(--person-border-active)
+              size: 90%
+              styles:
+                card:
+                  - height: 30px
+                  - width: 30px
+                  - box-shadow: none
+                  - border-radius: 50%
+                  - background-color: transparent
+                  - cursor: none
+                  - --mdc-ripple-press-opacity: 0
+              tap_action:
+                action: assist
+    row2:
+      card:
+        type: horizontal-stack # CATEGORIES
+        cards:
+          - type: custom:button-card # SECURITY
+            template: header_category
+            icon:  |
+              [[[
+                var alarm = states['sensor.some_alarms_are_on'].state;
+                var contact = states['sensor.some_contact_sensors_are_on'].state;
+                var occupancy = states['sensor.some_occupancy_sensors_are_on'].state;
+                var lock = states['sensor.some_locks_are_on'].state;
+                return alarm === 'on' ? 'mdi:shield-alert' : contact === 'on' ? 'mdi:door-open' : occupancy === 'on' ? 'mdi:motion-sensor' : lock === 'on' ? 'mdi:lock-open' : alarm === 'armed' ? 'mdi:shield-lock' : 'mdi:shield-check';
+              ]]]
+            size:  |
+              [[[
+                var alarm = states['sensor.some_alarms_are_on'].state;
+                var contact = states['sensor.some_contact_sensors_are_on'].state;
+                var occupancy = states['sensor.some_occupancy_sensors_are_on'].state;
+                var lock = states['sensor.some_locks_are_on'].state;
+                return alarm === 'on' || alarm === 'armed' ? '56%' : contact === 'on' ? '56%' : occupancy === 'on' ? '48%' : '55%';
+              ]]]
+            variables:
+              sensor_1: sensor.some_alarms_are_on
+              sensor_2: sensor.some_contact_sensors_are_on
+              sensor_3: sensor.some_occupancy_sensors_are_on
+              sensor_4: sensor.some_locks_are_on
+              background_color_1: var(--security-background-active)
+              background_color_2: var(--security-background-active)
+              background_color_3: var(--security-background-active)
+              background_color_4: var(--security-background-active)
+              border_color_1: var(--security-icon-background-active)
+              border_color_2: var(--security-icon-background-active)
+              border_color_3: var(--security-icon-background-active)
+              border_color_4: var(--security-icon-background-active)
+              header_view: 'security'
+              view: '[[[ return variables.view ]]]'
+              default_path: 'security_sensors'
+              badge_counter_1: sensor.alarms_count
+              badge_counter_2: sensor.contact_sensors_count
+              badge_counter_3: sensor.occupancy_sensors_count
+              badge_counter_4: sensor.locks_count
+            styles:
+              card:
+                - background: |
+                    [[[
+                      var alarm = states['sensor.some_alarms_are_on'].state;
+                      var contact = states['sensor.some_contact_sensors_are_on'].state;
+                      var occupancy = states['sensor.some_occupancy_sensors_are_on'].state;
+                      var lock = states['sensor.some_locks_are_on'].state;
+                      return alarm === 'on' || contact === 'on' || occupancy === 'on' ? 'var(--security-background-active)' :
+                            lock === 'on' ? 'var(--security-background-active)' : alarm === 'armed' ? 'var(--background-green)' : 'var(--background-inactive)';
+                    ]]]
+                - border-color: |
+                    [[[
+                      var alarm = states['sensor.some_alarms_are_on'].state;
+                      var contact = states['sensor.some_contact_sensors_are_on'].state;
+                      var occupancy = states['sensor.some_occupancy_sensors_are_on'].state;
+                      var lock = states['sensor.some_locks_are_on'].state;
+                      return alarm === 'on' || contact === 'on' || occupancy === 'on' ? 'var(--security-icon-background-active)' :
+                            lock === 'on' ? 'var(--security-icon-background-active)' : alarm === 'armed' ? 'var(--icon-background-green)' : 'var(--icon-background-inactive)';
+                    ]]]
+                - box-shadow: |
+                    [[[
+                      return variables.view && variables.view === 'security' ? 
+                            (states['sensor.some_alarms_are_on'].state === 'on' || states['sensor.some_contact_sensors_are_on'].state === 'on' || states['sensor.some_occupancy_sensors_are_on'].state === 'on') ? '0 0 5px var(--security-icon-background-active)' :
+                            states['sensor.some_locks_are_on'].state === 'on' ? '0 0 5px var(--security-icon-background-active)' : states['sensor.some_alarms_are_on'].state === 'armed' ? '0 0 5px var(--icon-background-green)' : '0 0 5px var(--border-inactive)' : 'none';
+                    ]]]
+              icon:
+                - color: |
+                    [[[
+                      var alarm = states['sensor.some_alarms_are_on'].state;
+                      var contact = states['sensor.some_contact_sensors_are_on'].state;
+                      var occupancy = states['sensor.some_occupancy_sensors_are_on'].state;
+                      var lock = states['sensor.some_locks_are_on'].state;
+                      return alarm === 'on' || contact === 'on' || occupancy === 'on' ? 'var(--security-icon-background-active)' :
+                            lock === 'on' ? 'var(--security-icon-background-active)' : alarm === 'armed' ? 'var(--icon-background-green)' : 'var(--icon-background-inactive)';
+                    ]]]
+          - type: custom:button-card # AIR
+            template: header_category
+            variables:
+              sensor_1: sensor.some_climates_are_on
+              sensor_2: sensor.some_fans_are_on
+              sensor_4: sensor.climates_dominance
+              background_color_1: var(--climate-background-heat)
+              background_color_2: var(--climate-background-cool-fan)
+              background_color_3: var(--climate-background-auto)
+              background_color_4: var(--climate-background-dry)
+              border_color_1: var(--climate-border-heat)
+              border_color_2: var(--climate-border-cool-fan)
+              border_color_3: var(--climate-border-auto)
+              border_color_4: var(--climate-border-dry)
+              badge_counter_1: sensor.climates_count
+              badge_counter_2: sensor.fans_count
+              header_view: 'air'
+              view: '[[[ return variables.view ]]]'
+              default_path:  |
+                [[[
+                  return states['sensor.some_climates_are_on'].state !== 'off' ? 'air_climates' :
+                          states['sensor.some_fans_are_on'].state === 'on' ? 'air_fans' : 'air_climates';
+                ]]]
+            icon:  |
+              [[[
+                var climate = states['sensor.some_climates_are_on'].state;
+                var fan = states['sensor.some_fans_are_on'].state;
+                return climate !== 'off' ? climate === 'cool' ? 'mdi:thermometer-low' : 'mdi:thermometer' :
+                        fan === 'on' ? 'mdi:fan' : 'mdi:thermometer';
+              ]]]
+            size:  |
+              [[[
+                var climate = states['sensor.some_climates_are_on'].state;
+                var fan = states['sensor.some_fans_are_on'].state;
+                return climate === 'on' ? '60%' :
+                        fan === 'on' ? '54%' : '60%';
+              ]]]
+            styles:
+              card:
+                - background: |
+                    [[[
+                      var climate = states['sensor.climates_dominance'].state;
+                      var fan = states['sensor.some_fans_are_on'].state;
+                      return climate !== 'off' ? climate === 'heat' ? 'var(--climate-background-heat)' :
+                              climate === 'auto' ? 'var(--climate-background-auto)' :
+                              (climate === 'cool' || climate === 'fan') ? 'var(--climate-background-cool-fan)' :
+                              climate === 'dry' ? 'var(--climate-background-dry)' :
+                              'var(--climate-background-inactive)' :
+                              fan === 'on' ? 'var(--fan-background-active)' : 'var(--background-inactive)';
+                    ]]]
+                - border-color:  |
+                    [[[
+                      var climate = states['sensor.climates_dominance'].state;
+                      var fan = states['sensor.some_fans_are_on'].state;
+                      return climate !== 'off' ? climate === 'heat' ? 'var(--climate-icon-background-heat)' :
+                              climate === 'auto' ? 'var(--climate-icon-background-auto)' :
+                              (climate === 'cool' || climate === 'fan') ? 'var(--climate-icon-background-cool-fan)' :
+                              climate === 'dry' ? 'var(--climate-icon-background-dry)' :
+                              '#C2C2C2' :
+                              fan === 'on' ? 'var(--fan-icon-background-active)' : 'var(--icon-background-inactive)';
+                    ]]]
+                - box-shadow:  |
+                    [[[
+                      return variables.view && variables.view === 'air' ? states['sensor.climates_dominance'].state !== 'off' ? 
+                              states['sensor.climates_dominance'].state === 'heat' ? '0 0 5px var(--climate-border-heat)' :
+                              states['sensor.climates_dominance'].state === 'auto' ? '0 0 5px var(--climate-border-auto)' :
+                              (states['sensor.climates_dominance'].state === 'cool' || states['sensor.climates_dominance'].state === 'fan') ? '0 0 5px var(--climate-border-cool-fan)' :
+                              states['sensor.climates_dominance'].state === 'dry' ? '0 0 5px var(--climate-border-dry)' :
+                              '0 0 5px var(--border-inactive)' :
+                              states['sensor.some_fans_are_on'].state === 'on' ? '0 0 5px var(--fan-border-active)' : '0 0 5px var(--border-inactive)' : 'none';
+                    ]]]
+              icon:
+                - color:  |
+                    [[[
+                      var climate = states['sensor.climates_dominance'].state;
+                      var fan = states['sensor.some_fans_are_on'].state;
+                      return climate !== 'off' ? climate === 'heat' ? 'var(--climate-icon-background-heat)' :
+                              climate === 'auto' ? 'var(--climate-icon-background-auto)' :
+                              (climate === 'cool' || climate === 'fan') ? 'var(--climate-icon-background-cool-fan)' :
+                              climate === 'dry' ? 'var(--climate-icon-background-dry)' :
+                              'var(--climate-icon-background-inactive)' :
+                              fan === 'on' ? 'var(--fan-icon-background-active)' : 'var(--icon-background-inactive)';
+                    ]]]
+          - type: custom:button-card # LIGHT
+            template: header_category
+            icon: mdi:lightbulb
+            size: 52%
+            variables:
+              sensor_1: sensor.some_lights_are_on
+              background_color_1: 'var(--light-background-active)'
+              border_color_1: 'var(--light-border-active)'
+              header_view: 'light'
+              view: '[[[ return variables.view ]]]'
+              default_path: 'light_bulbs'
+              badge_counter_1: sensor.lights_count
+          - type: custom:button-card # MEDIA
+            template: header_category
+            variables:
+              sensor_1: sensor.some_audio_players_are_on
+              sensor_2: sensor.some_video_players_are_on 
+              background_color_1: 'var(--media-background-active)'
+              background_color_2: 'var(--media-background-active)'
+              border_color_1: 'var(--media-border-active)'
+              border_color_2: 'var(--media-border-active)'
+              header_view: 'media'
+              view: '[[[ return variables.view ]]]'
+              default_path: |
+                [[[
+                  return states['sensor.some_audio_players_are_on'].state !== 'off' ? 'media_audio' :
+                          states['sensor.some_video_players_are_on'].state === 'on' ? 'media_video' : 'media_audio';
+                ]]]
+              badge_counter_1: sensor.audio_players_count
+              badge_counter_2: sensor.video_players_count
+            icon: |
+              [[[
+                return (states['sensor.some_audio_players_are_on'].state === 'on' || states['sensor.some_video_players_are_on'].state === 'on') ? 'mdi:pause' : 'mdi:play';
+              ]]]
+            size: 65%
+            styles:
+              card:
+                - background: |
+                    [[[
+                      var audio = states['sensor.some_audio_players_are_on'].state;
+                      var video = states['sensor.some_video_players_are_on'].state;
+                      return (audio === 'on' || video === 'on') ? 'var(--media-background-active)' : 'var(--media-background-inactive)';
+                    ]]]
+                - border-color: |
+                    [[[
+                      var audio = states['sensor.some_audio_players_are_on'].state;
+                      var video = states['sensor.some_video_players_are_on'].state;
+                      return (audio === 'on' || video === 'on') ? 'var(--media-icon-background-active)' : 'var(--media-icon-background-inactive)';
+                    ]]]
+                - box-shadow: |
+                    [[[
+                      if (variables.view && variables.view === 'media') {
+                        var audio = states['sensor.some_audio_players_are_on'].state;
+                        var video = states['sensor.some_video_players_are_on'].state;
+                        return (audio === 'on' || video === 'on') ? '0 0 5px var(--media-border-active)' : '0 0 5px var(--media-border-inactive)';
+                      }
+                      return 'none';
+                    ]]]
+              icon:
+                - color: |
+                    [[[
+                      var audio = states['sensor.some_audio_players_are_on'].state;
+                      var video = states['sensor.some_video_players_are_on'].state;
+                      return (audio === 'on' || video === 'on') ? 'var(--media-icon-background-active)' : 'var(--media-icon-background-inactive)';
+                    ]]]
+          - type: custom:button-card # EQUIPMENT
+            template: header_category
+            icon: mdi:power-plug
+            size: 62%
+            variables:
+              sensor_1: sensor.some_devices_are_on
+              background_color_1: 'var(--device-background-active)'
+              border_color_1: 'var(--device-border-active)'
+              badge_counter_1: sensor.devices_count
+              header_view: 'equipment'
+              view: '[[[ return variables.view ]]]'
+              default_path: 'devices_favorites'

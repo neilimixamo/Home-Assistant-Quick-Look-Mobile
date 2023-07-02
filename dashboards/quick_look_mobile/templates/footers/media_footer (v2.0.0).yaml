@@ -1,0 +1,246 @@
+media_footer:
+  template: basic_card_expandable
+  variables:
+    entity:
+    remote:
+    name:
+    on_state: 
+      - 'on'
+      - 'playing'
+      - 'buffering'
+    label_on: #can be changed
+    off_state: 
+      - 'off'
+      - 'idle'
+      - 'paused'
+    label_off: #can be changed
+    icon_tap_action:
+    icon_hold_action:
+    name_tap_action:
+  styles:
+    card:
+      - height: 8.4vh
+      - width: 93vw
+      - background-color: |
+          [[[
+            let color = 'var(--media-background-inactive)';
+            if (variables.entity || variables.remote) {
+              let state;
+              if (variables.remote) {
+                state = states[variables.remote].state;
+              } else if (variables.entity) {
+                state = states[variables.entity].state;
+              }
+              if (state && (variables.on_state.includes(state) || states[variables.entity].state === 'paused')) {
+                color = 'var(--media-background-active)';
+              }
+            }
+            return color;
+          ]]]
+    grid:
+      - grid-template-columns: 23% 63% 14%
+      - grid-template-areas: '"icon name right_icon"'
+  custom_fields:
+    icon:
+      card:
+        type: custom:button-card # ICON
+        entity:  |
+          [[[
+            if (variables.remote) {
+                return variables.remote;
+            } else if (variables.entity) {
+                return variables.entity;
+            } else {
+                return 'null';
+            }
+          ]]] 
+        show_entity_picture: |
+          [[[
+            if (variables.entity && variables.on_state.includes(states[variables.entity].state)) {
+              return true;
+            } else {
+              return false;
+            }
+          ]]]
+        icon: |
+          [[[
+            let icon = 'mdi:help';
+            if (variables.entity || variables.remote) {
+              let state, prefix = 'mdi:television';
+              if (variables.remote) {
+                state = states[variables.remote].state;
+              } else if (variables.entity) {
+                state = states[variables.entity].state;
+                if (!states[variables.entity].attributes.app_name) {
+                  prefix = 'mdi:cast';
+                }
+              }
+              if (state && variables.on_state.includes(state)) {
+                icon = prefix + '-pause';
+              } else {
+                icon = prefix;
+              }
+            }
+            return icon;
+          ]]]
+        styles:
+          card:
+            - background-color: |
+                [[[
+                  let color = 'var(--media-icon-background-inactive)'; // Default color
+                  if (variables.entity || variables.remote) {
+                    let state;
+                    if (variables.remote) {
+                      state = states[variables.remote].state;
+                    } else if (variables.entity) {
+                      state = states[variables.entity].state;
+                    }
+                    if (state && (variables.on_state.includes(state) || states[variables.entity].state === 'paused')) {
+                      color = 'var(--media-icon-background-active)';
+                    }
+                  }
+                  return color;
+                ]]]
+          icon:
+            - color: |
+                [[[
+                  let color = 'var(--media-icon-inactive)';
+                  if (variables.entity || variables.remote) {
+                    let state;
+                    if (variables.remote) {
+                      state = states[variables.remote].state;
+                    } else if (variables.entity) {
+                      state = states[variables.entity].state;
+                    }
+                    if (state && variables.on_state.includes(state)) {
+                      color = 'var(--media-icon-active)';
+                    }
+                  }
+                  return color;
+                ]]]
+          img_cell:
+            - height: 6.4vh
+            - width: 6.4h
+            - top: -0.3vh
+          entity_picture:
+            - height: 6.4vh
+            - width: 6.4vh
+            - border-radius: 50%
+        tap_action:
+          action: |
+            [[[
+              if (variables.remote) {
+                return 'toggle';
+              } else {
+                return 'none';
+              }
+            ]]]
+    name:
+      card:        
+        entity: |
+          [[[
+            if (variables.entity) {
+              return variables.entity;
+            } else if (variables.remote) {
+              return variables.remote;
+            } else {
+              return 'null';
+            }
+          ]]]
+        name: |
+          [[[
+            let defaultName = 'Name';
+            let playerName = '';
+            let mediaTitle = '';
+            if (variables.entity) {
+              let state;
+              if (states[variables.entity].attributes.app_name) {
+                state = states[variables.entity].attributes.app_name;
+              } else if (states[variables.entity].attributes.media_playlist) {
+                state = states[variables.entity].attributes.media_playlist;
+              } else if (states[variables.entity].attributes.media_artist) {
+                state = states[variables.entity].attributes.media_artist;
+              }
+              if (state && variables.on_state.includes(states[variables.entity].state) || states[variables.entity].state === 'paused') {
+                playerName = variables.name ? variables.name + " : " : (states[variables.entity].attributes.friendly_name ? states[variables.entity].attributes.friendly_name + " : " : defaultName);
+                mediaTitle = state;
+              }
+            }
+            return playerName + mediaTitle;
+          ]]]
+        label: |
+          [[[
+            let label = '';
+            if (variables.entity) {
+              let state;
+              if (variables.on_state.includes(states[variables.entity].state) || states[variables.entity].state === 'paused') {
+                if (states[variables.entity].attributes.app_name) {
+                  state = states[variables.entity].attributes.media_title;
+                } else if (states[variables.entity].attributes.media_title) {
+                  state = states[variables.entity].attributes.media_title;
+                }
+                if (state) {
+                  label = state;
+                }
+              }
+            }
+            return label;
+          ]]]
+        styles:
+          card:
+            - height: 8.4vh
+            - width: 60vw
+            - background: transparent
+            - padding-right: 5vw
+    right_icon:
+      card:
+        type: custom:button-card # RIGHT ICON
+        icon: |
+          [[[
+            if (variables.entity) {
+              if (variables.on_state.includes(states[variables.entity].state)) {
+                return 'mdi:pause';
+              } else {
+                return 'mdi:play';
+              }
+            } else {
+              return 'mdi:cast';
+            }
+          ]]]
+        color: |
+          [[[
+            if (variables.remote && states[variables.remote].state === 'on') {
+              return 'var(--media-secondary-icon-active)';
+            } else if (variables.entity) {
+              if (variables.on_state.includes(states[variables.entity].state) || states[variables.entity].state === 'paused') {
+                return 'var(--media-secondary-icon-active)';
+              } else {
+                return 'var(--media-secondary-icon-inactive)';
+              }
+            } else {
+              return 'var(--media-secondary-icon-inactive)';
+            }
+          ]]] 
+        size: 80%
+        styles:
+          card:
+            - background-color: transparent
+            - height: 8.4vh
+            - width: 5vh
+            - right: 3vw
+            - box-shadow: none
+            - border-radius: 0%
+            - cursor: none
+            - --mdc-ripple-press-opacity: 0
+        tap_action:
+          action: call-service
+          service: media_player.media_play_pause
+          service_data:
+            entity_id: |
+              [[[
+                if (variables.entity) {
+                  return variables.entity;
+                } else {
+                  return 'null';
+                }
+              ]]]

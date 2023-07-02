@@ -1,0 +1,82 @@
+fan_expandable:
+  template: 
+    - basic_card_expandable
+    - badge_battery
+  variables:
+    entity:
+    name:
+    label_on: 'Active'
+    label_off: 'Inactive'
+    expand_to:
+  styles:
+    card:
+      - background-color: |
+          [[[
+            if (variables.entity) {
+              const state = states[variables.entity].state.toLowerCase();
+              if (state === 'on' || state.includes('fan')) {
+                return 'var(--fan-background-active)';
+              } else {
+                return 'var(--fan-background-inactive)';
+              }
+            } else {
+              return 'var(--fan-background-inactive)';
+            }
+          ]]]
+  custom_fields:
+    icon:
+      card:
+        icon: |
+          [[[                  
+            if (variables.entity) {
+              return 'mdi:fan';
+            } else {
+              return 'mdi:help';
+            }
+          ]]]
+        styles:
+          card:
+            - overflow: visible
+            - background-color:  |
+                [[[
+                  if (variables.entity) {
+                    const state = states[variables.entity].state.toLowerCase();
+                    if (state === 'on' || state.includes('fan')) {
+                      return 'var(--fan-icon-background-active)';
+                    } else {
+                      return 'var(--fan-icon-background-inactive)';
+                    }
+                  } else {
+                    return 'var(--fan-icon-background-inactive)';
+                  }
+                ]]]
+          icon:
+            - color: 'var(--fan-icon-active)'
+        tap_action:
+          action: toggle
+        hold_action: 
+          action: none
+        custom_fields:
+          badge:
+            type: custom:button-card # calls for the 'badge_battery' template
+    name:
+      card:
+        label:  |
+          [[[
+            if (variables.entity) {
+              if (states[variables.entity].state === "unavailable") {
+                return 'Unavailable';
+              } else if (variables.label) {
+                return variables.label;
+              } else {
+                var state = states[variables.entity].state.toLowerCase();;
+                if (state === 'on' || state.includes('fan')) {
+                  return variables.label_on;
+                } else {
+                  return variables.label_off;
+                }
+              }
+            } else {
+              return 'Label';
+            }
+          ]]]

@@ -1,0 +1,91 @@
+cover_expandable:
+  template: 
+    - basic_card_expandable
+    - badge_battery
+  variables:
+    entity:
+    name:
+    label_on: 'Closed' #can be changed
+    label_off: 'Open' #can be changed
+  styles:
+    card:
+      - background-color: |
+          [[[
+            if (variables.entity && states[variables.entity].state === 'closed') {
+              return 'var(--cover-background-active)';
+            } 
+            return 'var(--cover-background-inactive)';
+          ]]]
+  custom_fields:
+    icon:
+      card:
+        icon: |
+          [[[
+            if (variables.entity) {
+              if (variables.icon) {
+                return variables.icon;
+              } else {
+                const entity = states[variables.entity];
+                if (entity.attributes.icon) {
+                  return entity.attributes.icon;
+                } else {
+                  return 'mdi:help';
+                }
+              }
+            } else {
+              return 'mdi:help';
+            }
+          ]]]
+        styles:
+          card:
+            - overflow: visible
+            - background-color: |
+                [[[
+                  if (variables.entity && (states[variables.entity].state === 'closed' )) {
+                    return 'var(--cover-icon-background-active)';
+                  } else {
+                    return 'var(--cover-icon-background-inactive)';
+                  }
+                ]]]
+          icon:
+            - color: |
+                [[[
+                  if (variables.entity && (states[variables.entity].state === 'closed' )) {
+                    return 'var(--cover-icon-active)';
+                } else {
+                    return 'var(--cover-icon-inactive)';
+                }
+                ]]]
+        tap_action:
+          action: call-service
+          service: cover.toggle
+          service_data:
+            entity_id: '[[[ return variables.entity ]]]'
+        custom_fields:
+          badge:
+            type: custom:button-card # calls for the 'badge_battery' template
+    name:
+      card:
+        label:  |
+          [[[
+            if (variables.entity) {
+              if (states[variables.entity].state === 'unavailable') {
+                return "Unavailable";
+              } else {
+                if (variables.label) {
+                  return variables.label;
+                } else {
+                    var state = states[variables.entity].state;
+                    if (state === 'closed') {
+                      return variables.label_on;
+                    } else if (state === 'open') {
+                      return variables.label_off;
+                    } else {
+                      return "Label";
+                    }
+                }
+              }
+            } else {
+              return "Label";
+            }
+          ]]]

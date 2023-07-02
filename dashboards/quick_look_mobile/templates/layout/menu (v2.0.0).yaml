@@ -1,0 +1,138 @@
+menu:
+  styles:
+      card:
+        - height: 9vh
+        - width: 100.8vw
+        - margin: 0vh -4vw
+        - background-color: 'var(--bottom-menu)'
+        - padding: 0px
+        - border-radius: 0px
+        - box-shadow: none
+        - cursor: none
+        - --mdc-ripple-press-opacity: 0
+      grid:
+        - grid-template-rows: auto
+        - grid-template-columns: auto
+        - grid-template-areas: |
+            "menu"
+  custom_fields:
+    menu:
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:button-card # DEV
+            name: Dev
+            entity: 
+            icon: mdi:wrench-outline
+            size: 50%
+            styles:
+              name: 
+                - margin-top: -18px
+                - font-size: 12px
+              card:
+                - margin-top: -2.5vh
+                - padding-left: 4vw
+                - padding-top: 0px
+                - height: 10vh
+                - border-radius: 0px
+                - box-shadow: none
+                - background-color: transparent
+                - cursor: none
+                - --mdc-ripple-press-opacity: 0
+              icon:
+                - color: 'var(--text-light-color)'
+            tap_action:
+              action: navigate
+              navigation_path: /developer-tools/yaml
+          - type: custom:button-card # AUTOMATIONS
+            name: Autom.
+            entity: 
+            icon: mdi:robot-outline
+            size: 38%
+            styles:
+              name: 
+                - margin-top: -18px
+                - font-size: 12px
+              card:
+                - margin-top: -2.5vh
+                - padding-top: 0px
+                - height: 10vh
+                - border-radius: 0px
+                - box-shadow: none
+                - background-color: transparent
+                - cursor: none
+                - --mdc-ripple-press-opacity: 0
+              icon:
+                - color: 'var(--text-light-light-color)'
+            tap_action:
+              action: navigate
+              navigation_path: /config/automation/dashboard
+          - type: custom:button-card # HOME
+            name: Home
+            entity: 
+            icon: mdi:home-outline
+            size: 42%
+            styles:
+              name: 
+                - margin-top: -18px
+                - font-size: 12px
+              card:
+                - margin-top: -2.5vh
+                - padding-top: 0px
+                - height: 10vh
+                - border-radius: 0px
+                - box-shadow: none
+                - background-color: transparent
+                - cursor: none
+                - --mdc-ripple-press-opacity: 0
+              icon:
+                - color: 'var(--text-light-color)'
+            tap_action:
+              action: navigate
+              navigation_path: home
+          - type: custom:button-card # NOTIFICATIONS
+            name: Notif.
+            entity: 
+            icon: mdi:bell-outline
+            size: 37%
+            styles:
+              name: 
+                - margin-top: -18px
+                - font-size: 12px
+              card:
+                - margin-top: -2.5vh
+                - padding-top: 0px
+                - height: 10vh
+                - border-radius: 0px
+                - box-shadow: none
+                - background-color: transparent
+                - cursor: none
+                - --mdc-ripple-press-opacity: 0
+              icon:
+                - color: 'var(--text-light-color)'
+            tap_action:
+              action: navigate
+              navigation_path: #to be defined
+          - type: custom:button-card # SETTINGS
+            name: Settings
+            entity: 
+            icon: mdi:cog-outline
+            size: 37%
+            styles:
+              name: 
+                - margin-top: -18px
+                - font-size: 12px
+              card:
+                - margin-top: -2.5vh
+                - padding-top: 0px
+                - height: 10vh
+                - border-radius: 0px
+                - box-shadow: none
+                - background-color: transparent
+                - cursor: none
+                - --mdc-ripple-press-opacity: 0
+              icon:
+                - color: 'var(--text-light-color)'
+            tap_action:
+              action: navigate
+              navigation_path: /config/dashboard

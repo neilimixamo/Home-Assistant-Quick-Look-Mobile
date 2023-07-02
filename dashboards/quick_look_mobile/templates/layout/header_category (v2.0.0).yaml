@@ -1,0 +1,141 @@
+header_category:
+  show_name: false
+  triggers_update: all
+  variables:
+    show_badge: true
+  styles:
+    card:
+      - height: 9.8vh
+      - width: 17vw
+      - border-radius: 27px 
+      - cursor: none
+      - --mdc-ripple-press-opacity: 0
+      - margin-top: -0.5vh
+      - overflow: visible
+      - background-color: |
+          [[[
+            const activeSensor = variables.sensor_1 || variables.sensor_2 || variables.sensor_3 || variables.sensor_4;
+            return activeSensor && states[activeSensor].state === 'on' ? variables.background_color_1 : 'var(--background-inactive)';
+          ]]]
+      - border: |
+          [[[ return (variables.header_view && variables.header_view === variables.view) ? 'solid' : 'none' ]]]
+      - border-width: 1px
+      - border-color: |
+          [[[
+            if (variables.header_view === variables.view) {
+              const activeSensor = variables.sensor_1 || variables.sensor_2 || variables.sensor_3 || variables.sensor_4;
+              return activeSensor && states[activeSensor].state === 'on' ? variables.border_color_1 : 'var(--icon-background-inactive)';
+            } else {
+              return 'none';
+            }
+          ]]]
+      - box-shadow: |
+          [[[
+            if (variables.header_view === variables.view) {
+              const activeSensor = variables.sensor_1 || variables.sensor_2 || variables.sensor_3 || variables.sensor_4;
+              return activeSensor && states[activeSensor].state === 'on' ? `0 0 5px ${variables.border_color_1}` : '0 0 5px var(--border-inactive)';
+            } else {
+              return 'none';
+            }
+          ]]]
+    icon:
+      - color: |
+          [[[
+            const activeSensor = variables.sensor_1 || variables.sensor_2 || variables.sensor_3 || variables.sensor_4;
+            return activeSensor && states[activeSensor].state === 'on' ? variables.border_color_1 : 'var(--icon-background-inactive)';
+          ]]]
+  custom_fields:
+    badge:
+      card:
+        type: custom:button-card
+        show_icon: false
+        show_label: false
+        name: |
+          [[[
+            if (variables.show_badge == true) {
+              for (let i = 1; i <= 4; i++) {
+                if (variables[`sensor_${i}`] && states[variables[`sensor_${i}`]].state == 'on') {
+                  return (states[variables[`badge_counter_${i}`]].state);
+                }
+              }
+            }
+            return null;
+          ]]]
+        styles:
+          name: 
+            - font-size: 12px
+            - font-weight: 500
+            - color: var(--text)
+          card:
+            - background:  |
+                [[[
+                  if (variables.show_badge == true) {
+                    if (variables.sensor_1 && states[variables.sensor_1].state === 'on') {
+                      return 'var(--badge-background)';
+                    } else if (variables.sensor_2 && states[variables.sensor_2].state == 'on') {
+                      return 'var(--badge-background)';
+                    } else if (variables.sensor_3 && states[variables.sensor_3].state == 'on') {
+                      return 'var(--badge-background)';
+                    } else if (variables.sensor_4 && states[variables.sensor_4].state == 'on') {
+                      return 'var(--badge-background)';
+                    }
+                  }
+                  return 'transparent';
+                ]]]
+            - height: 2.5vh
+            - width: 2.5vh
+            - border-radius: 50%
+            - border: solid
+            - border-width: 1px
+            - border-color: |
+                [[[
+                  if (variables.show_badge == true) {
+                    if (variables.sensor_1 && states[variables.sensor_1].state === 'on') {
+                      if (variables.sensor_4) {
+                        if (states[variables.sensor_4].state === 'heat') {
+                          return variables.border_color_1;
+                        } else if (states[variables.sensor_4].state === 'cool' || states[variables.sensor_4].state === 'fan') {
+                          return variables.border_color_2;
+                        } else if (states[variables.sensor_4].state === 'auto') {
+                          return variables.border_color_3;
+                        } else if (states[variables.sensor_4].state === 'dry') {
+                          return variables.border_color_4;
+                        } 
+                      } else {
+                        return variables.border_color_1;
+                      }
+                    } else if (variables.sensor_2 && states[variables.sensor_2].state === 'on') {
+                      return variables.border_color_2;
+                    } else if (variables.sensor_3 && states[variables.sensor_3].state === 'on') {
+                      return variables.border_color_3;
+                    } else if (variables.sensor_4 && states[variables.sensor_4].state === 'on') {
+                      return variables.border_color_4;
+                    }
+                  }
+                  return 'transparent';
+                ]]]
+            - box-shadow: 'none'
+            - position: absolute
+            - top: -9.5vh
+            - right: -0.6vw
+    tap_layer:
+      card:
+        type: custom:button-card
+        styles:
+          card:
+            - position: absolute
+            - height: 9.8vh
+            - width: 17vw
+            - border-radius: 27px
+            - box-shadow: none
+            - cursor: none
+            - --mdc-ripple-press-opacity: 0
+            - background-color: transparent
+            - bottom: -0.3vh
+            - left: -16.8vw
+        tap_action:
+          action: navigate
+          navigation_path: |
+            [[[ return (variables.header_view && variables.header_view === variables.view) ? 'home' : variables.default_path ]]]
+        double_tap_action:
+          action: none

@@ -1,0 +1,229 @@
+title: devices_all
+path: devices_all
+icon: mdi:toggle-switch-variant
+theme: Quick Look Mobile
+background: 'var(--theme)'
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: 19.5vh 7.5vh 64vh 9vh
+  grid-template-areas: |
+    "header"
+    "subheader"
+    "main"
+    "menu"
+cards:
+  - type: custom:button-card # HEADER
+    view_layout:
+      grid-area: header
+    template: header
+    variables:
+      view: equipment
+  - type: custom:button-card # SUBHEADER
+    view_layout:
+      grid-area: subheader
+    template: subheader_2
+    variables:
+      subheader_1_title: Favorites #can be changed
+      subheader_1_path: devices_favorites
+      subheader_2_title: All #can be changed
+      subheader_2_path: devices_all
+  - type: custom:layout-card # MAIN
+    view_layout:
+      grid-area: main
+    layout_type: custom:vertical-layout
+    layout:
+      height: 64vh
+      margin: 0vh 0vh 0vh
+      padding: 0vh 0.4vh
+    cards:
+          # This is where you can customize this view to fit your system and devices. 
+      - type: custom:button-card # TITLE 01
+        template: title_scrollable
+        variables:
+          title: Room 1 #can be changed
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # ENTITY 01
+            template: device #or 'device_expandable'
+            variables:
+              entity: #required entity_id
+              name: #optional
+              battery: #optional battery sensor to display as a badge when <60%
+              expand_to: #required path if device_expandable template is used
+              label_on: 'Active' #required
+              label_off: 'Inactive' #required
+          - type: custom:button-card # ENTITY 02
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+      - type: custom:button-card # TITLE 02
+        template: title_scrollable
+        variables:
+          title: Room 2 #can be changed
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # ENTITY 03
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 04
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 05
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 06
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+      - type: custom:button-card # TITLE 03
+        template: title_scrollable
+        variables:
+          title: Room 3 #can be changed
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # ENTITY 07
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 08
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 09
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive' 
+      - type: custom:button-card # TITLE 04
+        template: title_scrollable
+        variables:
+          title: Room 4 #can be changed
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # ENTITY 10
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 11
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 12
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+      - type: custom:button-card # TITLE 05
+        template: title_scrollable
+        variables:
+          title: Room 5 #can be changed
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # ENTITY 13
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 14
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 15
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+          - type: custom:button-card # ENTITY 16
+            template: device
+            variables:
+              entity: 
+              name: 
+              battery: 
+              expand_to: 
+              label_on: 'Active'
+              label_off: 'Inactive'
+  - type: custom:button-card # MENU
+    view_layout:
+      grid-area: menu
+    template: menu

@@ -1,0 +1,61 @@
+title: media_tv_remote
+path: media_tv_remote
+icon: mdi:remote-tv
+theme: Quick Look Mobile
+background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(240,243,253,1) 15%)
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: min-content
+  grid-template-areas: |
+    "main"
+cards: 
+  - type: custom:layout-card # MAIN
+    view_layout:
+      grid-area: main
+    layout_type: custom:vertical-layout
+    layout:
+      margin: 0vh 0vh 0vh
+      padding: 0vh 0.4vh
+    cards:
+      - type: custom:button-card
+        styles:
+          card:
+            - background: transparent
+            - height: 97vh
+            - width: 91vw
+            - padding: 0px
+            - box-shadow: none
+            - cursor: none 
+            - --mdc-ripple-press-opacity: 0 
+          grid:
+            - display: flex
+            - justify-content: center
+            - align-items: flex-end
+        tap_action:
+          action: navigate
+          navigation_path: media_tv
+        custom_fields:
+          remote:
+            card:
+              type: custom:firemote-card
+              entity: media_player.tv_debug
+              device_family: chromecast
+              device_type: chromecast-4k
+              compatibility_mode: default
+              android_tv_remote_entity: remote.tv
+              defaultRemoteStyle_override: #'XM2'
+              app_launch_1: youtube
+              app_launch_2: tivimate
+              hide_button_highlights: true
+              button_overrides:
+                netflix-button:
+                  hidden: true
+              scale: '100'
+            card_mod:
+              style: |
+                ha-card {
+                  width: min-content;
+                  padding: 0px;
+                }

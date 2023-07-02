@@ -1,0 +1,154 @@
+media_expandable:
+  template: basic_card_expandable
+  variables:
+    entity:
+    remote: 
+    name:
+    on_state: 
+      - 'on'
+      - 'playing'
+      - 'buffering'
+      - 'paused'
+    label_on: #can be changed
+    off_state: 
+      - 'off'
+      - 'idle'
+    label_off: #can be changed
+    icon_tap_action:
+    icon_hold_action:
+    name_tap_action:
+  styles:
+    card:
+      - background-color: |
+          [[[
+            let color = 'var(--media-background-inactive)';
+            if (variables.entity || variables.remote) {
+              let state;
+              if (variables.remote) {
+                state = states[variables.remote].state;
+              } else if (variables.entity) {
+                state = states[variables.entity].state;
+              }
+              if (state && variables.on_state.includes(state)) {
+                color = 'var(--media-background-active)';
+              }
+            }
+            return color;
+          ]]]
+  custom_fields:
+    icon:
+      card:
+        type: custom:button-card # ICON
+        entity:  |
+          [[[
+            if (variables.remote) {
+                return variables.remote;
+            } else if (variables.entity) {
+                return variables.entity;
+            } else {
+                return 'null';
+            }
+          ]]] 
+        show_entity_picture: |
+          [[[
+            if (variables.entity && variables.on_state.includes(states[variables.entity].state)) {
+              return true;
+            } else {
+              return false;
+            }
+          ]]]
+        icon: |
+          [[[
+            let icon = 'mdi:help';
+            if (variables.entity || variables.remote) {
+              let state, prefix = 'mdi:television';
+              if (variables.remote) {
+                state = states[variables.remote].state;
+              } else if (variables.entity) {
+                state = states[variables.entity].state;
+                if (!states[variables.entity].attributes.app_name) {
+                  prefix = 'mdi:cast';
+                }
+              }
+              if (state && variables.on_state.includes(state)) {
+                icon = prefix + '-pause';
+              } else {
+                icon = prefix;
+              }
+            }
+            return icon;
+          ]]]
+        styles:
+          card:
+            - background-color: |
+                [[[
+                  let color = 'var(--media-icon-background-inactive)'; // Default color
+                  if (variables.entity || variables.remote) {
+                    let state;
+                    if (variables.remote) {
+                      state = states[variables.remote].state;
+                    } else if (variables.entity) {
+                      state = states[variables.entity].state;
+                    }
+                    if (state && variables.on_state.includes(state)) {
+                      color = 'var(--media-icon-background-active)';
+                    }
+                  }
+                  return color;
+                ]]]
+          icon:
+            - color: |
+                [[[
+                  let color = 'var(--media-icon-inactive)';
+                  if (variables.entity || variables.remote) {
+                    let state;
+                    if (variables.remote) {
+                      state = states[variables.remote].state;
+                    } else if (variables.entity) {
+                      state = states[variables.entity].state;
+                    }
+                    if (state && variables.on_state.includes(state)) {
+                      color = 'var(--media-icon-active)';
+                    }
+                  }
+                  return color;
+                ]]]
+          img_cell:
+            - height: 6.4vh
+            - width: 6.4h
+            - top: -0.3vh
+          entity_picture:
+            - height: 6.4vh
+            - width: 6.4vh
+            - border-radius: 50%
+    name:
+      card:        
+        entity: |
+          [[[
+            if (variables.entity) {
+              return variables.entity;
+            } else if (variables.remote) {
+              return variables.remote;
+            } else {
+              return 'null';
+            }
+          ]]]
+        label: |
+            [[[
+              let state, label;
+
+              if (variables.entity) {
+                state = states[variables.entity].state;
+                label = (variables.label_on && variables.on_state.includes(state)) ? variables.label_on :
+                        (variables.label_off && variables.off_state.includes(state)) ? variables.label_off : null;
+              
+              } else if (variables.remote) {
+                state = states[variables.remote].state;
+                label = (variables.label_on && state === 'on') ? variables.label_on :
+                        (variables.label_off && state === 'off') ? variables.label_off : null;
+              }
+              if (!label && state) {
+                label = state.charAt(0).toUpperCase() + state.slice(1);
+              }
+              return label || 'Label';
+            ]]]

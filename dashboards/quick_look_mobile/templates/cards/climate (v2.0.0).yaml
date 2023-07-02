@@ -1,0 +1,199 @@
+climate:
+  template: 
+    - basic_card
+    - badge_battery
+  variables:
+    entity:
+    name:
+    label: 
+    temperature:
+    temperature_unit: #celsius(default) or fahrenheit 
+  styles:
+    card:
+      - background-color: |
+          [[[
+            if (!variables.entity) {
+              return 'var(--climate-background-inactive)';
+            }
+            
+            const state = states[variables.entity].state.toLowerCase();
+            const attributes = states[variables.entity].attributes;
+            const temperature = parseFloat(attributes.temperature);
+            const currentTemperature = parseFloat(attributes.current_temperature);
+
+            if (state.includes('heat') && state.includes('cool')) {
+              if (temperature > currentTemperature) {
+                return 'var(--climate-background-heat)';
+              } else if (temperature < currentTemperature) {
+                return 'var(--climate-background-cool-fan)';
+              } else {
+                return 'var(--climate-background-auto)';
+              }
+            } else if (state.includes('auto')) {
+              return 'var(--climate-background-auto)';
+            } else if (state.includes('heat')) {
+              return 'var(--climate-background-heat)';
+            } else if (state.includes('cool') || state.includes('fan')) {
+              return 'var(--climate-background-cool-fan)';
+            } else if (state.includes('dry')) {
+              return 'var(--climate-background-dry)';
+            } else {
+              return 'var(--climate-background-inactive)';
+            }
+          ]]]
+  custom_fields:
+    icon:
+      card:
+        show_icon: |
+          [[[
+            if (variables.entity) {
+              const state = states[variables.entity].state;
+              const isFloat = !isNaN(state) && !isNaN(parseFloat(state));
+              
+              if (state !== 'off' && !isFloat) {
+                  return false;
+              } else {
+                  return true;
+              }
+            } else {
+              return true;
+            }
+          ]]]
+        icon:  |
+          [[[ 
+            if (variables.entity) {
+              var state = states[variables.entity].state;
+              if (state !== 'off') {
+                if (state === 'cool') {
+                  return 'mdi:thermometer-low';
+                } else if (state === 'fan_only') {
+                  return 'mdi:fan';
+                } else {
+                  return 'mdi:thermometer';
+                }
+              } else {
+                return 'mdi:thermometer';
+              }
+            } else {
+              return 'mdi:help';
+            }
+          ]]]
+        show_name: |
+          [[[
+              if (variables.entity) {
+                  const state = states[variables.entity].state;
+                  const isFloat = !isNaN(state) && !isNaN(parseFloat(state));
+                  
+                  if (state !== 'off' && !isFloat) {
+                      return true;
+                  } else {
+                      return false;
+                  }
+              } else {
+                  return false;
+              }
+          ]]]
+        name: |
+          [[[
+            if (variables.entity) {
+              if (states[variables.entity].state !== 'off' ) {
+                return states[variables.entity].attributes.temperature + '°';
+              } else {
+                return '';
+              } 
+            } else {
+              return '';
+            }
+          ]]]
+        styles:
+          card:
+            - overflow: visible
+            - background-color: |
+                [[[
+                  if (!variables.entity) {
+                    return 'var(--climate-icon-background-inactive)';
+                  }
+                  
+                  const state = states[variables.entity].state.toLowerCase();
+                  const attributes = states[variables.entity].attributes;
+                  const temperature = parseFloat(attributes.temperature);
+                  const currentTemperature = parseFloat(attributes.current_temperature);
+
+                  if (state.includes('heat') && state.includes('cool')) {
+                    if (temperature > currentTemperature) {
+                      return 'var(--climate-icon-background-heat)';
+                    } else if (temperature < currentTemperature) {
+                      return 'var(--climate-icon-background-cool-fan)';
+                    } else {
+                      return 'var(--climate-icon-background-auto)';
+                    }
+                  } else if (state.includes('auto')) {
+                    return 'var(--climate-icon-background-auto)';
+                  } else if (state.includes('heat')) {
+                    return 'var(--climate-icon-background-heat)';
+                  } else if (state.includes('cool') || state.includes('fan')) {
+                    return 'var(--climate-icon-background-cool-fan)';
+                  } else if (state.includes('dry')) {
+                    return 'var(--climate-icon-background-dry)';
+                  } else {
+                    return 'var(--climate-icon-background-inactive)';
+                  }
+                ]]]
+          icon:
+            - color: 'var(--climate-icon-color)'
+          name:
+            - color: 'var(--climate-name-color)'
+            - font-size: 14px
+            - font-weight: 800
+        tap_action: |
+          [[[
+            return {
+              action: 'call-service',
+              service: variables.entity && states[variables.entity].state == 'off'
+                      ? 'climate.turn_on'
+                      : 'climate.turn_off',
+              service_data: {
+                entity_id: variables.entity
+              }
+            };
+          ]]]
+        custom_fields:
+          badge:
+            type: custom:button-card # calls for the 'badge_battery' template
+    name:
+      card:
+        label: |
+          [[[
+            if (!variables.entity) {
+              return "Label";
+            } else {
+                if (states[variables.entity].state === 'unavailable') {
+                  return 'Unavailable';
+                } else {
+                  if (variables.label) {
+                    return variables.label;
+                  } else {
+                    let temperature;
+                    const entityState = states[variables.entity];
+                    const temperatureOverriderState = states[variables.temperature];
+
+                    if (temperatureOverriderState && temperatureOverriderState.state) {
+                      temperature = temperatureOverriderState.state;
+                    } else if (entityState.attributes.current_temperature) {
+                      temperature = entityState.attributes.current_temperature;
+                    } else if (entityState.attributes.device_class === 'temperature') {
+                      temperature = entityState.state;
+                    } 
+
+                    if (!temperature) {
+                      return 'Unavailable';
+                    }
+
+                    const unit = variables.temperature_unit || 'celsius';
+                    const unitSymbol = unit === 'fahrenheit' ? '°F' : '°C';
+
+                    return parseFloat(temperature).toFixed(1) + ' ' + unitSymbol;
+                  }
+                }
+            }
+          ]]]

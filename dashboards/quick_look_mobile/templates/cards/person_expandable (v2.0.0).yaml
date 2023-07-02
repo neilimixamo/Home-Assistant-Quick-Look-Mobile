@@ -1,0 +1,98 @@
+person_expandable:
+  template: 
+    - basic_card_expandable
+    - badge_battery
+  variables:
+    entity:
+    name:
+    label:
+  styles:
+    card:
+      - background-color:  |
+          [[[
+            if (variables.entity && (states[variables.entity].state === 'home')) {
+              return 'var(--person-background-inactive)';
+            } else {
+              return 'var(--person-background-inactive)';
+            }
+          ]]]
+  custom_fields:
+    icon:
+      card:
+        icon: |
+          [[[
+            if (variables.icon) {
+              return variables.icon;
+            } else {
+              return "mdi:account";
+            }
+          ]]]
+        show_entity_picture: |
+          [[[
+            if (variables.entity ) {
+              return true;
+            } else {
+              return false;
+            }
+          ]]]
+        styles:
+          card:
+            - overflow: visible
+            - background-color: |
+                [[[
+                  if (variables.entity && (states[variables.entity].state === 'on' || states[variables.entity].state === 'cleaning')) {
+                    return 'var(--person-icon-background-active)';
+                  } else {
+                    return 'var(--person-icon-background-inactive)';
+                  }
+                ]]]
+          icon:
+            - color: |
+                [[[
+                  if (variables.entity && (states[variables.entity].state === 'on' || states[variables.entity].state === 'cleaning')) {
+                    return 'var(--person-icon-active)';
+                  } else {
+                    return 'var(--person-icon-inactive)';
+                  }
+                ]]]
+          img_cell:
+            - height: 6.4vh
+            - width: 6.4h
+            - top: -0.3vh
+          entity_picture:
+            - height: 6.4vh
+            - width: 6.4vh
+            - border-radius: 50%
+        tap_action:
+          action: null
+    name:
+      card:
+        name: |
+          [[[
+            if (variables.entity ) {
+              if (variables.name) {
+                return variables.name;
+              } else {
+                return states[variables.entity].attributes.friendly_name;
+              }
+            } else {
+              return 'Person';
+            }
+          ]]]
+        label:  |
+          [[[
+            if (variables.label) {
+              return variables.label;
+            } else if (variables.entity) {
+                var state = states[variables.entity].state;
+                if (state === 'home') {
+                  return 'Home';
+                } else if (state === 'not_home') {
+                  return 'Not Home';
+                } else {
+                  return states[variables.entity].state;
+                }
+            } else {
+              return "Label"
+            }
+          ]]]

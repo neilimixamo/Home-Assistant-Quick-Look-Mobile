@@ -1,0 +1,226 @@
+title: home_favorites
+path: home_favorites
+icon: mdi:home
+theme: Quick Look Mobile
+background: "var(--theme)"
+type: custom:grid-layout
+layout:
+  margin: -0.5vh 1vh 0vh
+  grid-template-columns: auto
+  grid-template-rows: 19.5vh 7.5vh 50vh 4vh 10vh 9vh
+  grid-template-areas: |
+    "header"
+    "subheader"
+    "main"
+    "footer_title"
+    "footer"
+    "menu"
+cards:
+  - type: custom:button-card # HEADER
+    view_layout:
+      grid-area: header
+    template: header
+    variables:
+      view: home
+  - type: custom:button-card # SUBHEADER
+    view_layout:
+      grid-area: subheader
+    template: subheader_1
+    variables:
+      subheader_1_title: Favorites #can be changed
+      subheader_1_path: home_favorites
+      subheader_2_title: Energy #can be changed
+      subheader_2_path: home_energy
+  - type: custom:layout-card # MAIN
+    view_layout:
+      grid-area: main
+    layout_type: custom:vertical-layout
+    layout:
+      height: 50vh
+      margin: 0vh 0vh 0vh
+      padding: 0vh 0.4vh
+    cards:
+      # This is where you can customize this view to fit your system and devices. 
+      - type: custom:button-card # TITLE 1
+        template: title_scrollable
+        variables:
+          title: Group 1 #can be changed
+      - type: grid
+        columns: 2
+        square: false
+        cards: 
+          # Add you entities here, 
+          # I recommend starting by modifying views 2.1 to 7.2 to understand the template and variables process, 
+          # Then proceed to adapt this favorite 1.1 view accordingly.
+          - type: custom:button-card # ENTITY 01
+            template: media #can be replaced with one of these card templates: 
+                    # security
+                    # security_expandable
+                    # climate
+                    # climate_expandable
+                    # fan
+                    # fan_expandable
+                    # light
+                    # light_expandable
+                    # cover
+                    # cover_expandable
+                    # media
+                    # media_expandable
+                    # device
+                    # device_expandable
+                    # person
+                    # person_expandable
+            variables:
+              entity: #required matching template entity_id
+              name: #optional, leave blank to keep friendly_name
+              label: #optional
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 02
+            template: climate #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 03
+            template: cover  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 04
+            template: device  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 05
+            template: fan  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 06
+            template: security  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 07
+            template: media  #or any other valid template
+            variables:
+              entity: 
+              remote: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 08
+            template: climate  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+      - type: custom:button-card # TITLE 2
+        template: title_scrollable
+        variables:
+          title: Group 2 #can be changed
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          - type: custom:button-card # ENTITY 09
+            template: security  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 10
+            template: cover  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 11
+            template: media  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 12
+            template: fan  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 13
+            template: media  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 14
+            template: cover  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 15
+            template: cover  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+          - type: custom:button-card # ENTITY 16
+            template: device  #or any other valid template
+            variables:
+              entity: 
+              name: 
+              label: 
+              #add additional valid variables for the chosen template.
+  - type: custom:button-card # FOOTER TITLE
+    view_layout:
+      grid-area: footer_title
+    template: title_sticky
+    variables:
+      title: Scenes
+  - type: custom:button-card # FOOTER
+    view_layout:
+      grid-area: footer
+    template: scenes_footer
+    variables:
+      scene1_entity: #optional scene.entity
+      scene1_name: #optional
+      scene1_background_color: #optional
+      scene1_icon_color: #optional
+      scene2_entity: #optional scene.entity
+      scene2_name: #optional
+      scene2_background_color: #optional
+      scene2_icon_color: #optional
+      scene3_entity: #optional scene.entity
+      scene3_name:  #optional
+      scene3_background_color: #optional
+      scene3_icon_color: #optional
+      scene4_entity: #optional scene.entity
+      scene4_name: #optional
+      scene4_background_color: #optional
+      scene4_icon_color: #optional
+      scene5_entity: #optional scene.entity
+      scene5_name: #optional
+      scene5_background_color: #optional
+      scene5_icon_color: #optional
+  - type: custom:button-card # MENU
+    view_layout:
+      grid-area: menu
+    template: menu
