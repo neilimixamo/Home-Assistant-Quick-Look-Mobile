@@ -59,7 +59,7 @@ light:
                     var state = states[variables.entity].state;
                     var brightness = states[variables.entity].attributes.brightness;
 
-                    if (state === 'on' && brightness) {
+                    if (state === 'on' || brightness) {
                       return 'var(--light-slider-track-active)';
                     } 
                   }
@@ -73,7 +73,7 @@ light:
                     var state = states[variables.entity].state;
                     var brightness = states[variables.entity].attributes.brightness;
 
-                    if (state === 'on' && brightness) {
+                    if (state === 'on' || brightness) {
                       return 'var(--light-background-active)';
                     } 
                   }
@@ -104,7 +104,7 @@ light:
                     var state = states[variables.entity].state;
                     var brightness = states[variables.entity].attributes.brightness;
 
-                    if (state === 'on' && brightness) {
+                    if (state === 'on' || brightness) {
                       return 'var(--light-icon-background-active)';
                     } 
                   }
