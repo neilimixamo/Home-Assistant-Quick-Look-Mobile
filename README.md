@@ -7,7 +7,7 @@ Welcome to the Quick Look Mobile Dashboard for Home Assistant!
 - This dashboard offers a minimalist mobile interface for a simple home devices management. 
 - It is designed to
   - Facilitate rapid navigation to any desired device in just two clicks, while still maintaining access to all of their controls.   
-  - Deliver crucial information at a glance, such as "Is there someone in the house?", "Is there an open door or window?", or "Did some lightbulbs remain on ?"
+  - Deliver crucial information at a glance, such as "is my home secure? Is it occupied? Are there any lights turned on? If yes, how many?"
 
 ## Demo
 Here is a video presentation of the dashboard :
@@ -42,7 +42,7 @@ Before beginning, make sure you have:
 ### 2. Copy Folders to Your Home Assistant Server
 
 - Using your preferred method (Visual Studio Code, Samba, SSH, local access, etc.),
-- Copy the three extracted folders (`/dashboards`, `/entities` and `/themes`) to your `/config` directory.
+- Copy the four extracted folders (`/custom_templates`, `/dashboards`, `/entities` and `/themes`) to your `/config` directory.
 
 ### 3. Setup `configuration.yaml`
 
@@ -65,225 +65,236 @@ You might need to modify these lines to match your current setup, particularly i
 ```yaml
 sensor: 
   - platform: template
-    sensors: 
+    sensors:
+    
+    ############################
+    #
+    # SECURITY MONITORING
+    #
+    ############################
+    
+    # ALARMS :
       some_alarms_are_on:
         friendly_name: "Some Alarms Are On"
         value_template: >-
-          {% set entity_ids = [
-            'alarm_control_panel.your_entity'
-            ] %}
-
-          {% set count = namespace(value=0) %}
-
-          {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'triggered') or is_state(entity_id, 'pending') %}
-              {% set count.value = count.value + 1 %}
-            {% endif %}
-          {% endfor %}
-
-          {{ 'off' if count.value == 0 else 'on' }}
-
-  - platform: template
-    sensors:
+          {% from 'quick_look_mobile_macros.jinja' import some_alarms_are_on %}
+          {{ some_alarms_are_on().split(',')[0] }}
+    
+      alarms_count:
+        friendly_name: "Alarms Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_alarms_are_on %}
+          {{ some_alarms_are_on().split(',')[1] }}
+    
+    
+    # DOORS & WINDOWS :
       some_contact_sensors_are_on:
         friendly_name: "Some Contact Sensors Are On"
         value_template: >-
-          {% set entity_ids = [
-            'binary_sensor.your_entity', 
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity'
-            ] %}
-
-          {% set count = namespace(value=0) %}
-
-          {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'on') %}
-              {% set count.value = count.value + 1 %}
-            {% endif %}
-          {% endfor %}
-
-          {{ 'off' if count.value == 0 else 'on' }}
-
-  - platform: template
-    sensors:
+          {% from 'quick_look_mobile_macros.jinja' import some_contact_sensors_are_on %}
+          {{ some_contact_sensors_are_on().split(',')[0] }}
+    
+      contact_sensors_count:
+        friendly_name: "Contact Sensors Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_contact_sensors_are_on %}
+          {{ some_contact_sensors_are_on().split(',')[1] }}
+    
+    
+    # PRESENCES :
       some_occupancy_sensors_are_on:
         friendly_name: "Some Occupancy Sensors Are On"
         value_template: >-
-          {% set entity_ids = [
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity',
-            'binary_sensor.your_entity'
-            ] %}
-
-          {% set count = namespace(value=0) %}
-
-          {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'on') %}
-              {% set count.value = count.value + 1 %}
-            {% endif %}
-          {% endfor %}
-
-          {{ 'off' if count.value == 0 else 'on' }}
-
-  - platform: template
-    sensors:
+          {% from 'quick_look_mobile_macros.jinja' import some_occupancy_sensors_are_on %}
+          {{ some_occupancy_sensors_are_on().split(',')[0] }}
+    
+      occupancy_sensors_count:
+        friendly_name: "Occupancy Sensors Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_occupancy_sensors_are_on %}
+          {{ some_occupancy_sensors_are_on().split(',')[1] }}
+    
+    # LOCKS :
+      some_locks_are_on:
+        friendly_name: "Some Locks Are On"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_locks_are_on %}
+          {{ some_locks_are_on().split(',')[0] }}
+    
+      locks_count:
+        friendly_name: "Locks Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_locks_are_on %}
+          {{ some_locks_are_on().split(',')[1] }}
+    
+    
+    ############################
+    #
+    # AIR MONITORING
+    #
+    ############################
+    
+    
+    # CLIMATES :
       some_climates_are_on:
-        friendly_name: "Some climates are on"
+        friendly_name: "Some Climates Are On"
         value_template: >-
-          {% set entity_ids = [
-            'climate.your_entity',
-            'climate.your_entity',
-            'climate.your_entity'
-            ] %}
-
-          {% set count = namespace(value=0) %}
-
-          {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'heat') or is_state(entity_id, 'on') %}
-              {% set count.value = count.value + 1 %}
-            {% endif %}
-          {% endfor %}
-
-          {{ 'off' if count.value == 0 else 'on' }}
-
-  - platform: template
-    sensors:
+          {% from 'quick_look_mobile_macros.jinja' import some_climates_are_on %}
+          {% set count = some_climates_are_on().split(',')[1]|int %}
+          {{ 'on' if count > 0 else 'off' }}
+    
+      climates_dominance:
+        friendly_name: "Climates Dominance"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_climates_are_on %}
+          {{ some_climates_are_on().split(',')[0] }}
+          
+      climates_count:
+        friendly_name: "Climates Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_climates_are_on %}
+          {{ some_climates_are_on().split(',')[1] }}
+    
+    # FANS :
       some_fans_are_on:
-        friendly_name: "Some fans are on"
+        friendly_name: "Some Fans Are On"
         value_template: >-
-          {% set entity_ids = [
-            'fan.your_entity',
-            'fan.your_entity',
-            'fan.your_entity'
-            ] %}
-
-          {% set count = namespace(value=0) %}
-
-          {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'on') %}
-              {% set count.value = count.value + 1 %}
-            {% endif %}
-          {% endfor %}
-
-          {{ 'off' if count.value == 0 else 'on' }}
-
-  - platform: template
-    sensors:
+          {% from 'quick_look_mobile_macros.jinja' import some_fans_are_on %}
+          {{ some_fans_are_on().split(',')[0] }}
+    
+      fans_count:
+        friendly_name: "Fans Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_fans_are_on %}
+          {{ some_fans_are_on().split(',')[1] }}
+    
+    
+    ############################
+    #
+    # LIGHT
+    #
+    ############################
+    
+    # LIGHTBULBS :
       some_lights_are_on:
         friendly_name: "Some Lights Are On"
         value_template: >-
-          {% set entity_ids = [
-            'light.your_entity',
-            'light.your_entity',
-            'light.your_entity',
-            'light.your_entity',
-            'light.your_entity',
-            'light.your_entity',
-            'light.your_entity',
-            'light.your_entity'
-            ] %}
-
-          {% set count = namespace(value=0) %}
-
-          {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'on') %}
-              {% set count.value = count.value + 1 %}
-            {% endif %}
-          {% endfor %}
-
-          {{ 'off' if count.value == 0 else 'on' }}
-
-  - platform: template
-    sensors:
-      some_media_players_are_on:
-        friendly_name: "Some Media Players Are On"
+          {% from 'quick_look_mobile_macros.jinja' import some_lights_are_on %}
+          {{ some_lights_are_on().split(',')[0] }}
+    
+      lights_count:
+        friendly_name: "Lights Count"
         value_template: >-
-          {% set entity_ids = [
-            'media_player.your_entity',
-            'media_player.your_entity',
-            'media_player.your_entity',
-            'media_player.your_entity'
-            ] %}
-
-          {% set count = namespace(value=0) %}
-
-          {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'playing') %}
-              {% set count.value = count.value + 1 %}
-            {% endif %}
-          {% endfor %}
-
-          {{ 'off' if count.value == 0 else 'on' }}
-
-  - platform: template
-    sensors:
+          {% from 'quick_look_mobile_macros.jinja' import some_lights_are_on %}
+          {{ some_lights_are_on().split(',')[1] }}
+    
+    # COVERS :
+      some_covers_are_on:
+        friendly_name: "Some Covers Are On"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_covers_are_on %}
+          {{ some_covers_are_on().split(',')[0] }}
+    
+      covers_count:
+        friendly_name: "Covers Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_covers_are_on %}
+          {{ some_covers_are_on().split(',')[1] }}
+    
+    
+    ############################
+    #
+    # MEDIA PLAYERS MONITORING
+    #
+    ############################
+    
+    # AUDIO PLAYERS :
+      some_audio_players_are_on:
+        friendly_name: "Some Audio Players Are On"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_audio_players_are_on %}
+          {{ some_audio_players_are_on().split(',')[0] }}
+    
+      audio_players_count:
+        friendly_name: "Audio Players Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_audio_players_are_on %}
+          {{ some_audio_players_are_on().split(',')[1] }}
+    
+    
+    # VIDEO PLAYERS :
+      some_video_players_are_on:
+        friendly_name: "Some Video Players Are On"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_video_players_are_on %}
+          {{ some_video_players_are_on().split(',')[0] }}
+    
+      video_players_count:
+        friendly_name: "Video Players Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_video_players_are_on %}
+          {{ some_video_players_are_on().split(',')[1] }}
+    
+    
+    
+    ############################
+    #
+    # EQUIPMENT MONITORING
+    #
+    ############################
+    
+    # DEVICES (SWITCHES, VACUUMS, SENSORS, etc) :
       some_devices_are_on:
         friendly_name: "Some Devices Are On"
         value_template: >-
-          {% set entity_ids = [
-            'switch.your_entity',
-            'switch.your_entity',
-            'switch.your_entity',
-            'switch.your_entity',
-            'switch.your_entity',
-            'vacuum.your_entity',
-            'vacuum.your_entity'
-            ] %}
+          {% from 'quick_look_mobile_macros.jinja' import some_devices_are_on %}
+          {{ some_devices_are_on().split(',')[0] }}
+    
+      devices_count:
+        friendly_name: "Devices Count"
+        value_template: >-
+          {% from 'quick_look_mobile_macros.jinja' import some_devices_are_on %}
+          {{ some_devices_are_on().split(',')[1] }}
 
-          {% set count = namespace(value=0) %}
-
-          {% for entity_id in entity_ids %}
-            {% if is_state(entity_id, 'on') or is_state(entity_id, 'cleaning')%}
-              {% set count.value = count.value + 1 %}
-            {% endif %}
-          {% endfor %}
-
-          {{ 'off' if count.value == 0 else 'on' }}
 ```
 </details>
 
-### 4. Reboot and Apply (Light) Theme
+### 4. Reboot and Apply Theme
 
 - Restart your Home Assistant for the changes to take effect.
-- Once rebooted, apply the 'Quick Look Mobile' theme and select 'light mode'.
+- Once rebooted, apply the 'Quick Look Mobile' theme.
 - On the left lateral menu, open the newly created dashboard. 
 - Since this dashboard is designed for mobile view, it might appear too large on a computer screen. To correct this, press F12 or open your browser's developer tools and select the 'mobile view' option.
 
 ## Dashboard Structure
   
-  - This dashboard is pre-configured with 15 distinct views, which are uniformly structured and can be accessed at `/config/dashboard/quick_look_mobile/views/`.
+  - This dashboard is pre-configured with 14 distinct views, which are uniformly structured and can be accessed at `/config/dashboard/quick_look_mobile/views/`.
   - `1.1_home.yaml` corresponds to your home view, `2.1_security_access.yaml` corresponds to your security access view, and so forth.
   - Each view represents a unique mobile interface that can be navigated to, using the header and subheader sections.
-  - The remaining sections, from top to bottom, include the main title, main, footer title and footer spaces.
+  - The remaining sections, from top to bottom, include main part, footer title and footer spaces.
   
   ### 1. Header
   
   - The header is designed for two main purposes: 
-    1) allow for __rapid navigation__ through five main categories, each leading to different views: `Security`, `Air`, `Light`, `Media`, and `Devices`. Additionally, there is a special `Family` category which can be accessed through the upper left person icon. If none of those categories is selected, `Home` view will be displayed. You can also navigate back to `Home` by clicking again on the active category.
-    2) provide useful __status information__ by changing its color and icon based on 'template sensors' (see [Customize Template Sensors](#customize-template-sensors)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems.
+    1) allow for __rapid navigation__ through five main categories, each leading to different views: `Security`, `Air`, `Light`, `Media`, and `Equipment`. Additionally, there is a special `Family` category which can be accessed through the upper left person icon. If none of those categories is selected, `Home` view will be displayed. You can also navigate back to `Home` by clicking again on the active category.
+    2) provide useful __status information__ by changing its color and icon based on 'template sensors' (see [Customize Header Monitoring](#customize-header-monitoring)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems.
    
   ### 2. SubHeader
   
   - Each of the Header categories further has two subcategories :
     - `Home` includes `Favorites` and `Energy` (this last one is no functional yet),
-    - `Security` includes `Access` and `Video`,
-    - `Air` includes `Heating` and `Cooling`,
+    - `Security` includes `Sensors` and `Cameras`,
+    - `Air` includes `Climates` and `Fans`,
     - `Light` includes `Bulbs` and `Covers`,
-    - `Media` includes `Music` and `TV`,
-    - `Devices` includes `Rooms` and `Favorites`,
+    - `Media` includes `Audio` and `Video`,
+    - `Equipment` includes `Favorites` and `All`,
     - `Family` includes `Members` and `Map`.
    
   ### 3. Main
   
   - This section is designed with a two-column layout that can display eight cards at once.
   - However, it does not limit the total number of cards as it allows for vertical scrolling to view and interact with an unlimited number of cards.
-  - Each card is structured with an icon on the left, acting as a switch, and a name&label on the right, providing the more-info dialog for full control.
+  - Each card is structured with an icon on the left, usually acting as a switch, and a name&label container on the right, providing the more-info dialog when clicked for full control.
   - To configure those cards with your entities, refer to [Add your Entities](#add-your-entities).
   
   ### 4. Footer
@@ -293,15 +304,21 @@ sensor:
 
 ## Add Your Entities
 
-- Open the file corresponding to the view you want add entities to. eg open the `3.1_air_heating.yaml` file to add your climate and temperature sensors.
+- Open the file corresponding to the view you want add entities to. eg open the `3.1_air_climates.yaml` file to add your climate and temperature sensors.
 - To avoid disrupting the setup, only modify the lines where it is explicitly mentioned ```#can be changed, #required or #optional``` at the end. These lines have been marked for easy and safe modification.
 - Navigate to the [Main](#3-main) section in the view file. By default, you'll find 16 empty entities but you can also add or delete some, depending on your needs.
-- Each entity block requires certain variables to be defined. For a climate entity, you'll define `entity` and `name`. `Entity` is the entity_id of your device (e.g., `climate.kitchen`), and `name`, which is optional, is the name that will be displayed in the card. If no name is given, the friendly name of the entity will be used.
+- Each entity block requires certain variables to be defined. For a climate entity, you'll define `entity`, `name`, `temperature`, `temperature_unit`, `battery`, `expand_to`. `Entity` is the entity_id of your device (e.g., `climate.kitchen`), others are optional. When no name is given, the friendly name of the entity will be used.
 - Refresh your dashboard to see the changes by clicking the three dots in the upper-right corner of the Home Assistant interface.
 - Repeat the above steps to all your views.
+- I recommend starting by customizing views 2.1 to 7.2 to familiarize yourself with the process of templates and variables, then proceed to view 1.1, which provides a wider range of customization options.
 
-## Customize Template Sensors
+## Customize Header Monitoring
 
+- The Header is designed to change color and display badge counts based on active devices.
+- It is, however, not directly linked to the configured cards in each view.
+- To monitor specific entities, an intermediate step of entities listing is required.
+
+- 
 - Template Sensors are lists used to monitor the states of specific sets of entities.
 - They are intended to trigger [Header](#1-header) colors and/or icons changes, as soon as any of these entities becomes active.
 - They can be found and modified at `/config/entities/sensors/quick_look_mobile/` or at `/config/configuration.yaml` depending on your [configuration.yaml setup](#3-setup-configurationyaml).
