@@ -3,6 +3,7 @@ light_expandable:
   variables:
     entity:
     name:
+    label_on: 'On'
     label_off: 'Off'
     expand_to:
   styles:
@@ -59,7 +60,7 @@ light_expandable:
                     var state = states[variables.entity].state;
                     var brightness = states[variables.entity].attributes.brightness;
 
-                    if (state === 'on' && brightness) {
+                    if (state === 'on' || brightness) {
                       return 'var(--light-slider-track-active)';
                     } 
                   }
@@ -73,7 +74,7 @@ light_expandable:
                     var state = states[variables.entity].state;
                     var brightness = states[variables.entity].attributes.brightness;
 
-                    if (state === 'on' && brightness) {
+                    if (state === 'on' || brightness) {
                       return 'var(--light-background-active)';
                     } 
                   }
@@ -104,7 +105,7 @@ light_expandable:
                     var state = states[variables.entity].state;
                     var brightness = states[variables.entity].attributes.brightness;
 
-                    if (state === 'on' && brightness) {
+                    if (state === 'on' || brightness) {
                       return 'var(--light-icon-background-active)';
                     } 
                   }
@@ -134,17 +135,21 @@ light_expandable:
               var state = states[variables.entity].state;
               if (state === 'on') {
                 var brightness = states[variables.entity].attributes.brightness;
-                if (brightness !== undefined && brightness !== null) {
-                  return Math.round((brightness)/255*100) + '%';
+                if (brightness) {
+                  if (brightness !== undefined) {
+                    return Math.round((brightness)/255*100) + '%';
+                  } else {
+                    return variables.label_off;
+                  }
                 } else {
-                  return variables.label_off;
+                  return variables.label_on;
                 }
-              } else if (states[variables.entity].state === 'unavailable') {
-                return 'Unavailable';
+              } else if (state === 'off') {                      
+                return variables.label_off ;
               } else {
-                return variables.label_off;
+                return "Unavailable";
               }
             } else {
-              return "Label";
+              return "Label"
             }
           ]]]
