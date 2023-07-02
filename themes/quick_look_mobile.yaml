@@ -1,8 +1,0 @@
-Quick Look Mobile:
-    ha-card-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.16)
-    ha-card-border-width: 0
-    app-header-background-color: '#ffffff'
-    app-header-text-color: "#000000"
-    modes:
-        light: {}
-        dark: {}

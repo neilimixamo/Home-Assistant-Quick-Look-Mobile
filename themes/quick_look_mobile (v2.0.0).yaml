@@ -1,0 +1,364 @@
+Quick Look Mobile:
+    modes:
+        light:
+            # Main colors
+            theme: '#ffffff'
+            text: "#000000"
+            bottom-menu: '#F0F3FD'
+            background-inactive: "#ECEFF6"
+            background-red: "#FFDBCD"
+            background-orange: "#FEE4C9"
+            background-blue: "#E5E9FF"
+            background-yellow: "#fff0c9"
+            background-purple: "#F1E5FF"
+            background-green: "#e0f5dd"
+            background-brown: "#FCEDD1"
+            icon-background-inactive: "#D9D6D6"
+            icon-background-red: '#EA8C67'
+            icon-background-orange: "#F4A242"
+            icon-background-blue: "#8AA3D8"
+            icon-background-yellow: "#FFCE51"
+            icon-background-purple: "#D4B4FC"
+            icon-background-green: "#A1C3A6"
+            icon-background-brown: "#C6B493"
+            icon-active: '#ffffff'
+            icon-inactive: var(--icon-active)
+            border-inactive: '#C2C2C2'
+            badge-background: "#ffffff"
+
+            # General
+            ha-card-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.16)
+            ha-card-border-width: 0
+            app-header-background-color: var(--theme)
+            app-header-text-color: var(--text)
+            header-icon-inactive: var(--icon-background-inactive)
+            chevron-color: darkgrey
+
+            battery-icon-background-low: var(--theme)
+            battery-icon-background-medium: var(--theme)
+            battery-icon-background-high: transparent
+            battery-icon-low: var(--icon-background-red)
+            battery-icon-medium: var(--icon-background-yellow)
+            battery-icon-high: transparent
+            battery-border-low: var(--icon-background-red)
+            battery-border-medium: var(--icon-background-yellow)
+            battery-border-high: transparent
+
+            # Security
+            security-background-inactive: var(--background-inactive)
+            security-background-active: var(--background-red)
+            security-icon-background-inactive: var(--icon-background-inactive)
+            security-icon-background-active: var(--icon-background-red)
+            security-icon-inactive: var(--icon-inactive)
+            security-icon-active: var(--icon-active)
+
+            alarm-background-disarmed: var(--background-inactive)
+            alarm-background-arming: var(--background-orange)
+            alarm-background-armed: var(--background-green)
+            alarm-background-pending: var(--background-orange)
+            alarm-background-triggered: var(--background-red)
+            alarm-background-default: var(--background-inactive)
+            alarm-icon-background-disarmed: var(--icon-background-inactive)
+            alarm-icon-background-arming: var(--icon-background-orange)
+            alarm-icon-background-armed: var(--icon-background-green)
+            alarm-icon-background-pending: var(--icon-background-orange)
+            alarm-icon-background-triggered: var(--icon-background-red)
+            alarm-icon-background-default: var(--icon-background-inactive)
+            alarm-icon-disarmed: var(--icon-inactive)
+            alarm-icon-arming: var(--icon-inactive)
+            alarm-icon-armed: var(--icon-inactive)
+            alarm-icon-pending: var(--icon-inactive)
+            alarm-icon-triggered: var(--icon-inactive)
+            alarm-icon-default: var(--icon-inactive)
+
+            # Air
+            climate-background-inactive: var(--background-inactive)
+            climate-background-auto: var(--background-orange)
+            climate-background-heat: var(--background-red)
+            climate-background-cool-fan: var(--background-blue)
+            climate-background-dry: var(--background-brown)
+            climate-icon-background-inactive: var(--icon-background-inactive)
+            climate-icon-background-auto: var(--icon-background-orange)
+            climate-icon-background-heat: var(--icon-background-red)
+            climate-icon-background-cool-fan: var(--icon-background-blue)
+            climate-icon-background-dry: var(--icon-background-brown)
+            climate-icon-color: var(--icon-active)
+            climate-name-color: var(--icon-active)
+            climate-border-auto: var(--icon-background-orange)
+            climate-border-heat: var(--icon-background-red)
+            climate-border-cool-fan: var(--icon-background-blue)
+            climate-border-dry: var(--icon-background-brown)
+
+            fan-background-inactive: var(--background-inactive)
+            fan-background-active: var(--background-blue)
+            fan-icon-background-inactive: var(--icon-background-inactive)
+            fan-icon-background-active: var(--icon-background-blue)
+            fan-icon-inactive: var(--icon-inactive)
+            fan-icon-active: var(--icon-active)
+            fan-border-active: var(--icon-background-blue)
+
+            weather-background-clear-night: "#F9F9F9"
+            weather-background-cloudy: "#F1F5F7"
+            weather-background-fog: "#F1F5F7"
+            weather-background-hail: "#F4F5FA"
+            weather-background-lightning: "#FFF8D5"
+            weather-background-lightning-rainy: "#FFFBEB"
+            weather-background-partlycloudy: "#E8F4FF"
+            weather-background-pouring: "#EBF3FF"
+            weather-background-rainy: "#EBF3FF"
+            weather-background-snowy: "#E9F7F9"
+            weather-background-snowy-rainy: "#E7F6EE"
+            weather-background-sunny: "#fff0c9"
+            weather-background-windy: "#FFF6B9"
+            weather-background-windy-variant: "#FFF6B9"
+            weather-background-exceptional: "#F9A9A9"
+            weather-background-default: var(--background-inactive)
+
+            weather-icon-background-clear-night: "#DBDBDB"
+            weather-icon-background-cloudy: "#C2CDD2"
+            weather-icon-background-fog: "#C2CDD2"
+            weather-icon-background-hail: "#C6C9E2"
+            weather-icon-background-lightning: "#FFAC33"
+            weather-icon-background-lightning-rainy: "#FFBD54"
+            weather-icon-background-partlycloudy: "#82B4D9"
+            weather-icon-background-pouring: "#8DB8E4"
+            weather-icon-background-rainy: "#8DB8E4"
+            weather-icon-background-snowy: "#86CED6"
+            weather-icon-background-snowy-rainy: "#88C9C2"
+            weather-icon-background-sunny: "#FFCE51"
+            weather-icon-background-windy: "#FFA93E"
+            weather-icon-background-windy-variant: "#FFA93E"
+            weather-icon-background-exceptional: "#F98484"
+            weather-icon-background-default: var(--icon-background-inactive)
+            weather-icon: var(--icon-active)
+
+            # Light
+            light-background-active: var(--background-yellow)
+            light-background-inactive: var(--background-inactive)
+            light-icon-background-active: var(--icon-background-yellow)
+            light-icon-background-inactive: var(--icon-background-inactive)
+            light-icon-active: var(--icon-active)
+            light-icon-inactive: var(--icon-inactive)
+            light-slider-track-active: "#FFF6DF"
+            light-slider-track-inactive: transparent
+            light-border-active: '#FFBA07'
+
+            cover-background-inactive: var(--background-inactive)
+            cover-background-active: var(--background-purple)
+            cover-icon-background-inactive: var(--icon-background-inactive)
+            cover-icon-background-active: var(--icon-background-purple)
+            cover-icon-inactive: var(--icon-inactive)
+            cover-icon-active: var(--icon-active)
+
+            # Media
+            media-background-active: var(--background-green)
+            media-background-inactive: var(--background-inactive)
+            media-icon-background-active: var(--icon-background-green)
+            media-icon-background-inactive: var(--icon-background-inactive)
+            media-icon-active: var(--icon-active)
+            media-icon-inactive: var(--icon-inactive)
+            media-secondary-icon-active: var(--media-icon-background-active)
+            media-secondary-icon-inactive: var(--media-icon-background-inactive)
+            media-border-active: var(--icon-background-green)
+
+            # Devices
+            device-background-inactive: var(--background-inactive)
+            device-background-active: var(--background-blue)
+            device-icon-background-inactive: var(--icon-background-inactive)
+            device-icon-background-active: var(--icon-background-blue)
+            device-icon-inactive: var(--icon-inactive)
+            device-icon-active: var(--icon-active)
+            device-border-active: var(--icon-background-blue)
+
+            # Family
+            person-background-inactive: var(--background-inactive)
+            person-icon-background-active: var(--icon-background-blue)
+            person-icon-background-inactive: var(--icon-background-inactive)
+            person-icon-active: var(--text)
+            person-icon-inactive: var(--icon-inactive)
+            person-border-active: darkgrey
+
+            # Scenes            
+            scene-background-color: var(--background-inactive)
+            scene-icon-color: var(--chevron-color)
+
+        dark:
+            # Main colors
+            theme: '#1f1f1f'
+            text: "#ffffff"
+            bottom-menu: '#2E2F33'
+            icon-inactive: '#d3d3d3'
+            border-inactive: 'var(--icon-inactive)'
+            background-inactive: "#31343B"
+            background-red: "#483838"
+            background-orange: "#534A33"
+            background-blue: "#404558"
+            background-yellow: "#56563F"
+            background-purple: "#4D3E56"
+            background-green: "#38483B"
+            background-brown: "#4D3B20"
+            icon-background-inactive: "#535550"
+            icon-background-red: '#AF6E6E'
+            icon-background-orange: "#B88B33"
+            icon-background-blue: "#748BBC"
+            icon-background-yellow: "#C2A335"
+            icon-background-purple: "#74669B"
+            icon-background-green: "#5D8459"
+            icon-background-brown: "#897542"
+            badge-background: var(--background-inactive)
+            
+            # General
+            ha-card-box-shadow: 0px 2px 4px 0px rgba(255,255,255,0.16)
+            ha-card-border-width: 0
+            app-header-background-color: var(--theme)
+            app-header-text-color: var(--text)     
+            header-icon-inactive: var(--icon-inactive)       
+            chevron-color: var(--icon-inactive)
+                        
+            battery-icon-background-low: var(--background-inactive)
+            battery-icon-background-medium: var(--background-inactive)
+            battery-icon-background-high: transparent
+            battery-icon-low: var(--icon-background-red)
+            battery-icon-medium: var(--icon-background-yellow)
+            battery-icon-high: transparent
+            battery-border-low: var(--icon-background-red)
+            battery-border-medium: var(--icon-background-yellow)
+            battery-border-high: transparent
+
+            # Security
+            security-background-inactive: var(--background-inactive)
+            security-background-active: var(--background-red)
+            security-icon-background-inactive: var(--icon-background-inactive)
+            security-icon-background-active: var(--icon-background-red)
+            security-icon-inactive: var(--icon-inactive)
+            security-icon-active: var(--text)
+
+            alarm-background-disarmed: var(--background-inactive)
+            alarm-background-arming: var(--background-orange)
+            alarm-background-armed: var(--background-green)
+            alarm-background-pending: var(--background-orange)
+            alarm-background-triggered: var(--background-red)
+            alarm-background-default: var(--background-inactive)
+            alarm-icon-background-disarmed: var(--icon-background-inactive)
+            alarm-icon-background-arming: var(--icon-background-orange)
+            alarm-icon-background-armed: var(--icon-background-green)
+            alarm-icon-background-pending: var(--icon-background-orange)
+            alarm-icon-background-triggered: var(--icon-background-red)
+            alarm-icon-background-default: var(--icon-background-inactive)
+            alarm-icon-disarmed: var(--icon-inactive)
+            alarm-icon-arming: var(--text)
+            alarm-icon-armed: var(--text)
+            alarm-icon-pending: var(--text)
+            alarm-icon-triggered: var(--text)
+            alarm-icon-default: var(--text)
+
+            # Air
+            climate-background-inactive: var(--background-inactive)
+            climate-background-auto: var(--background-orange)
+            climate-background-heat: var(--background-red)
+            climate-background-cool-fan: var(--background-blue)
+            climate-background-dry: var(--background-brown)
+            climate-icon-background-inactive: var(--icon-background-inactive)
+            climate-icon-background-auto: var(--icon-background-orange)
+            climate-icon-background-heat: var(--icon-background-red)
+            climate-icon-background-cool-fan: var(--icon-background-blue)
+            climate-icon-background-dry: var(--icon-background-brown)
+            climate-icon-color: var(--text)
+            climate-name-color: var(--text)
+            climate-border-auto: var(--icon-background-orange)
+            climate-border-heat: var(--icon-background-red)
+            climate-border-cool-fan: var(--icon-background-blue)
+            climate-border-dry: var(--icon-background-brown)
+
+            fan-background-inactive: var(--background-inactive)
+            fan-background-active: var(--background-blue)
+            fan-icon-background-inactive: var(--icon-background-inactive)
+            fan-icon-background-active: var(--icon-background-blue)
+            fan-icon-inactive: var(--icon-inactive)
+            fan-icon-active: var(--text)
+            fan-border-active: var(--icon-background-blue)
+
+            weather-background-clear-night: "#1a1a1a"
+            weather-background-cloudy: "#505050"
+            weather-background-fog: "#696969"
+            weather-background-hail: "#4d5870"
+            weather-background-lightning: "#534A33"
+            weather-background-lightning-rainy: "#534A33"
+            weather-background-partlycloudy: "#787878"
+            weather-background-pouring: "#404558"
+            weather-background-rainy: "#404558"
+            weather-background-snowy: "#787878"
+            weather-background-snowy-rainy: "#68819e"
+            weather-background-sunny: "#56563F"
+            weather-background-windy: "#787878"
+            weather-background-windy-variant: "#787878"
+            weather-background-exceptional: "#483838"
+            weather-background-default: var(--background-inactive)
+
+            weather-icon-background-clear-night: "#000000"
+            weather-icon-background-cloudy: "#3c3c3c"
+            weather-icon-background-fog: "#585858"
+            weather-icon-background-hail: "#3c4a60"
+            weather-icon-background-lightning: "#B88B33"
+            weather-icon-background-lightning-rainy: "#B88B33"
+            weather-icon-background-partlycloudy: "#686868"
+            weather-icon-background-pouring: "#748BBC"
+            weather-icon-background-rainy: "#748BBC"
+            weather-icon-background-snowy: "#8f8f8f"
+            weather-icon-background-snowy-rainy: "#567188"
+            weather-icon-background-sunny: "#C2A335"
+            weather-icon-background-windy: "#afafaf"
+            weather-icon-background-windy-variant: "#afafaf"
+            weather-icon-background-exceptional: "#AF6E6E"
+            weather-icon-background-default: var(--icon-background-inactive)
+            weather-icon: "#fafafa"
+
+            # Light
+            light-background-active: var(--background-yellow)
+            light-background-inactive: var(--background-inactive)
+            light-icon-background-active: var(--icon-background-yellow)
+            light-icon-background-inactive: var(--icon-background-inactive)
+            light-icon-active: var(--text)
+            light-icon-inactive: var(--icon-inactive)
+            light-slider-track-active: "#484838"
+            light-slider-track-inactive: transparent
+            light-border-active: var(--icon-background-yellow)
+
+            cover-background-inactive: var(--background-inactive)
+            cover-background-active: var(--background-purple)
+            cover-icon-background-inactive: var(--icon-background-inactive)
+            cover-icon-background-active: var(--icon-background-purple)
+            cover-icon-inactive: var(--icon-inactive)
+            cover-icon-active: var(--text)
+
+            # Media
+            media-background-active: var(--background-green)
+            media-background-inactive: var(--background-inactive)
+            media-icon-background-active: var(--icon-background-green)
+            media-icon-background-inactive: var(--icon-background-inactive)
+            media-icon-active: var(--text)
+            media-icon-inactive: var(--icon-inactive)
+            media-secondary-icon-active: var(--text)
+            media-secondary-icon-inactive: var(--icon-inactive)
+            media-border-active: var(--icon-background-green)
+
+            # Devices
+            device-background-inactive: var(--background-inactive)
+            device-background-active: var(--background-blue)
+            device-icon-background-inactive: var(--icon-background-inactive)
+            device-icon-background-active: var(--icon-background-blue)
+            device-icon-inactive: var(--icon-inactive)
+            device-icon-active: var(--text)
+            device-border-active: var(--icon-background-blue)
+
+            # Family
+            person-background-inactive: var(--background-inactive)
+            person-icon-background-active: var(--icon-background-blue)
+            person-icon-background-inactive: var(--icon-background-inactive)
+            person-icon-active: var(--text)
+            person-icon-inactive: var(--icon-inactive)
+            person-border-active: var(--icon-inactive)
+
+            # Scenes            
+            scene-background-color: var(--background-inactive)
+            scene-icon-color: var(--icon-inactive)
