@@ -1,0 +1,200 @@
+############################
+#
+# This file should not be modified directly. 
+# To add or remove entities to monitor, 
+# Please modify the 'quick_look_mobile_macros.jinja' file 
+# Located in the '/custom_templates' folder.
+#
+############################
+
+platform: template
+sensors:
+
+############################
+#
+# SECURITY MONITORING
+#
+############################
+
+# ALARMS :
+  some_alarms_are_on:
+    friendly_name: "Some Alarms Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_alarms_are_on %}
+      {{ some_alarms_are_on().split(',')[0] }}
+
+  alarms_count:
+    friendly_name: "Alarms Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_alarms_are_on %}
+      {{ some_alarms_are_on().split(',')[1] }}
+
+
+# DOORS & WINDOWS :
+  some_contact_sensors_are_on:
+    friendly_name: "Some Contact Sensors Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_contact_sensors_are_on %}
+      {{ some_contact_sensors_are_on().split(',')[0] }}
+
+  contact_sensors_count:
+    friendly_name: "Contact Sensors Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_contact_sensors_are_on %}
+      {{ some_contact_sensors_are_on().split(',')[1] }}
+
+
+# PRESENCES :
+  some_occupancy_sensors_are_on:
+    friendly_name: "Some Occupancy Sensors Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_occupancy_sensors_are_on %}
+      {{ some_occupancy_sensors_are_on().split(',')[0] }}
+
+  occupancy_sensors_count:
+    friendly_name: "Occupancy Sensors Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_occupancy_sensors_are_on %}
+      {{ some_occupancy_sensors_are_on().split(',')[1] }}
+
+# LOCKS :
+  some_locks_are_on:
+    friendly_name: "Some Locks Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_locks_are_on %}
+      {{ some_locks_are_on().split(',')[0] }}
+
+  locks_count:
+    friendly_name: "Locks Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_locks_are_on %}
+      {{ some_locks_are_on().split(',')[1] }}
+
+
+############################
+#
+# AIR MONITORING
+#
+############################
+
+
+# CLIMATES :
+  some_climates_are_on:
+    friendly_name: "Some Climates Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_climates_are_on %}
+      {% set count = some_climates_are_on().split(',')[1]|int %}
+      {{ 'on' if count > 0 else 'off' }}
+
+  climates_dominance:
+    friendly_name: "Climates Dominance"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_climates_are_on %}
+      {{ some_climates_are_on().split(',')[0] }}
+      
+  climates_count:
+    friendly_name: "Climates Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_climates_are_on %}
+      {{ some_climates_are_on().split(',')[1] }}
+
+# FANS :
+  some_fans_are_on:
+    friendly_name: "Some Fans Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_fans_are_on %}
+      {{ some_fans_are_on().split(',')[0] }}
+
+  fans_count:
+    friendly_name: "Fans Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_fans_are_on %}
+      {{ some_fans_are_on().split(',')[1] }}
+
+
+############################
+#
+# LIGHT
+#
+############################
+
+# LIGHTBULBS :
+  some_lights_are_on:
+    friendly_name: "Some Lights Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_lights_are_on %}
+      {{ some_lights_are_on().split(',')[0] }}
+
+  lights_count:
+    friendly_name: "Lights Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_lights_are_on %}
+      {{ some_lights_are_on().split(',')[1] }}
+
+# COVERS :
+  some_covers_are_on:
+    friendly_name: "Some Covers Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_covers_are_on %}
+      {{ some_covers_are_on().split(',')[0] }}
+
+  covers_count:
+    friendly_name: "Covers Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_covers_are_on %}
+      {{ some_covers_are_on().split(',')[1] }}
+
+
+############################
+#
+# MEDIA PLAYERS MONITORING
+#
+############################
+
+# AUDIO PLAYERS :
+  some_audio_players_are_on:
+    friendly_name: "Some Audio Players Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_audio_players_are_on %}
+      {{ some_audio_players_are_on().split(',')[0] }}
+
+  audio_players_count:
+    friendly_name: "Audio Players Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_audio_players_are_on %}
+      {{ some_audio_players_are_on().split(',')[1] }}
+
+
+# VIDEO PLAYERS :
+  some_video_players_are_on:
+    friendly_name: "Some Video Players Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_video_players_are_on %}
+      {{ some_video_players_are_on().split(',')[0] }}
+
+  video_players_count:
+    friendly_name: "Video Players Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_video_players_are_on %}
+      {{ some_video_players_are_on().split(',')[1] }}
+
+
+
+############################
+#
+# EQUIPMENT MONITORING
+#
+############################
+
+# DEVICES (SWITCHES, VACUUMS, SENSORS, etc) :
+  some_devices_are_on:
+    friendly_name: "Some Devices Are On"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_devices_are_on %}
+      {{ some_devices_are_on().split(',')[0] }}
+
+  devices_count:
+    friendly_name: "Devices Count"
+    value_template: >-
+      {% from 'quick_look_mobile_macros.jinja' import some_devices_are_on %}
+      {{ some_devices_are_on().split(',')[1] }}
