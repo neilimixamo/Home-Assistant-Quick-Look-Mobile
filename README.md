@@ -1,3 +1,4 @@
+
 <a href="https://www.buymeacoffee.com/neilimixamo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 # Home Assistant - Quick Look Mobile
@@ -9,15 +10,12 @@ Welcome to the Quick Look Mobile Dashboard for Home Assistant!
   - Facilitate rapid navigation to any desired device in just two clicks, while still maintaining access to all of their controls.   
   - Deliver crucial information at a glance, such as "is my home secure? Is it occupied? Are there any lights turned on? If yes, how many?"
 
-## Demo
-Here is a video presentation of the dashboard :
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=hZRSu72m1gw">
-    <img src="https://img.youtube.com/vi/hZRSu72m1gw/0.jpg" alt="Step-by-Step Video">
-  </a>
-</p>
+![Quick Look Mobile v2](https://github.com/neilimixamo/Home-Assistant-Quick-Look-Mobile/assets/43101688/0c11ab3b-8e5f-40ae-be24-5580a257b7c8)
 
-You can also try the [Figma Demo](https://www.figma.com/proto/G7cHGCjgFJwMrq9WdT41gv/HA---Quick-Look-Mobile?node-id=153-1125&starting-point-node-id=153%3A1006&scaling=scale-down) before installation.
+## Demo
+
+You can watch the [Video Presentation](https://www.youtube.com/watch?v=hZRSu72m1gw) of the v1 dashboard :
+Or even try the [Figma Demo](https://www.figma.com/proto/G7cHGCjgFJwMrq9WdT41gv/HA---Quick-Look-Mobile?node-id=153-1125&starting-point-node-id=153%3A1006&scaling=scale-down) before installation.
 
 ## Prerequisites
 
@@ -259,7 +257,7 @@ sensor:
 ```
 </details>
 
-### 4. Reboot and Apply Theme
+### 4. Reboot and Apply Light or Dark Theme
 
 - Restart your Home Assistant for the changes to take effect.
 - Once rebooted, apply the 'Quick Look Mobile' theme.
@@ -278,6 +276,7 @@ sensor:
   - The header is designed for two main purposes: 
     1) allow for __rapid navigation__ through five main categories, each leading to different views: `Security`, `Air`, `Light`, `Media`, and `Equipment`. Additionally, there is a special `Family` category which can be accessed through the upper left person icon. If none of those categories is selected, `Home` view will be displayed. You can also navigate back to `Home` by clicking again on the active category.
     2) provide useful __status information__ by changing its color and icon based on 'template sensors' (see [Customize Header Monitoring](#customize-header-monitoring)) e.g. if a lightbulb is turned on, the light category will turn yellow. If no entities are active, it will revert to its default grey color. This feature provides a quick and easy way to identify the status of your various devices and systems.
+  - Sometimes, icons and colors can change with a predefined priority order. For example, in the Security header, the priority is given to the triggered alarm, followed by open doors, detected motion and unlocked locks.
    
   ### 2. SubHeader
   
@@ -305,26 +304,56 @@ sensor:
 ## Add Your Entities
 
 - Open the file corresponding to the view you want add entities to. eg open the `3.1_air_climates.yaml` file to add your climate and temperature sensors.
-- To avoid disrupting the setup, only modify the lines where it is explicitly mentioned ```#can be changed, #required or #optional``` at the end. These lines have been marked for easy and safe modification.
-- Navigate to the [Main](#3-main) section in the view file. By default, you'll find 16 empty entities but you can also add or delete some, depending on your needs.
-- Each entity block requires certain variables to be defined. For a climate entity, you'll define `entity`, `name`, `temperature`, `temperature_unit`, `battery`, `expand_to`. `Entity` is the entity_id of your device (e.g., `climate.kitchen`), others are optional. When no name is given, the friendly name of the entity will be used.
+- I recommend starting by customizing views 2.1 to 7.2 to familiarize yourself with the process of templates and variables, then proceed to view 1.1, which provides a wider range of customization options.
+- - Navigate to the [Main](#3-main) section in the view file. By default, you'll find 16 empty entities but you can also add or delete some, depending on your needs.
+- To avoid disrupting the setup, only modify the lines where it is explicitly mentioned `#can be changed, #required or #optional` at the end. These lines have been marked for easy and safe modification.
+- Each entity block requires certain parameters to be defined :
+  
+### Card Templates
+Each entity is associated with a predefined template card. 
+The available cards include :
+  - `climate`,
+  - `climate_expandable`,
+  - `cover`,
+  - `cover_expandable`,
+  - `device`,
+  - `device_expandable`,
+  - `fan`,
+  - `fan_expandable`,
+  - `light`,
+  - `light_expandable`,
+  - `media`,
+  - `media_expandable`,
+  - `media_expanded`,
+  - `person`,
+  - `person_expandable`,
+  - `security`,
+  - `security_expandable`.
+- You will notice that each template has an 'expandable' version, which allows expanding the entity to a subview that includes other entities, thanks to the `expand_to` variable.
+This feature is particularly useful for managing groups.
+- Expanded views can be customized or created in the same way as existing views in `/dashboards/quick_look_mobile/views/expanded/`.
+- Expandable cards can also include other 'expandable' cards withour nesting limit.
+
+### Variables
+- Variables provide you with the flexibility to personalize the cards according to your devices and personal information.
+- Some are optional and clearly indicated in the view file that you'll be modifying.
+- For a `climate` template card , you'll have to define `entity`, `name`, `temperature`, `temperature_unit`, `battery`, `expand_to`. `Entity` is the entity_id of your device (e.g., `climate.kitchen`), others are optional. When no name is given, the friendly name of the entity will be used.
+  
 - Refresh your dashboard to see the changes by clicking the three dots in the upper-right corner of the Home Assistant interface.
 - Repeat the above steps to all your views.
-- I recommend starting by customizing views 2.1 to 7.2 to familiarize yourself with the process of templates and variables, then proceed to view 1.1, which provides a wider range of customization options.
 
 ## Customize Header Monitoring
 
 - The Header is designed to change color and display badge counts based on active devices.
 - It is, however, not directly linked to the configured cards in each view.
 - To monitor specific entities, an intermediate step of entities listing is required.
+- Lists can be modified at `/config/custom_templates/quick_look_mobile_macros.jinja/` where `your_entity` have to be replaced by your entity_ids.
+- It is logical, but not mandatory, to list the same entities as those configured in each view.
+- Call `service: homeassistant.reload_custom_templates` or restart Home Assistant for the changes to take effect.
 
-- 
-- Template Sensors are lists used to monitor the states of specific sets of entities.
-- They are intended to trigger [Header](#1-header) colors and/or icons changes, as soon as any of these entities becomes active.
-- They can be found and modified at `/config/entities/sensors/quick_look_mobile/` or at `/config/configuration.yaml` depending on your [configuration.yaml setup](#3-setup-configurationyaml).
-- Make sure that the entities being monitored in the templates correspond to those already configured in their respective views, as specified in step [Add your Entities](#add-your-entities)
-- Avoid placing a comma after the last entity in the final position of the list.
-- Restart your Home Assistant for the YAML changes to take effect.
+
+###### If you don't like or don't want to use badge counts, you can disable this feature by changing `show_badge: true` to `show_badge: false` in `/dashboards/quick_look_mobile_templates_layout_header_category.yaml` (line 5)
+
 
 ##  Translations (Optional)
 
@@ -339,7 +368,6 @@ sensor:
 - Choose the mobile device on which you wish to hide the header. To successfully hide it on local and external browsing, it’s important to consider your phone as two separate devices with their own Browser ID, each needing to be identified in Browser Mod.
 
 ## Known Issues
-- There is no dark theme at the moment
 - If the native header is hidden, the lateral menu can't be accessed from the views. To access it again, press the 'dev' button located at the bottom of the screen.
 - Currently, the 'assist' icon located at the upper right of the dashboard isn't functional as the way to trigger this dialog keeps unclear for me.
 
