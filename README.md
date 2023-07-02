@@ -352,7 +352,7 @@ This feature is particularly useful for managing groups.
 - Call `service: homeassistant.reload_custom_templates` or restart Home Assistant for the changes to take effect.
 
 
-###### If you don't like or don't want to use badge counts, you can disable this feature by changing `show_badge: true` to `show_badge: false` in `/dashboards/quick_look_mobile_templates_layout_header_category.yaml` (line 5)
+###### If you don't like or don't want to use badge counts, you can disable this feature by changing `show_badge: true` to `show_badge: false` in `/dashboards/quick_look_mobile/templates/layout/header_category.yaml` (line 5)
 
 
 ##  Translations (Optional)
