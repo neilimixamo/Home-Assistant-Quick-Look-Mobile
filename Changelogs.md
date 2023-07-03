@@ -16,7 +16,7 @@
   - Wider template cards options :
     - `_expandable.yaml` version for each card, allowing navigation to subview pages, specifically designed for group management.
     - `media_expanded.yaml` version to provide a full width of active media content when grid columns is set to "1" (instead of default "2").
-    - remote variable to the `media.yaml` cards, allowing to turn TV on/off on the icon click.
+    - remote variable to the `media.yaml` cards, allowing to turn TV on/off by clicking on the icon.
     - battery variable for tracking the battery level of each entity. When the battery level is below 60%, a yellow battery badge will be displayed. When the battery level drops below 25%, a red battery badge will be displayed.
     - lock variable to the `security.yaml` cards, complementing the existing occupancy and contact binary_sensors entities. At least one of the three entities is required. If multiple entities are provided, the card will prioritize displaying open door sensors > motion detection sensors > unlocked locks when activated.
 
