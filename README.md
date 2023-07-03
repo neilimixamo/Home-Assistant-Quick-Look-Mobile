@@ -267,7 +267,7 @@ sensor:
 ## Dashboard Structure
   
   - This dashboard is pre-configured with 14 distinct views, which are uniformly structured and can be accessed at `/config/dashboard/quick_look_mobile/views/`.
-  - `1.1_home.yaml` corresponds to your home view, `2.1_security_access.yaml` corresponds to your security access view, and so forth.
+  - `1.1_home.yaml` corresponds to your home view, `2.1_security_sensors.yaml` corresponds to your security sensors view, and so forth.
   - Each view represents a unique mobile interface that can be navigated to, using the header and subheader sections.
   - The remaining sections, from top to bottom, include main part, footer title and footer spaces.
   
