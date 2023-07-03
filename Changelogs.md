@@ -3,6 +3,7 @@
 ## [2023-07-03]
 ### Fixes
 - `light.yaml` and `light_expandable.yaml` updated to v2.0.1: Fixed color and label issues when no brightness feedback is available.
+- `media.yaml` and `media_expandable.yaml` updated to v2.0.1: Enable overriding the default label with a custom label variable.
 - `header.yaml` updated to v2.0.1: Fixed issue with box-shadow of the media header not being displayed.
 
 ## [2023-07-02] : Quick Look Mobile v2.0.0
