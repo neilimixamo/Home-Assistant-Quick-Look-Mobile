@@ -134,21 +134,23 @@ media:
             }
           ]]]
         label: |
-            [[[
-              let state, label;
-
-              if (variables.entity) {
-                state = states[variables.entity].state;
-                label = (variables.label_on && variables.on_state.includes(state)) ? variables.label_on :
-                        (variables.label_off && variables.off_state.includes(state)) ? variables.label_off : null;
+          [[[
+            if (variables.label) {
+              return variables.label;
+            }
+            let state, label;
+            if (variables.entity) {
+              state = states[variables.entity].state;
+              label = (variables.label_on && variables.on_state.includes(state)) ? variables.label_on :
+                      (variables.label_off && variables.off_state.includes(state)) ? variables.label_off : null;
               
-              } else if (variables.remote) {
-                state = states[variables.remote].state;
-                label = (variables.label_on && state === 'on') ? variables.label_on :
-                        (variables.label_off && state === 'off') ? variables.label_off : null;
-              }
-              if (!label && state) {
-                label = state.charAt(0).toUpperCase() + state.slice(1);
-              }
-              return label || 'Label';
-            ]]]
+            } else if (variables.remote) {
+              state = states[variables.remote].state;
+              label = (variables.label_on && state === 'on') ? variables.label_on :
+                      (variables.label_off && state === 'off') ? variables.label_off : null;
+            }
+            if (!label && state) {
+              label = state.charAt(0).toUpperCase() + state.slice(1);
+            }
+            return label || 'Label';
+          ]]]
