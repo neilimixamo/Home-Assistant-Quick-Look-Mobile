@@ -12,7 +12,7 @@
 
 ### New Features :
   - Dark Mode.
-  - Active entity counters displayed as badges in the header, to be defined in the "/config/custom_templates/quick_look_mobile_macros.jinja" file.
+  - Active entity counters displayed as badges in the header, to be defined in the `/config/custom_templates/quick_look_mobile_macros.jinja` file.
   - Wider template cards options :
     - `_expandable.yaml` version for each card, allowing navigation to subview pages, specifically designed for group management.
     - `media_expanded.yaml` version to provide a full width of active media content when grid columns is set to "1" (instead of default "2").
