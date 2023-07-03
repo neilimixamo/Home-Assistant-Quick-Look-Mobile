@@ -318,7 +318,7 @@ header:
                       if (variables.view && variables.view === 'media') {
                         var audio = states['sensor.some_audio_players_are_on'].state;
                         var video = states['sensor.some_video_players_are_on'].state;
-                        return (audio === 'on' || video === 'on') ? '0 0 5px var(--media-border-active)' : '0 0 5px var(--media-border-inactive)';
+                        return (audio === 'on' || video === 'on') ? '0 0 5px var(--media-border-active)' : '0 0 5px var(--border-inactive)';
                       }
                       return 'none';
                     ]]]
