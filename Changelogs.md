@@ -1,5 +1,9 @@
 # Changelogs
 
+## [2023-07-04]
+### Fixes
+-  `quick_look_mobile_macros (v2.0.1).jinja` renamed to `quick_look_mobile_macros.jinja` as it was resulting in the absence of header colors and badges.
+
 ## [2023-07-03]
 ### Fixes
 - `light.yaml` and `light_expandable.yaml` updated to v2.0.1: Fixed color and label issues when no brightness feedback is available.
