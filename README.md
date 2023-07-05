@@ -332,7 +332,7 @@ The available cards include :
 - You will notice that each template has an 'expandable' version, which allows expanding the entity to a subview that includes other entities, thanks to the `expand_to` variable.
 This feature is particularly useful for managing groups.
 - Expanded views can be customized or created in the same way as existing views in `/dashboards/quick_look_mobile/views/expanded/`.
-- Expandable cards can also include other 'expandable' cards withour nesting limit.
+- Expandable cards can also include other 'expandable' cards without nesting limit.
 
 ### Variables
 - Variables provide you with the flexibility to personalize the cards according to your devices and personal information.
