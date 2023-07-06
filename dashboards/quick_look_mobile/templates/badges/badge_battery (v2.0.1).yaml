@@ -85,11 +85,11 @@ badge_battery:
 
                         if (entity && battery) {
                           if (states[battery].state <= '25') {
-                            return 'var(--battery-icon-background-low)';
+                            return 'var(--battery-icon-low)';
                           } else if (states[battery].state >= '60') {
-                            return 'var(--battery-icon-background-high)';
+                            return 'var(--battery-icon-high)';
                           } else {
-                            return 'var(--battery-icon-background-medium)';
+                            return 'var(--battery-icon-medium)';
                           }
                         } else {
                           return 'transparent';
