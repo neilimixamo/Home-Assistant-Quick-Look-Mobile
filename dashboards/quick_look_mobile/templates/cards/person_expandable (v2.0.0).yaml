@@ -56,13 +56,19 @@ person_expandable:
                   }
                 ]]]
           img_cell:
-            - height: 6.4vh
-            - width: 6.4h
-            - top: -0.3vh
-          entity_picture:
-            - height: 6.4vh
-            - width: 6.4vh
+            - height: 6.0vh
+            - width: 6.0vh
             - border-radius: 50%
+            - top: -0.25vh
+          entity_picture:
+            - height: 100%
+            - width: 100%
+        custom_fields:
+          badge:
+            card:
+              styles:
+                card:
+                  - top: -6.5vh
         tap_action:
           action: null
     name:
