@@ -1,5 +1,9 @@
 # Changelogs
 
+## [2023-07-23]
+### Fixes
+-  `cover.yaml` and `cover_expandable.yaml` updated to v2.0.1: Fixed icon.
+
 ## [2023-07-06]
 ### Fixes
 -  `person.yaml` and `person_expandable.yaml` updated to v2.0.1: Fixed image and badge positions.
