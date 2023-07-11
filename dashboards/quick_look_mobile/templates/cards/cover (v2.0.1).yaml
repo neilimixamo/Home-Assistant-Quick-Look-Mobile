@@ -29,7 +29,11 @@ cover:
                 if (entity.attributes.icon) {
                   return entity.attributes.icon;
                 } else {
-                  return 'mdi:help';
+                  if (entity.state === 'open') {
+                    return 'mdi:window-shutter-open';
+                  } else {
+                  return 'mdi:window-shutter';
+                  }
                 }
               }
             } else {
