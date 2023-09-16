@@ -103,6 +103,7 @@ header:
                   - --mdc-ripple-press-opacity: 0
               tap_action:
                 action: assist
+                start_listening: true
     row2:
       card:
         type: horizontal-stack # CATEGORIES
