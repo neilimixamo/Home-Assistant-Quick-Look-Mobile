@@ -1,5 +1,8 @@
 # Changelogs
 
+## [2023-09-16]
+- Added `start_listening: true` to the upper right Assist button
+
 ## [2023-07-23]
 ### Fixes
 -  `cover.yaml` and `cover_expandable.yaml` updated to v2.0.1: Fixed icon.
