@@ -1,25 +1,30 @@
-scenes_footer:
+routines_footer:
   variables:
-    scene1_entity:
-    scene1_name:
-    scene1_background_color:
-    scene1_icon_color:
-    scene2_entity:
-    scene2_name:
-    scene2_background_color:
-    scene2_icon_color:
-    scene3_entity:
-    scene3_name:
-    scene3_background_color:
-    scene3_icon_color:
-    scene4_entity:
-    scene4_name:
-    scene4_background_color:
-    scene4_icon_color:
-    scene5_entity:
-    scene5_name:
-    scene5_background_color:
-    scene5_icon_color:
+    routine1_type:
+    routine1_entity:
+    routine1_name:
+    routine1_background_color:
+    routine1_icon_color:
+    routine2_type:
+    routine2_entity:
+    routine2_name:
+    routine2_background_color:
+    routine2_icon_color:
+    routine3_type:
+    routine3_entity:
+    routine3_name:
+    routine3_background_color:
+    routine3_icon_color:
+    routine4_type:
+    routine4_entity:
+    routine4_name:
+    routine4_background_color:
+    routine4_icon_color:
+    routine5_type:
+    routine5_entity:
+    routine5_name:
+    routine5_background_color:
+    routine5_icon_color:
   triggers_update: all
   styles:
       card:
@@ -43,22 +48,22 @@ scenes_footer:
         columns: 5
         square: false
         cards:
-          - type: custom:button-card # SCENE 1
-            entity: '[[[return variables.scene1_entity ]]]'
+          - type: custom:button-card # Routine 1
+            entity: '[[[return variables.routine1_entity ]]]'
             size: '50%'
             show_name: |
               [[[
-                if (variables.scene1_name) return true;
+                if (variables.routine1_name) return true;
                 return false;
               ]]]
             name: |
               [[[
-                if (variables.scene1_name) return variables.scene1_name;
+                if (variables.routine1_name) return variables.routine1_name;
                 return '';
               ]]]
             show_icon: |
               [[[
-                if (variables.scene1_name) return false;
+                if (variables.routine1_name) return false;
                 return true;
               ]]]
             show_state: false
@@ -72,10 +77,10 @@ scenes_footer:
                 - box-shadow: none
                 - background-color: |
                     [[[
-                      if (variables.scene1_background_color) { 
-                        return variables.scene1_background_color;
+                      if (variables.routine1_background_color) { 
+                        return variables.routine1_background_color;
                       } else {
-                        return "var(--scene-background-color)";
+                        return "var(--routine-background-color)";
                       }
                     ]]]
                 - cursor: none
@@ -85,33 +90,34 @@ scenes_footer:
               icon:
                 - color: |
                     [[[
-                      if (variables.scene1_icon_color) { 
-                        return variables.scene1_icon_color;
+                      if (variables.routine1_icon_color) { 
+                        return variables.routine1_icon_color;
                       } else {
-                        return "var(--scene-icon-color)";
+                        return "var(--routine-icon-color)";
                       }
                     ]]]
             tap_action: 
               action: call-service
-              service: scene.turn_on
+              service: '[[[ return (variables.routine1_type == "script") ? "script.turn_on"
+              : "scene.turn_on" ]]]'
               service_data:
-                entity_id: '[[[return variables.scene1_entity ]]]'
-          - type: custom:button-card # SCENE 2
-            entity: '[[[return variables.scene2_entity ]]]'
+                entity_id: '[[[return variables.routine1_entity ]]]'
+          - type: custom:button-card # Routine 2
+            entity: '[[[return variables.routine2_entity ]]]'
             size: '50%'
             show_name: |
               [[[
-                if (variables.scene2_name) return true;
+                if (variables.routine2_name) return true;
                 return false;
               ]]]
             name: |
               [[[
-                if (variables.scene2_name) return variables.scene2_name;
+                if (variables.routine2_name) return variables.routine2_name;
                 return '';
               ]]]
             show_icon: |
               [[[
-                if (variables.scene2_name) return false;
+                if (variables.routine2_name) return false;
                 return true;
               ]]]
             show_state: false
@@ -125,10 +131,10 @@ scenes_footer:
                 - box-shadow: none
                 - background-color: |
                     [[[
-                      if (variables.scene2_background_color) { 
-                        return variables.scene2_background_color;
+                      if (variables.routine2_background_color) { 
+                        return variables.routine2_background_color;
                       } else {
-                        return "var(--scene-background-color)";
+                        return "var(--routine-background-color)";
                       }
                     ]]]
                 - cursor: none
@@ -138,33 +144,33 @@ scenes_footer:
               icon:
                 - color: |
                     [[[
-                      if (variables.scene2_icon_color) { 
-                        return variables.scene2_icon_color;
+                      if (variables.routine2_icon_color) { 
+                        return variables.routine2_icon_color;
                       } else {
-                        return "var(--scene-icon-color)";
+                        return "var(--routine-icon-color)";
                       }
                     ]]]
             tap_action: 
               action: call-service
-              service: scene.turn_on
+              service: '[[[ return (entity && entity.startsWith("script.")) ? "script.turn_on" : "scene.turn_on" ]]]'
               service_data:
-                entity_id: '[[[return variables.scene2_entity ]]]'
-          - type: custom:button-card # SCENE 3
-            entity: '[[[return variables.scene3_entity ]]]'
+                entity_id: '[[[return variables.routine2_entity ]]]'
+          - type: custom:button-card # Routine 3
+            entity: '[[[return variables.routine3_entity ]]]'
             size: '50%'
             show_name: |
               [[[
-                if (variables.scene3_name) return true;
+                if (variables.routine3_name) return true;
                 return false;
               ]]]
             name: |
               [[[
-                if (variables.scene3_name) return variables.scene3_name;
+                if (variables.routine3_name) return variables.routine3_name;
                 return '';
               ]]]
             show_icon: |
               [[[
-                if (variables.scene3_name) return false;
+                if (variables.routine3_name) return false;
                 return true;
               ]]]
             show_state: false
@@ -178,10 +184,10 @@ scenes_footer:
                 - box-shadow: none
                 - background-color: |
                     [[[
-                      if (variables.scene3_background_color) { 
-                        return variables.scene3_background_color;
+                      if (variables.routine3_background_color) { 
+                        return variables.routine3_background_color;
                       } else {
-                        return "var(--scene-background-color)";
+                        return "var(--routine-background-color)";
                       }
                     ]]]
                 - cursor: none
@@ -191,33 +197,33 @@ scenes_footer:
               icon:
                 - color: |
                     [[[
-                      if (variables.scene3_icon_color) { 
-                        return variables.scene3_icon_color;
+                      if (variables.routine3_icon_color) { 
+                        return variables.routine3_icon_color;
                       } else {
-                        return "var(--scene-icon-color)";
+                        return "var(--routine-icon-color)";
                       }
                     ]]]
             tap_action: 
               action: call-service
-              service: scene.turn_on
+              service: '[[[ return (entity && entity.startsWith("script.")) ? "script.turn_on" : "scene.turn_on" ]]]'
               service_data:
-                entity_id: '[[[return variables.scene3_entity ]]]'
-          - type: custom:button-card # SCENE 4
-            entity: '[[[return variables.scene4_entity ]]]'
+                entity_id: '[[[return variables.routine3_entity ]]]'
+          - type: custom:button-card # Routine 4
+            entity: '[[[return variables.routine4_entity ]]]'
             size: '50%'
             show_name: |
               [[[
-                if (variables.scene4_name) return true;
+                if (variables.routine4_name) return true;
                 return false;
               ]]]
             name: |
               [[[
-                if (variables.scene4_name) return variables.scene4_name;
+                if (variables.routine4_name) return variables.routine4_name;
                 return '';
               ]]]
             show_icon: |
               [[[
-                if (variables.scene4_name) return false;
+                if (variables.routine4_name) return false;
                 return true;
               ]]]
             show_state: false
@@ -231,10 +237,10 @@ scenes_footer:
                 - box-shadow: none
                 - background-color: |
                     [[[
-                      if (variables.scene4_background_color) { 
-                        return variables.scene4_background_color;
+                      if (variables.routine4_background_color) { 
+                        return variables.routine4_background_color;
                       } else {
-                        return "var(--scene-background-color)";
+                        return "var(--routine-background-color)";
                       }
                     ]]]
                 - cursor: none
@@ -244,33 +250,33 @@ scenes_footer:
               icon:
                 - color: |
                     [[[
-                      if (variables.scene4_icon_color) { 
-                        return variables.scene4_icon_color;
+                      if (variables.routine4_icon_color) { 
+                        return variables.routine4_icon_color;
                       } else {
-                        return "var(--scene-icon-color)";
+                        return "var(--routine-icon-color)";
                       }
                     ]]]
             tap_action: 
               action: call-service
-              service: scene.turn_on
+              service: '[[[ return (entity && entity.startsWith("script.")) ? "script.turn_on" : "scene.turn_on" ]]]'
               service_data:
-                entity_id: '[[[return variables.scene4_entity ]]]'
-          - type: custom:button-card # SCENE 5
-            entity: '[[[return variables.scene5_entity ]]]'
+                entity_id: '[[[return variables.routine4_entity ]]]'
+          - type: custom:button-card # Routine 5
+            entity: '[[[return variables.routine5_entity ]]]'
             size: '50%'
             show_name: |
               [[[
-                if (variables.scene5_name) return true;
+                if (variables.routine5_name) return true;
                 return false;
               ]]]
             name: |
               [[[
-                if (variables.scene5_name) return variables.scene5_name;
+                if (variables.routine5_name) return variables.routine5_name;
                 return '';
               ]]]
             show_icon: |
               [[[
-                if (variables.scene5_name) return false;
+                if (variables.routine5_name) return false;
                 return true;
               ]]]
             show_state: false
@@ -284,10 +290,10 @@ scenes_footer:
                 - box-shadow: none
                 - background-color: |
                     [[[
-                      if (variables.scene5_background_color) { 
-                        return variables.scene5_background_color;
+                      if (variables.routine5_background_color) { 
+                        return variables.routine5_background_color;
                       } else {
-                        return "var(--scene-background-color)";
+                        return "var(--routine-background-color)";
                       }
                     ]]]
                 - cursor: none
@@ -297,14 +303,14 @@ scenes_footer:
               icon:
                 - color: |
                     [[[
-                      if (variables.scene5_icon_color) { 
-                        return variables.scene5_icon_color;
+                      if (variables.routine5_icon_color) { 
+                        return variables.routine5_icon_color;
                       } else {
-                        return "var(--scene-icon-color)";
+                        return "var(--routine-icon-color)";
                       }
                     ]]]
             tap_action: 
               action: call-service
-              service: scene.turn_on
+              service: '[[[ return (entity && entity.startsWith("script.")) ? "script.turn_on" : "scene.turn_on" ]]]'
               service_data:
-                entity_id: '[[[return variables.scene5_entity ]]]'
+                entity_id: '[[[return variables.routine5_entity ]]]'
