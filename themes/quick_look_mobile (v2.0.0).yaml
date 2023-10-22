@@ -178,9 +178,9 @@ Quick Look Mobile:
             person-icon-inactive: var(--icon-inactive)
             person-border-active: darkgrey
 
-            # Scenes            
-            scene-background-color: var(--background-inactive)
-            scene-icon-color: var(--chevron-color)
+            # Routines            
+            routine-background-color: var(--background-inactive)
+            routine-icon-color: var(--chevron-color)
 
         dark:
             # Main colors
@@ -359,6 +359,6 @@ Quick Look Mobile:
             person-icon-inactive: var(--icon-inactive)
             person-border-active: var(--icon-inactive)
 
-            # Scenes            
-            scene-background-color: var(--background-inactive)
-            scene-icon-color: var(--icon-inactive)
+            # Routines            
+            routine-background-color: var(--background-inactive)
+            routine-icon-color: var(--icon-inactive)
