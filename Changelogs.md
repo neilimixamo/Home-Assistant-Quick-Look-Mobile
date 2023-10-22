@@ -1,5 +1,9 @@
 # Changelogs
 
+## [2023-10-22]
+- Renamed the `scenes_footer.yaml` template to `routines_footer.yaml`, which now handles script actions in addition to scene actions depending on the new `routine_type` variable.
+- Updated dashboard views accordingly 
+  
 ## [2023-09-16]
 - Added `start_listening: true` to the upper right Assist button
 
