@@ -98,8 +98,7 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (variables.routine1_type == "script") ? "script.turn_on"
-              : "scene.turn_on" ]]]'
+              service: '[[[ return (variables.routine1_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
               service_data:
                 entity_id: '[[[return variables.routine1_entity ]]]'
           - type: custom:button-card # Routine 2
@@ -152,7 +151,7 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (entity && entity.startsWith("script.")) ? "script.turn_on" : "scene.turn_on" ]]]'
+              service: '[[[ return (variables.routine2_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
               service_data:
                 entity_id: '[[[return variables.routine2_entity ]]]'
           - type: custom:button-card # Routine 3
@@ -205,7 +204,7 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (entity && entity.startsWith("script.")) ? "script.turn_on" : "scene.turn_on" ]]]'
+              service: '[[[ return (variables.routine3_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
               service_data:
                 entity_id: '[[[return variables.routine3_entity ]]]'
           - type: custom:button-card # Routine 4
@@ -258,7 +257,7 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (entity && entity.startsWith("script.")) ? "script.turn_on" : "scene.turn_on" ]]]'
+              service: '[[[ return (variables.routine4_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
               service_data:
                 entity_id: '[[[return variables.routine4_entity ]]]'
           - type: custom:button-card # Routine 5
@@ -311,6 +310,6 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (entity && entity.startsWith("script.")) ? "script.turn_on" : "scene.turn_on" ]]]'
+              service: '[[[ return (variables.routine5_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
               service_data:
                 entity_id: '[[[return variables.routine5_entity ]]]'
