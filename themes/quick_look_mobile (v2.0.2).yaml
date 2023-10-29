@@ -1,4 +1,13 @@
 Quick Look Mobile:
+    card-mod-theme: "Quick Look Mobile"
+    card-mod-root: |
+        .header {
+            display: none;
+        }
+        #view {
+            padding: 0 !important;
+            height: 100vh !important;
+        }
     modes:
         light:
             # Main colors
@@ -8,9 +17,9 @@ Quick Look Mobile:
             background-inactive: "#ECEFF6"
             background-red: "#FFDBCD"
             background-orange: "#FEE4C9"
-            background-blue: "#E5E9FF"
+            background-blue: "#DDE3FC"
             background-yellow: "#fff0c9"
-            background-purple: "#F1E5FF"
+            background-purple: "#EDDCFF"
             background-green: "#e0f5dd"
             background-brown: "#FCEDD1"
             icon-background-inactive: "#D9D6D6"
@@ -96,6 +105,8 @@ Quick Look Mobile:
             fan-icon-inactive: var(--icon-inactive)
             fan-icon-active: var(--icon-active)
             fan-border-active: var(--icon-background-blue)
+            fan-slider-track-active: "#ECEFFF"
+            fan-slider-track-inactive: transparent
 
             weather-background-clear-night: "#F9F9F9"
             weather-background-cloudy: "#F1F5F7"
@@ -149,6 +160,8 @@ Quick Look Mobile:
             cover-icon-background-active: var(--icon-background-purple)
             cover-icon-inactive: var(--icon-inactive)
             cover-icon-active: var(--icon-active)
+            cover-slider-track-active: "#F1E5FF"
+            cover-slider-track-inactive: transparent
 
             # Media
             media-background-active: var(--background-green)
@@ -271,12 +284,14 @@ Quick Look Mobile:
             climate-border-dry: var(--icon-background-brown)
 
             fan-background-inactive: var(--background-inactive)
-            fan-background-active: var(--background-blue)
+            fan-background-active: "#474E68" 
             fan-icon-background-inactive: var(--icon-background-inactive)
             fan-icon-background-active: var(--icon-background-blue)
             fan-icon-inactive: var(--icon-inactive)
             fan-icon-active: var(--text)
             fan-border-active: var(--icon-background-blue)
+            fan-slider-track-active: var(--background-blue)
+            fan-slider-track-inactive: transparent
 
             weather-background-clear-night: "#1a1a1a"
             weather-background-cloudy: "#505050"
@@ -325,11 +340,13 @@ Quick Look Mobile:
             light-border-active: var(--icon-background-yellow)
 
             cover-background-inactive: var(--background-inactive)
-            cover-background-active: var(--background-purple)
+            cover-background-active: "#5B476F"
             cover-icon-background-inactive: var(--icon-background-inactive)
             cover-icon-background-active: var(--icon-background-purple)
             cover-icon-inactive: var(--icon-inactive)
             cover-icon-active: var(--text)
+            cover-slider-track-active: var(--background-purple)
+            cover-slider-track-inactive: transparent
 
             # Media
             media-background-active: var(--background-green)
