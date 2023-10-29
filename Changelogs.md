@@ -1,5 +1,8 @@
 # Changelogs
 
+## [2023-10-29]
+- QLM theme updated to v2.0.2: The native header bar is hidden by default and no longer requires the custom component browser-mod.
+
 ## [2023-10-22]
 - Renamed the `scenes_footer.yaml` template to `routines_footer.yaml`, which now handles script actions in addition to scene actions depending on the new `routine_type` variable.
 - Updated dashboard views accordingly 
