@@ -27,7 +27,6 @@ Before beginning, make sure you have:
   - [Slider Card](https://github.com/AnthonMS/my-cards) by Anton MS
   - [Layout Card](https://github.com/thomasloven/lovelace-layout-card) by Thomas Lovén
   - [Card Mod](https://github.com/thomasloven/lovelace-card-mod) by Thomas Lovén
-  - [Browser Mod](https://github.com/thomasloven/hass-browser_mod) by Thomas Lovén (custom component)
 
 ## Installation
 
@@ -360,15 +359,6 @@ This feature is particularly useful for managing groups.
 - The Titles for Subheader, Main, and Footer sections can be easily modified or translated in their corresponding view YAML files, located in `/config/dashboards/quick_look_mobile/views/` where `#can be changed` is mentioned.
 - If you need to translate Header titles or any content within a card (such as the weather card) that can't be modified directly via its view file, you will need to adjust the corresponding template YAML file, located in `/config/dashboards/quick_look_mobile/templates/`.
 
-## Hide the Native Header (Optional)
-
-- To improve the aesthetics of the dashboard, you may want to hide the native upper horizontal header.
-- Open the browser mod integration settings.
-- Select 'Hide Header'.
-- Choose the mobile device on which you wish to hide the header. To successfully hide it on local and external browsing, it’s important to consider your phone as two separate devices with their own Browser ID, each needing to be identified in Browser Mod.
-
-## Known Issues
-- If the native header is hidden, the lateral menu can't be accessed from the views. To access it again, press the 'dev' button located at the bottom of the screen.
 
 Enjoy your new, customized mobile dashboard for Home Assistant!
 
