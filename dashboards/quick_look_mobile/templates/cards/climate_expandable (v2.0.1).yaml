@@ -5,9 +5,14 @@ climate_expandable:
   variables:
     entity:
     temperature_unit: #celsius(default) or fahrenheit 
-    temperature_overrider:
+    temperature:
     name:
     label:
+    battery:
+  triggers_update:
+    - '[[[ return variables.entity; ]]]'
+    - '[[[ return variables.temperature; ]]]'
+    - '[[[ return variables.battery; ]]]'
   styles:
     card:
       - background-color: |
@@ -175,7 +180,7 @@ climate_expandable:
                   } else {
                     let temperature;
                     const entityState = states[variables.entity];
-                    const temperatureOverriderState = states[variables.temperature_overrider];
+                    const temperatureOverriderState = states[variables.temperature];
 
                     if (temperatureOverriderState && temperatureOverriderState.state) {
                       temperature = temperatureOverriderState.state;
