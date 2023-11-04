@@ -15,9 +15,9 @@ badge_battery:
                   var battery = variables.battery;
 
                   if (entity && battery) {
-                    if (states[battery].state <= '25') {
+                    if (states[battery].state <= 25) {
                       return 'mdi:battery-20';
-                    } else if (states[battery].state >= '60') {
+                    } else if (states[battery].state >= 60) {
                       return '';
                     } else {
                       return 'mdi:battery-60';
@@ -38,9 +38,9 @@ badge_battery:
                         var battery = variables.battery;
 
                         if (entity && battery) {
-                          if (states[battery].state <= '25') {
+                          if (states[battery].state <= 25) {
                             return 'var(--battery-icon-low)';
-                          } else if (states[battery].state >= '60') {
+                          } else if (states[battery].state >= 60) {
                             return 'var(--battery-icon-high)';
                           } else {
                             return 'var(--battery-icon-medium)';
@@ -67,9 +67,9 @@ badge_battery:
                         var battery = variables.battery;
 
                         if (entity && battery) {
-                          if (states[battery].state <= '25') {
+                          if (states[battery].state <= 25) {
                             return 'var(--battery-icon-background-low)';
-                          } else if (states[battery].state >= '60') {
+                          } else if (states[battery].state >= 60) {
                             return 'var(--battery-icon-background-high)';
                           } else {
                             return 'var(--battery-icon-background-medium)';
@@ -84,9 +84,9 @@ badge_battery:
                         var battery = variables.battery;
 
                         if (entity && battery) {
-                          if (states[battery].state <= '25') {
+                          if (states[battery].state <= 25) {
                             return 'var(--battery-icon-low)';
-                          } else if (states[battery].state >= '60') {
+                          } else if (states[battery].state >= 60) {
                             return 'var(--battery-icon-high)';
                           } else {
                             return 'var(--battery-icon-medium)';
