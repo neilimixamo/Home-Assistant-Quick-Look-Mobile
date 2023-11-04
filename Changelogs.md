@@ -1,6 +1,9 @@
 # Changelogs
 
 ## [2023-11-04]
+### Reduced Frontend Load
+- With `basic_card (v2.0.1).yaml` and `basic_card_expandable (v2.0.1)`, cards will now only update themselves when there are changes in entity or battery states, rather than updating with every type of entity change.
+- `climate(_expandable) v2.0.1.yaml`, `media(_expandable) v2.0.2.yaml` and `media_expanded (2.0.1).yaml`  will also update when there is a change in their temperature or remote variable states.
 ### Fixes
 - Updated `badge_battery (v2.0.2).yaml`, `security (v2.0.1)`, `security_expandable (v2.0.1)` to fix a low battery icon showing when the battery is fully charged at 100%.
 
