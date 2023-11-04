@@ -4,7 +4,9 @@ basic_card_expandable:
     name:
   show_icon: false
   show_name: false
-  triggers_update: all
+  triggers_update:
+    - '[[[ return variables.entity; ]]]'
+    - '[[[ return variables.battery; ]]]'
   styles:
     card:
       - height: 10.8vh
