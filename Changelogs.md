@@ -1,5 +1,9 @@
 # Changelogs
 
+## [2023-11-04]
+### Fixes
+- Updated `badge_battery (v2.0.2).yaml`, `security (v2.0.1)`, `security_expandable (v2.0.1)` to fix a low battery icon showing when the battery is fully charged at 100%.
+
 ## [2023-10-29]
 - QLM theme updated to v2.0.2: The native header bar is hidden by default and no longer requires the custom component browser-mod.
 
