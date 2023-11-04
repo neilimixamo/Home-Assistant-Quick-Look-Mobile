@@ -8,6 +8,11 @@ climate:
     label: 
     temperature:
     temperature_unit: #celsius(default) or fahrenheit 
+    battery:
+  triggers_update:
+    - '[[[ return variables.entity; ]]]'
+    - '[[[ return variables.temperature; ]]]'
+    - '[[[ return variables.battery; ]]]'
   styles:
     card:
       - background-color: |
