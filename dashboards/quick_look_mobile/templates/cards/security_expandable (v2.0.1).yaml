@@ -8,6 +8,14 @@ security_expandable:
     occupancy_battery:
     lock_battery:
     name:
+  triggers_update: 
+    - '[[[ return variables.entity; ]]]'
+    - '[[[ return variables.contact; ]]]'
+    - '[[[ return variables.occupancy; ]]]'
+    - '[[[ return variables.lock; ]]]'
+    - '[[[ return variables.contact_battery; ]]]'
+    - '[[[ return variables.occupancy_battery; ]]]'
+    - '[[[ return variables.lock_battery; ]]]'
   styles:
     card:
       - background-color: |
@@ -126,9 +134,9 @@ security_expandable:
                     if (contact || occupancy || lock) {
                       if (contact && states[contact].state === 'on') {
                         if (contact_battery) {
-                          if (states[contact_battery].state <= '25') {
+                          if (states[contact_battery].state <= 25) {
                             return 'mdi:battery-20';
-                          } else if (states[contact_battery].state >= '60') {
+                          } else if (states[contact_battery].state >= 60) {
                             return '';
                           } else {
                             return 'mdi:battery-60';
@@ -138,9 +146,9 @@ security_expandable:
                         }
                       } else if (occupancy && states[occupancy].state === 'on') {
                         if (occupancy_battery) {
-                          if (states[occupancy_battery].state <= '25') {
+                          if (states[occupancy_battery].state <= 25) {
                             return 'mdi:battery-20';
-                          } else if (states[occupancy_battery].state >= '60') {
+                          } else if (states[occupancy_battery].state >= 60) {
                             return '';
                           } else {
                             return 'mdi:battery-60';
@@ -150,9 +158,9 @@ security_expandable:
                         }
                       } else if (lock) {
                         if (lock_battery) {
-                          if (states[lock_battery].state <= '25') {
+                          if (states[lock_battery].state <= 25) {
                             return 'mdi:battery-20';
-                          } else if (states[lock_battery].state >= '60') {
+                          } else if (states[lock_battery].state >= 60) {
                             return '';
                           } else {
                             return 'mdi:battery-60';
@@ -162,9 +170,9 @@ security_expandable:
                         }
                       } else if (contact && !occupancy) {
                         if (contact_battery) {
-                          if (states[contact_battery].state <= '25') {
+                          if (states[contact_battery].state <= 25) {
                             return 'mdi:battery-20';
-                          } else if (states[contact_battery].state >= '60') {
+                          } else if (states[contact_battery].state >= 60) {
                             return '';
                           } else {
                             return 'mdi:battery-60';
@@ -174,9 +182,9 @@ security_expandable:
                         }
                       } else if (!contact && occupancy) {
                         if (occupancy_battery) {
-                          if (states[occupancy_battery].state <= '25') {
+                          if (states[occupancy_battery].state <= 25) {
                             return 'mdi:battery-20';
-                          } else if (states[occupancy_battery].state >= '60') {
+                          } else if (states[occupancy_battery].state >= 60) {
                             return '';
                           } else {
                             return 'mdi:battery-60';
@@ -209,9 +217,9 @@ security_expandable:
                         if (contact || occupancy || lock) {
                           if (contact && states[contact].state === 'on') {
                             if (contact_battery) {
-                              if (states[contact_battery].state <= '25') {
+                              if (states[contact_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[contact_battery].state >= '60') {
+                              } else if (states[contact_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -221,9 +229,9 @@ security_expandable:
                             }
                           } else if (occupancy && states[occupancy].state === 'on') {
                             if (occupancy_battery) {
-                              if (states[occupancy_battery].state <= '25') {
+                              if (states[occupancy_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[occupancy_battery].state >= '60') {
+                              } else if (states[occupancy_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -233,9 +241,9 @@ security_expandable:
                             }
                           } else if (lock) {
                             if (lock_battery) {
-                              if (states[lock_battery].state <= '25') {
+                              if (states[lock_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[lock_battery].state >= '60') {
+                              } else if (states[lock_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -245,9 +253,9 @@ security_expandable:
                             }
                           } else if (contact && !occupancy) {
                             if (contact_battery) {
-                              if (states[contact_battery].state <= '25') {
+                              if (states[contact_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[contact_battery].state >= '60') {
+                              } else if (states[contact_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -257,9 +265,9 @@ security_expandable:
                             }
                           } else if (!contact && occupancy) {
                             if (occupancy_battery) {
-                              if (states[occupancy_battery].state <= '25') {
+                              if (states[occupancy_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[occupancy_battery].state >= '60') {
+                              } else if (states[occupancy_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -298,9 +306,9 @@ security_expandable:
                         if (contact || occupancy || lock) {
                           if (contact && states[contact].state === 'on') {
                             if (contact_battery) {
-                              if (states[contact_battery].state <= '25') {
+                              if (states[contact_battery].state <= 25) {
                                 return 'var(--battery-icon-background-low)';
-                              } else if (states[contact_battery].state >= '60') {
+                              } else if (states[contact_battery].state >= 60) {
                                 return 'var(--battery-icon-background-high)';
                               } else {
                                 return 'var(--battery-icon-background-medium)';
@@ -310,9 +318,9 @@ security_expandable:
                             }
                           } else if (occupancy && states[occupancy].state === 'on') {
                             if (occupancy_battery) {
-                              if (states[occupancy_battery].state <= '25') {
+                              if (states[occupancy_battery].state <= 25) {
                                 return 'var(--battery-icon-background-low)';
-                              } else if (states[occupancy_battery].state >= '60') {
+                              } else if (states[occupancy_battery].state >= 60) {
                                 return 'var(--battery-icon-background-high)';
                               } else {
                                 return 'var(--battery-icon-background-medium)';
@@ -322,9 +330,9 @@ security_expandable:
                             }
                           } else if (lock) {
                             if (lock_battery) {
-                              if (states[lock_battery].state <= '25') {
+                              if (states[lock_battery].state <= 25) {
                                 return 'var(--battery-icon-background-low)';
-                              } else if (states[lock_battery].state >= '60') {
+                              } else if (states[lock_battery].state >= 60) {
                                 return 'var(--battery-icon-background-high)';
                               } else {
                                 return 'var(--battery-icon-background-medium)';
@@ -334,9 +342,9 @@ security_expandable:
                             }
                           } else if (contact && !occupancy) {
                             if (contact_battery) {
-                              if (states[contact_battery].state <= '25') {
+                              if (states[contact_battery].state <= 25) {
                                 return 'var(--battery-icon-background-low)';
-                              } else if (states[contact_battery].state >= '60') {
+                              } else if (states[contact_battery].state >= 60) {
                                 return 'var(--battery-icon-background-high)';
                               } else {
                                 return 'var(--battery-icon-background-medium)';
@@ -346,9 +354,9 @@ security_expandable:
                             }
                           } else if (!contact && occupancy) {
                             if (occupancy_battery) {
-                              if (states[occupancy_battery].state <= '25') {
+                              if (states[occupancy_battery].state <= 25) {
                                 return 'var(--battery-icon-background-low)';
-                              } else if (states[occupancy_battery].state >= '60') {
+                              } else if (states[occupancy_battery].state >= 60) {
                                 return 'var(--battery-icon-background-high)';
                               } else {
                                 return 'var(--battery-icon-background-medium)';
@@ -375,9 +383,9 @@ security_expandable:
                         if (contact || occupancy || lock) {
                           if (contact && states[contact].state === 'on') {
                             if (contact_battery) {
-                              if (states[contact_battery].state <= '25') {
+                              if (states[contact_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[contact_battery].state >= '60') {
+                              } else if (states[contact_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -387,9 +395,9 @@ security_expandable:
                             }
                           } else if (occupancy && states[occupancy].state === 'on') {
                             if (occupancy_battery) {
-                              if (states[occupancy_battery].state <= '25') {
+                              if (states[occupancy_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[occupancy_battery].state >= '60') {
+                              } else if (states[occupancy_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -399,9 +407,9 @@ security_expandable:
                             }
                           } else if (lock) {
                             if (lock_battery) {
-                              if (states[lock_battery].state <= '25') {
+                              if (states[lock_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[lock_battery].state >= '60') {
+                              } else if (states[lock_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -411,9 +419,9 @@ security_expandable:
                             }
                           } else if (contact && !occupancy) {
                             if (contact_battery) {
-                              if (states[contact_battery].state <= '25') {
+                              if (states[contact_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[contact_battery].state >= '60') {
+                              } else if (states[contact_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -423,9 +431,9 @@ security_expandable:
                             }
                           } else if (!contact && occupancy) {
                             if (occupancy_battery) {
-                              if (states[occupancy_battery].state <= '25') {
+                              if (states[occupancy_battery].state <= 25) {
                                 return 'var(--battery-icon-low)';
-                              } else if (states[occupancy_battery].state >= '60') {
+                              } else if (states[occupancy_battery].state >= 60) {
                                 return 'var(--battery-icon-high)';
                               } else {
                                 return 'var(--battery-icon-medium)';
@@ -479,19 +487,19 @@ security_expandable:
 
             if (contact || occupancy || lock) {
               if (contact && states[contact].state === 'on') {
-                return 'Open';
+                return 'Ouvert';
               } else if (occupancy && states[occupancy].state === 'on') {
-                return 'Presence';
+                return 'Présence';
               } else if (lock && states[lock].state === 'unlocked') {
-                return 'Unlocked';
+                return 'Déverrouillé';
               } else if (lock){
-                return 'Locked';
+                return 'Verrouillé';
               } else if (contact && !occupancy) {
-                return 'Closed';
+                return 'Fermé';
               } else if (!contact && occupancy) {
                 return 'Absence';
               } else {
-                return 'Secured';
+                return 'Protégé';
               }
             } else {
               return 'Label';
