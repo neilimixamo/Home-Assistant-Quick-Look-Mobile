@@ -17,6 +17,9 @@ media_expandable:
     icon_tap_action:
     icon_hold_action:
     name_tap_action:
+  triggers_update:
+    - '[[[ return variables.entity; ]]]'
+    - '[[[ return variables.remote; ]]]'
   styles:
     card:
       - background-color: |
