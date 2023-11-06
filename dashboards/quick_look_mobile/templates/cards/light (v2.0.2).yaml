@@ -1,10 +1,13 @@
 light:
-  template: basic_card
+  template:
+    - basic_card
+    - badge_battery
   variables:
     entity:
     name:
     label_on: 'On' #not used
     label_off: 'Off' #can be changed
+    battery: 
   styles:
       card:
         - background-color: |
@@ -98,6 +101,7 @@ light:
           ]]]
         styles:  
           card:
+            - overflow: visible
             - background-color:  |
                 [[[
                   if (variables.entity) {
@@ -118,6 +122,9 @@ light:
                   } 
                   return 'var(--light-icon-inactive)';
                 ]]]
+        custom_fields:
+          badge:
+            type: custom:button-card # calls for the 'badge_battery' template
     name:
       card:
         entity: |
