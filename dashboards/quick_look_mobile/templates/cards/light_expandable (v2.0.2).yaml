@@ -1,11 +1,14 @@
 light_expandable:
-  template: basic_card_expandable
+  template: 
+    - basic_card_expandable
+    - badge_battery
   variables:
     entity:
     name:
     label_on: 'On'
     label_off: 'Off'
     expand_to:
+    battery: 
   styles:
     card:   
     - background-color: |
@@ -99,6 +102,7 @@ light_expandable:
           ]]]
         styles:
           card:
+            - overflow: visible
             - background-color:  |
                 [[[
                   if (variables.entity) {
@@ -119,6 +123,9 @@ light_expandable:
                   } 
                   return 'var(--light-icon-inactive)';
                 ]]]
+        custom_fields:
+          badge:
+            type: custom:button-card # calls for the 'badge_battery' template
     name:
       card:
         entity:  |
