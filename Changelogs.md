@@ -1,5 +1,9 @@
 # Changelogs
 
+## [2023-11-06]
+### New
+- The `light(_expandable) (v2.0.2).yaml` cards can now provide battery badge status, which is useful for battery-powered light switches.
+
 ## [2023-11-04]
 ### Reduced Frontend Load
 - With `basic_card (v2.0.1).yaml` and `basic_card_expandable (v2.0.1)`, cards will now only update themselves when there are changes in entity or battery states, rather than updating with every type of entity change.
