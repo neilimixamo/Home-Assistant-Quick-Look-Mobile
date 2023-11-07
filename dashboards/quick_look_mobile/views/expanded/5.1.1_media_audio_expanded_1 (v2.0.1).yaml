@@ -99,14 +99,32 @@ cards:
       grid-area: footer_title
     template: title_sticky
     variables:
-      title: 'Playing Now' #can be changed
+      title: Routines
   - type: custom:button-card # FOOTER
     view_layout:
       grid-area: footer
-    template: media_footer
+    template: routines_footer
     variables:
-      entity: media_player.tv #required media_player.entity_id
-      remote: remote.tv
+      routine1_entity: #optional scene, script or automation
+      routine1_name: #optional
+      routine1_background_color: #optional
+      routine1_icon_color: #optional
+      routine2_entity: #optional scene, script or automation  
+      routine2_name: #optional
+      routine2_background_color: #optional
+      routine2_icon_color: #optional
+      routine3_entity:  #optional scene, script or automation  
+      routine3_name:  #optional
+      routine3_background_color: #optional
+      routine3_icon_color: #optional
+      routine4_entity: #optional scene, script or automation  
+      routine4_name: #optional
+      routine4_background_color: #optional
+      routine4_icon_color: #optional
+      routine5_entity: #optional scene, script or automation  
+      routine5_name: #optional
+      routine5_background_color: #optional
+      routine5_icon_color: #optional
   - type: custom:button-card # MENU
     view_layout:
       grid-area: menu
