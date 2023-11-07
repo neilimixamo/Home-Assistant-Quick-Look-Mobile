@@ -1,7 +1,12 @@
 # Changelogs
 
 ## [2023-11-07]
-- `routines_footer (v2.0.3).yaml` template has been improved to seamlessly trigger scenes, scripts and/or automations without needing to specify a "routine_type" variable anymore.
+- `routines_footer (v2.0.3).yaml` template has been improved to seamlessly trigger scenes, scripts and/or automations with no more need to specify a "routine_type" variable.
+  
+<p align="center">
+    <img src="https://github.com/neilimixamo/Home-Assistant-Quick-Look-Mobile/assets/43101688/f09578d9-9d4a-4513-b1ce-497eb0628ac2" alt="Image">
+</p>
+
 - Default views using this template have also been updated accordingly:
 `1.1_home (v2.0.2).yaml`
 `4.1_light_bulbs (v2.0.2).yaml`
@@ -20,7 +25,11 @@
 
 ## [2023-11-06]
 ### New
-- The `light(_expandable) (v2.0.2).yaml` cards can now provide battery badge status, which is useful for battery-powered light switches.
+- The `light(_expandable) (v2.0.2).yaml` cards can now provide battery badge status, useful for battery-powered light switches.
+
+<p align="center">
+    <img src="https://github.com/neilimixamo/Home-Assistant-Quick-Look-Mobile/assets/43101688/8f8efb0b-d49c-4e17-8fc8-eaa2d08730fa" alt="Image">
+</p>
 
 ## [2023-11-04]
 ### Reduced Frontend Load
@@ -59,6 +68,10 @@
 - `header.yaml` updated to v2.0.1: Fixed issue with box-shadow of the media header not being displayed.
 
 ## [2023-07-02] : Quick Look Mobile v2.0.0
+
+<p align="center">
+    <img src="https://github.com/neilimixamo/Home-Assistant-Quick-Look-Mobile/assets/43101688/6c649318-d1e8-4601-bbc3-70736457260e" alt="Image">
+</p>
 
 ### Breaking Changes: 
 - Full reinstall recommended for those who used v1.0
