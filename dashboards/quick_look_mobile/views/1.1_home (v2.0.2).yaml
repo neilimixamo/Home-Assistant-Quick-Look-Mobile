@@ -200,28 +200,23 @@ cards:
       grid-area: footer
     template: routines_footer
     variables:
-      routine1_type: 'scene' #or 'script'
-      routine1_entity: #optional routine.entity
+      routine1_entity: #optional  
       routine1_name: #optional
       routine1_background_color: #optional
       routine1_icon_color: #optional
-      routine2_type: 'scene' #or 'script'
-      routine2_entity: #optional routine.entity
+      routine2_entity: #optional  
       routine2_name: #optional
       routine2_background_color: #optional
       routine2_icon_color: #optional
-      routine3_type: 'scene' #or 'script'
-      routine3_entity: #optional routine.entity
+      routine3_entity:  #optional  
       routine3_name:  #optional
       routine3_background_color: #optional
       routine3_icon_color: #optional
-      routine4_type: 'scene' #or 'script'
-      routine4_entity: #optional routine.entity
+      routine4_entity: #optional  
       routine4_name: #optional
       routine4_background_color: #optional
       routine4_icon_color: #optional
-      routine5_type: 'scene' #or 'script'
-      routine5_entity: #optional routine.entity
+      routine5_entity: #optional  
       routine5_name: #optional
       routine5_background_color: #optional
       routine5_icon_color: #optional
