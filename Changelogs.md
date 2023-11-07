@@ -1,5 +1,23 @@
 # Changelogs
 
+## [2023-11-07]
+- `routines_footer (v2.0.3).yaml` template has been improved to seamlessly trigger scenes, scripts and/or automations without needing to specify a "routine_type" variable anymore.
+- Default views using this template have also been updated accordingly:
+`1.1_home (v2.0.2).yaml`
+`4.1_light_bulbs (v2.0.2).yaml`
+`4.2_light_covers (v2.0.2).yaml`
+`4.1.1_light_bulbs_expanded_1 (v2.0.2).yaml`
+`4.1.2_light_bulbs_expanded_1 (v2.0.2).yaml`
+`4.2.1_light_covers_expanded_1 (v2.0.2).yaml`
+`5.1_media_audio (v2.0.1).yaml`
+`5.2_media_video (v2.0.1).yaml`
+`5.1.1_media_audio_expanded_1 (v2.0.1).yaml`
+`5.1.2_media_video_expanded_1 (v2.0.1).yaml`
+`6.1_devices_favorites (v2.0.2).yaml`
+`6.1.1_devices_expanded_1 (v2.0.1).yaml`
+`7.1_persons (2.0.2).yaml`
+`7.2_map (v2.0.1).yaml`
+
 ## [2023-11-06]
 ### New
 - The `light(_expandable) (v2.0.2).yaml` cards can now provide battery badge status, which is useful for battery-powered light switches.
