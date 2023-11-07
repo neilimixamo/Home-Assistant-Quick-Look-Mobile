@@ -70,7 +70,7 @@ routines_footer:
                 - margin: 0vh 0.2vh 0vh 0.5vh
                 - border-radius: 50%
                 - box-shadow: none
-                - background-color: |
+                - background: |
                     [[[
                       if (variables.routine1_background_color) { 
                         return variables.routine1_background_color;
@@ -131,7 +131,7 @@ routines_footer:
                 - margin: 0vh 0.2vh
                 - border-radius: 50%
                 - box-shadow: none
-                - background-color: |
+                - background: |
                     [[[
                       if (variables.routine2_background_color) { 
                         return variables.routine2_background_color;
@@ -192,7 +192,7 @@ routines_footer:
                 - margin: 0vh 0.2vh
                 - border-radius: 50%
                 - box-shadow: none
-                - background-color: |
+                - background: |
                     [[[
                       if (variables.routine3_background_color) { 
                         return variables.routine3_background_color;
@@ -253,7 +253,7 @@ routines_footer:
                 - margin: 0vh 0.2vh
                 - border-radius: 50%
                 - box-shadow: none
-                - background-color: |
+                - background: |
                     [[[
                       if (variables.routine4_background_color) { 
                         return variables.routine4_background_color;
@@ -314,7 +314,7 @@ routines_footer:
                 - margin: 0vh 0.2vh 0vh 0.2vh
                 - border-radius: 50%
                 - box-shadow: none
-                - background-color: |
+                - background: |
                     [[[
                       if (variables.routine5_background_color) { 
                         return variables.routine5_background_color;
