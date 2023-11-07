@@ -1,27 +1,22 @@
 routines_footer:
   variables:
-    routine1_type:
-    routine1_entity:
+    routine1_entity: #scene, script or automation
     routine1_name:
     routine1_background_color:
     routine1_icon_color:
-    routine2_type:
-    routine2_entity:
+    routine2_entity: #scene, script or automation
     routine2_name:
     routine2_background_color:
     routine2_icon_color:
-    routine3_type:
-    routine3_entity:
+    routine3_entity: #scene, script or automation
     routine3_name:
     routine3_background_color:
     routine3_icon_color:
-    routine4_type:
-    routine4_entity:
+    routine4_entity: #scene, script or automation
     routine4_name:
     routine4_background_color:
     routine4_icon_color:
-    routine5_type:
-    routine5_entity:
+    routine5_entity: #scene, script or automation
     routine5_name:
     routine5_background_color:
     routine5_icon_color:
@@ -98,7 +93,15 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (variables.routine1_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
+              service: >
+                [[[ 
+                  const routine = variables['routine1_entity'];
+                  if (!routine) return 'none';
+                  return routine.startsWith('script.') ? 'script.turn_on' : 
+                        routine.startsWith('scene.') ? 'scene.turn_on' : 
+                        routine.startsWith('automation.') ? 'automation.trigger' :
+                        'none';
+                ]]]
               service_data:
                 entity_id: '[[[return variables.routine1_entity ]]]'
           - type: custom:button-card # Routine 2
@@ -151,7 +154,15 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (variables.routine2_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
+              service: >
+                [[[ 
+                  const routine = variables['routine2_entity'];
+                  if (!routine) return 'none';
+                  return routine.startsWith('script.') ? 'script.turn_on' : 
+                        routine.startsWith('scene.') ? 'scene.turn_on' : 
+                        routine.startsWith('automation.') ? 'automation.trigger' :
+                        'none';
+                ]]]
               service_data:
                 entity_id: '[[[return variables.routine2_entity ]]]'
           - type: custom:button-card # Routine 3
@@ -204,7 +215,15 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (variables.routine3_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
+              service: >
+                [[[ 
+                  const routine = variables['routine3_entity'];
+                  if (!routine) return 'none';
+                  return routine.startsWith('script.') ? 'script.turn_on' : 
+                        routine.startsWith('scene.') ? 'scene.turn_on' : 
+                        routine.startsWith('automation.') ? 'automation.trigger' :
+                        'none';
+                ]]]
               service_data:
                 entity_id: '[[[return variables.routine3_entity ]]]'
           - type: custom:button-card # Routine 4
@@ -257,7 +276,15 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (variables.routine4_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
+              service: >
+                [[[ 
+                  const routine = variables['routine4_entity'];
+                  if (!routine) return 'none';
+                  return routine.startsWith('script.') ? 'script.turn_on' : 
+                        routine.startsWith('scene.') ? 'scene.turn_on' : 
+                        routine.startsWith('automation.') ? 'automation.trigger' :
+                        'none';
+                ]]]
               service_data:
                 entity_id: '[[[return variables.routine4_entity ]]]'
           - type: custom:button-card # Routine 5
@@ -310,6 +337,14 @@ routines_footer:
                     ]]]
             tap_action: 
               action: call-service
-              service: '[[[ return (variables.routine5_type === "script") ? "script.turn_on" : "scene.turn_on" ]]]'
+              service: >
+                [[[ 
+                  const routine = variables['routine5_entity'];
+                  if (!routine) return 'none';
+                  return routine.startsWith('script.') ? 'script.turn_on' : 
+                        routine.startsWith('scene.') ? 'scene.turn_on' : 
+                        routine.startsWith('automation.') ? 'automation.trigger' :
+                        'none';
+                ]]]
               service_data:
                 entity_id: '[[[return variables.routine5_entity ]]]'
