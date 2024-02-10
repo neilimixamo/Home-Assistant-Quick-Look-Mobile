@@ -103,7 +103,7 @@ security_expandable:
 
                   if (contact || occupancy || lock) {
                     if (variables.contact && states[variables.contact].state === 'on' ) {
-                      return 'var(--security-icon-active';
+                      return 'var(--security-icon-active)';
                     } else if (variables.occupancy && states[variables.occupancy].state === 'on' ) {
                         return 'var(--security-icon-active)';
                     } else if (variables.lock && states[variables.lock].state === 'unlocked' ) { 
