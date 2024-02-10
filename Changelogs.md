@@ -1,5 +1,9 @@
 # Changelogs
 
+## [2024-02-10]
+### Fixes
+-  `security.yaml` and `security_expandable.yaml` updated to v2.0.2: Fixed abnormal icon size of the contact entity.
+
 ## [2023-11-07]
 - `routines_footer (v2.0.3).yaml` template has been improved to seamlessly trigger scenes, scripts and/or automations with no more need to specify a "routine_type" variable.
   
