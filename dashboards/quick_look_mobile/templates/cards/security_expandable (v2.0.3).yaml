@@ -43,6 +43,8 @@ security_expandable:
   custom_fields:
     icon:
       card:
+        tap_action: 
+          action: none
         icon: |
           [[[
             var contact = variables.contact;
