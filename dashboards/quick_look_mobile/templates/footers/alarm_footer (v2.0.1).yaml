@@ -43,6 +43,14 @@ alarm_footer:
         type: horizontal-stack
         cards:
           - type: custom:button-card
+            tap_action:
+              action: call-service
+              service: |
+                [[[ 
+                  return 'alarm_control_panel.alarm_' + (states[variables.entity].state === 'disarmed' ? 'arm_away' : 'disarm') 
+                ]]]
+              service_data:
+                entity_id: '[[[ return variables.entity]]]'
             entity: |
               [[[ 
                 if (variables.entity) {
