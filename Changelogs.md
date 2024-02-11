@@ -1,8 +1,9 @@
 # Changelogs
 
-## [2024-02-10]
+## [2024-02-11]
 ### Fixes
--  `security.yaml` and `security_expandable.yaml` updated to v2.0.2: Fixed abnormal icon size of the contact entity.
+-  `security.yaml` and `security_expandable.yaml` updated to v2.0.3 including the fix for the door-open icon size issue and the disabling of the icon tap action
+-  `alarm_footer` updated to v2.0.1 including the addition of an icon tap_action to seamlessly toggle the alarm between armed_away and disarmed states
 
 ## [2023-11-07]
 - `routines_footer (v2.0.3).yaml` template has been improved to seamlessly trigger scenes, scripts and/or automations with no more need to specify a "routine_type" variable.
