@@ -3,8 +3,8 @@ device:
     - basic_card
     - badge_battery
   variables:
-    entity:
-    name:
+    entity: ''
+    name: ''
     label_on: 'Active'
     on_state: 
       - 'on'
@@ -15,18 +15,14 @@ device:
       - 'docked'
       - 'idle'
       - 'paused'
-    custom_state_1:
-    custom_label_1:
-    custom_state_2:
-    custom_label_2:
-    icon_tap_action:
-    icon_hold_action:
-    name_tap_action:
+    icon_tap_action: ''
+    icon_hold_action: ''
+    name_tap_action: ''
   styles:
     card:
       - background-color: |
           [[[
-            if (variables.entity && (states[variables.entity].state === 'on' || states[variables.entity].state === 'cleaning')) {
+            if (variables.entity && (variables.on_state.includes(states[variables.entity].state))) {
               return 'var(--device-background-active)';
             } else {
               return 'var(--device-background-inactive)';
@@ -38,13 +34,13 @@ device:
         icon: |
           [[[
             if (variables.entity) {
-              if (variables.icon ) {
+              if (variables.icon) {
                 return variables.icon;
               } else {
-                  return '';
+                return '';
               }
             } else {
-                return 'mdi:help';
+              return 'mdi:help';
             }
           ]]]
         styles:
@@ -52,19 +48,19 @@ device:
             - overflow: visible
             - background-color: |
                 [[[
-                  if (variables.entity && (states[variables.entity].state === 'on' || states[variables.entity].state === 'cleaning')) {
+                  if (variables.entity && (variables.on_state.includes(states[variables.entity].state))) {
                     return 'var(--device-icon-background-active)';
                   } else {
-                      return 'var(--device-icon-background-inactive)';
+                    return 'var(--device-icon-background-inactive)';
                   }
                 ]]]
           icon:
             - color: |
                 [[[
-                  if (variables.entity && (states[variables.entity].state === 'on' || states[variables.entity].state === 'cleaning')) {
+                  if (variables.entity && (variables.on_state.includes(states[variables.entity].state))) {
                     return 'var(--device-icon-active)';
                   } else {
-                      return 'var(--device-icon-inactive)';
+                    return 'var(--device-icon-inactive)';
                   }
                 ]]]
         custom_fields:
@@ -81,20 +77,18 @@ device:
                 return variables.label;
               } else {
                 var state = states[variables.entity].state;
-                if (state === 'unavailable') {
-                  return "Unavailable";
-                } else if (variables.on_state.includes(state)) {
-                  return variables.label_on;
+                var unit = states[variables.entity].attributes.unit_of_measurement || '';
+                var stateLabel = '';
+                if (variables.on_state.includes(state)) {
+                  stateLabel = variables.label_on;
                 } else if (variables.off_state.includes(state)) {
-                  return variables.label_off;
-                } else if (variables.custom_state_1.includes(state)) {
-                  return variables.custom_label_1;
-                } else if (variables.custom_state_2.includes(state)) {
-                  return variables.custom_label_2;
+                  stateLabel = variables.label_off;
+                } else {
+                  stateLabel = `${state} ${unit}`;
                 }
+                return stateLabel.charAt(0).toUpperCase() + stateLabel.slice(1);
               }
             } else {
               return "Label";
             }                
           ]]]
-          
